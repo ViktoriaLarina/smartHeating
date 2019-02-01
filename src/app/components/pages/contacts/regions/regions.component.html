@@ -1,0 +1,6 @@
+<div id="regional-dealers" *ngIf="role && arrayOfCountries">
+  <md2-accordion id="accordion1" [multiple]="false">
+    <app-region-item *ngFor="let country of arrayOfCountries" [country]="country" [role]="role"></app-region-item>
+  </md2-accordion>
+</div>
+<p *ngIf="!arrayOfCountries">Еще нет контактов</p>

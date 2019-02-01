@@ -1,0 +1,57 @@
+<div class="add-device-mobile" id="add-device-mob">
+  <span class="header">{{'ADD_DEVICE.ADD_DEVICE_HEAD' | translate}}</span>
+  <div id="content-mob-1" class="content" *ngIf="currentPage===1" [formGroup]="newDevice">
+    <label class="head-text" for="add-key-devices-mob">{{'HISTORY.DEVICE_ID' | translate}}</label>
+    <input class="devices margin-bottom-0" type="text" id="add-key-devices-mob" formControlName="deviceId"
+           placeholder="{{'ADD_DEVICE.ENTER_DATA' | translate}}"/>
+    <div class="but-container">
+      <div *ngIf="newDevice.invalid && isButtonClick" class="error">{{'REGISTRATION.INVALID_FORMAT' | translate}}</div>
+      <button id="next-but-1" class="btn btn-next" (click)="checkIsDeviceWait()" type="button">{{'ADD_DEVICE.NEXT' |
+        translate}}
+      </button>
+    </div>
+  </div>
+  <div id="content-mob-2" class="content" *ngIf="currentPage===2">
+    <div class="hold-loader">
+      <div class="spinner-wrapper" *ngIf="isShowLoader">
+        <mat-spinner *ngIf="isShowLoader" class="animation"></mat-spinner>
+      </div>
+      <div *ngIf="isShowSuccess">
+        <span class="info-loader">{{'ADD_DEVICE.WAITING' | translate}}</span>
+        <div class="info-loader"></div>
+        <span class="info-loader type"></span>
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-content id="content-mob-3" class="content" *ngIf="currentPage===3">
+    <label class="head-text" for="add-type-room">{{'NAVIGATION.HOUSE_TYPE' | translate}}</label>
+    <select [(ngModel)]="selectType" class="devices" id="add-type-room" (change)="isTypeSelect = false"
+            [ngClass]="{'error-block' : isTypeSelect}">
+      <option *ngFor="let place of arrayOfPlaces" [ngValue]="place.value">{{place.name | translate}}</option>
+    </select>
+    <form [formGroup]="newDeviceInfo">
+      <label class="head-text" for="add-name-devices-mob">{{'NAVIGATION.DEVICE_NAME' | translate}}</label>
+      <input class="devices" id="add-name-devices-mob" formControlName="name"
+             placeholder="{{'ADD_DEVICE.ENTER_DATA' | translate}}" data-validate="1"/>
+      <label class="head-text" for="add-info2-mob">{{'ADD_DEVICE.BURNER_PARAM' | translate}}</label>
+      <input class="devices id-devices" id="add-info2-mob"
+             placeholder="{{'ADD_DEVICE.ENTER_DATA' | translate}}"
+             formControlName="burnerAndPower"/>
+      <label class="head-text">{{'ADD_DEVICE.SQUARE' | translate}}</label>
+      <input class="devices" placeholder="{{'ADD_DEVICE.ENTER_DATA' | translate}}"
+             formControlName="square"/>
+      <label class="head-text">{{'ADD_DEVICE.BURNER_PARAM' | translate}}</label>
+      <input class="devices" type="text" placeholder="{{'ADD_DEVICE.ENTER_DATA' | translate}}"
+             formControlName="burnerAndPower"/>
+      <label class="head-text">{{'ADD_DEVICE.BOILER_PARAM' | translate}}</label>
+      <input class="devices" placeholder="{{'ADD_DEVICE.ENTER_DATA' | translate}}"
+             formControlName="boilerAndPower"/>
+    </form>
+    <div *ngIf="hasEmptyFields && (newDeviceInfo.invalid || !selectType)" class="error">
+      {{'REGISTRATION.EMPTY_FIELDS' | translate}}
+    </div>
+    <div class="but-container">
+      <button id="next-but-3" class="btn btn-next" (click)="registrationNewDevice()">{{'OTHER.SAVE' | translate}}</button>
+    </div>
+  </div>
+</div>

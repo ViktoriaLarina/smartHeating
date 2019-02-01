@@ -1,0 +1,23 @@
+<div class="cards" *ngIf="user">
+    <div class="cards-title load">
+      <b>{{'USERS.USER' | translate}}: <span>{{user.login}}</span></b>
+    </div>
+    <hr class="cardshr">
+  <div class="short-info">
+      <div class="cardsadress">
+        <span>{{'REGISTRATION.FIRST_NAME' | translate}}: <span>{{user.firstName}}</span></span>
+        <br>
+        <span>{{'REGISTRATION.LAST_NAME' | translate}}: <span>{{user.lastName}}</span></span>
+      </div>
+      <hr class="cardshr">
+      <div class="load">
+        <button class="short-full button-cursor cards-title" type="button" (click)="openEditUsersPermissionDialog()"><b>{{'USERS.EDIT_ACCESS'
+          | translate}}</b></button>
+        <hr class="cardshr">
+        <button class="short-full button-cursor cards-title" type="button" (click)="deleteUser()"><b>{{'USERS.DELETE_USER'
+          | translate}}</b></button>
+      </div>
+    </div>
+</div>
+
+

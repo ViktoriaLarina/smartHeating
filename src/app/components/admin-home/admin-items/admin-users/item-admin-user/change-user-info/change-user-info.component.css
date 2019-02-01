@@ -1,0 +1,196 @@
+#myProfileDesktop input.ng-touched.ng-dirty.ng-invalid {
+  background-color: #f2dede;
+}
+
+.modal-settings {
+  margin: -310px 0 0 -455px;
+}
+
+.content-wrapper {
+  padding: 20px;
+  margin-bottom: 40px;
+}
+
+#myProfileDesktop input.ng-touched.ng-dirty.ng-invalid ~ .error-text {
+  visibility: visible;
+}
+
+#myProfileDesktop input.devices {
+  margin-bottom: 0;
+}
+
+#myProfileDesktop .header-modal {
+  text-align: center;
+  width: 100%;
+  padding: 0;
+  white-space: nowrap;
+}
+
+#myProfileDesktop .header-modal .btn-top {
+  padding: 24px 0;
+  /*width: 50%;*/
+  color: white;
+  background: #6aa3ca;
+  font-size: 18px;
+  line-height: 26px;
+  cursor: pointer;
+}
+
+#myProfileDesktop .header-modal .active {
+  background: #ffffff;
+  color: #6aa3ca;
+}
+
+#myProfileDesktop .input-wrapper {
+  position: relative;
+}
+
+#myProfileDesktop .col-right .input-wrapper {
+  padding-right: 10px;
+}
+
+#myProfileDesktop .error {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  color: #b94a48;
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  text-align: center;
+  padding: 5px 10px;
+  display: block;
+  width: 90%;
+  margin: 5px auto;
+}
+
+#myProfileDesktop .form-wrapper {
+  overflow: visible;
+}
+
+#myProfileDesktop .error-text {
+  visibility: hidden;
+  color: #b94a48;
+  font-size: 14px;
+  display: block;
+  line-height: 18px;
+  overflow: hidden;
+}
+
+.select-phone {
+  border: 1px solid #8fa5a5;
+  width: 15%;
+  float: left;
+  padding: 11px 10px 10px 12px;
+}
+
+.phone-body {
+  width: 100%;
+  white-space: nowrap;
+}
+
+.phone {
+  padding: 0 !important;
+}
+
+.phone-inpup-wrapper input {
+  padding-right: 0;
+  width: 100%;
+}
+
+#edit-phone-user {
+  margin: 0;
+}
+
+.select-phone {
+  margin: 0;
+  height: 40px;
+}
+
+.phone-input {
+  display: inline-block;
+  width: 200px;
+}
+
+#myProfileDesktop input.ng-touched.ng-dirty.ng-invalid ~ .error-text {
+  visibility: visible;
+}
+
+#myProfileDesktop .row-modal.visible {
+  box-shadow: none;
+}
+
+#myProfileDesktop .row-btn-modal {
+  bottom: 20px;
+}
+
+#myProfileDesktop {
+  height: auto;
+}
+
+/*-----------------------------------------------------------------validator style end*/
+#myProfileDesktop ::ng-deep .mat-dialog-content {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+::ng-deep .mat-dialog-container {
+  padding: 0 !important;
+}
+
+.modal-user-info {
+  max-width: 900px;
+  min-width: 700px;
+  width: auto;
+  overflow-x: hidden;
+}
+
+.modal-user-info .row-btn-modal {
+  position: absolute;
+}
+
+#myProfileDesktop ::ng-deep #cdk-overlay-0 {
+  max-width: 90vw;
+}
+
+#myProfileDesktop {
+  margin-left: -300px;
+}
+
+#myProfileDesktop ::ng-deep .mat-form-field {
+  font-family: inherit;
+  line-height: inherit;
+  width: 100% !important;
+}
+
+#myProfileDesktop ::ng-deep .mat-form-field-underline {
+  width: 0 !important;
+  height: 0 !important;
+}
+
+#myProfileDesktop ::ng-deep .mat-form-field-wrapper {
+  padding-bottom: 0 !important;
+}
+
+#myProfileDesktop ::ng-deep .mat-form-field-infix {
+  border-top: none;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+#myProfileDesktop .row-btn-modal .btn, #myProfileDesktop .add-device .btn {
+  padding: 7px 26px;
+}
+
+#my-profile-btn {
+  text-align: center;
+}
+
+#my-profile-btn .btn {
+  float: none !important;
+  display: inline-block;
+}
+
+#my-profile-btn .btn:first-child {
+  margin: 0;
+}

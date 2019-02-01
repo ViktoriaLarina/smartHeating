@@ -1,0 +1,183 @@
+.hold-support {
+  margin-bottom: 40px;
+}
+
+.hold-support .time {
+  margin-bottom: 15px;
+  font-size: 12px;
+}
+
+.fa-clock {
+  margin-top: 4px;
+  margin-right: 4px;
+  display: inline-block;
+  vertical-align: top;
+  width: 13px;
+  height: 13px;
+  background: url(../../../../../img/bg/fa-clock-o.png) no-repeat 0 0;
+}
+
+.row-support {
+  overflow: hidden;
+}
+
+.img-support {
+  padding-right: 30px;
+  float: left;
+  width: 110px;
+}
+
+.txt-support {
+  word-wrap: break-word;
+  padding: 10px 15px;
+  margin: 0 5% 10px 0;
+  float: left;
+  position: relative;
+  background: #f5f0cb;
+  width: 65%;
+  color: #2f3131;
+  -webkit-border-radius: .3em;
+  -moz-border-radius: .3em;
+  -ms-border-radius: .3em;
+  -o-border-radius: .3em;
+  border-radius: .3em;
+}
+
+.txt-support:after {
+  content: "";
+  top: 7px;
+  left: -27px;
+  position: absolute;
+  border: 15px solid #f5f0cb;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-right-color: #f5f0cb;
+  border-bottom: 0 solid transparent;
+  -webkit-transform: rotate(-5deg);
+  transform: rotate(-5deg);
+}
+
+.hold-support.right .time {
+  text-align: right;
+}
+
+.hold-support.right .img-support {
+  padding: 0 0 0 30px;
+  float: right;
+  text-align: right;
+}
+
+.hold-support.right .img-support img {
+  display: inline-block;
+}
+
+.hold-support.right .txt-support {
+  word-wrap: break-word;
+  float: right;
+  background: #fff;
+  margin: 0 0 10px 5%;
+}
+
+.hold-support.right .txt-support:after {
+  content: "";
+  top: 7px;
+  left: auto;
+  right: -27px;
+  position: absolute;
+  border: 15px solid #fff;
+  border-top-color: transparent;
+  border-left-color: #fff;
+  border-right-color: transparent;
+  border-bottom: 0 solid transparent;
+  -webkit-transform: rotate(5deg);
+  transform: rotate(5deg);
+}
+
+.title {
+  margin-bottom: 30px;
+  overflow: hidden;
+  text-align: center;
+  display: block;
+  font-size: 13px;
+  line-height: 13px;
+}
+
+.title:before,
+.title:after {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  width: 100%;
+  height: 1px;
+  background-color: #ced9d9;
+  position: relative;
+}
+
+.title:before {
+  margin-left: -100%;
+  left: -14px;
+}
+
+.title:after {
+  margin-right: -100%;
+  right: -14px;
+}
+
+.file-uploaded {
+  padding: 3px;
+  color: black;
+  background-color: #c6e0e0;
+  border: 2px solid #bcd6d6;
+  border-radius: 5px;
+  width: 110px;
+  cursor: pointer;
+}
+
+.file-uploaded-left {
+  float: left;
+}
+
+.file-uploaded-right {
+  float: right;
+}
+
+.file-uploaded img {
+  cursor: pointer;
+}
+
+.file-uploaded-title {
+  overflow: hidden;
+  height: 22px;
+  font-size: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+.file-uploaded-info {
+  font-size: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+.file-uploaded-img {
+  width: 100%;
+  height: 80px;
+}
+
+.file-uploaded-img img {
+  margin: auto;
+}
+
+/*-----------------media 790-----------------------------------*/
+@media screen and (max-width: 790px), screen and (max-device-width: 790px) {
+  .hold-support.right .img-support {
+    padding: 0 15px;
+  }
+
+  .img-support {
+    padding: 0px 15px;
+    width: 100px;
+  }
+}
+
+/*-----------------media 790--end-----------------------------------*/

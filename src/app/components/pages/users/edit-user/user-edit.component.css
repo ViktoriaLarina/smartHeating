@@ -1,0 +1,145 @@
+::ng-deep mat-dialog-container {
+  padding: 0 !important;
+}
+
+::ng-deep .mat-dialog-content {
+  margin: 0;
+  padding: 0;
+  max-height: 455px;
+}
+
+::ng-deep .mat-dialog-actions {
+  justify-content: flex-end;
+  padding: 12px 15px;
+}
+
+.btn-wrapper {
+  background: #fff;
+}
+
+.row-btn-modal {
+  position: inherit;
+}
+
+.btn-cancel {
+  margin-left: 15px;
+}
+
+.btn-save {
+  margin-right: 15px;
+}
+
+::ng-deep .mat-dialog-title {
+  margin: 0;
+}
+
+.modal-userlist-editing {
+  width: 500px;
+}
+
+.modal-settings {
+  margin-left: -225px;
+  height: auto;
+}
+
+.device-item {
+  width: 80%;
+  margin: 20px auto;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.head-text {
+  display: inline-block;
+  margin-right: 30px;
+  line-height: 20px;
+}
+
+.devices {
+  width: 170px;
+  display: inline-block;
+  float: right;
+  margin: 0;
+}
+
+/*---------------media 996-------------------------------*/
+@media screen and (max-width: 996px), screen and (max-device-width: 996px), screen and (max-width: 996px)
+and (-webkit-min-device-pixel-ratio: 2), screen and (max-device-width: 996px) and (-webkit-min-device-pixel-ratio: 2), screen and (max-width: 996px) and (-webkit-min-device-pixel-ratio: 1), screen and (max-device-width: 996px)
+and (-webkit-min-device-pixel-ratio: 1) {
+
+
+  .modal-userlist-editing .select.devices {
+    margin-bottom: 0;
+  }
+
+  .modal-settings {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+  }
+
+  .modal-settings .row-modal {
+    box-shadow: none;
+  }
+}
+
+/*---------------media 996--end-------------------------------*/
+
+@media screen and (max-width: 600px) {
+
+  .user-edit-row-btn-modal {
+    margin: 0 auto;
+  }
+
+  .row-btn-modal .btn {
+    float: none;
+  }
+
+  .btn-cancel {
+    margin: 0;
+  }
+
+  .modal-userlist-editing {
+    width: 300px;
+  }
+
+  .header-modal {
+    padding: 20px;
+  }
+
+  .modal-settings {
+    margin-left: -150px;
+    margin-top: -150px;
+  }
+
+  .head-text {
+    display: block;
+    text-align: center;
+  }
+
+  .devices {
+    float: none;
+    display: block;
+    margin: auto;
+  }
+
+  .device-item {
+    margin: 0 auto;
+  }
+
+  .btn-save {
+    margin: 0 0 10px 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .modal-settings {
+    margin-top: -250px;
+  }
+
+  .mat-dialog-content {
+    max-height: 300px;
+  }
+}
+
+

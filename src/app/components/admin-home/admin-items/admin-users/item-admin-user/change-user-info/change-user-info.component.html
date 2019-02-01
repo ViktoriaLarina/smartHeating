@@ -1,0 +1,57 @@
+<div class="modal modal-settings modal-user-info" id="myProfileDesktop">
+    <span class="header-modal">
+    <button class="btn-top">{{'Редактирование профиля' + ' ' + profileInfo.email}}</button>
+  </span>
+  <div class="content-wrapper">
+    <div class="col-left" [formGroup]="userProfile">
+      <div class="input-wrapper">
+        <label class="head-text" for="edit-name-user">Имя*</label>
+        <input class="devices" type="text" name="edit-name-user" id="edit-name-user"
+               placeholder="Введите имя" formControlName="firstName"/>
+        <span class="error-text">неверный формат данных</span>
+      </div>
+      <div class="input-wrapper">
+        <label class="head-text" for="edit-lastname-user">Фамилия*</label>
+        <input class="devices id-devices" type="text" name="edit-lastname-user" id="edit-lastname-user"
+               placeholder="Введите фамилию" formControlName="lastName"/>
+        <span class="error-text">неверный формат данных</span>
+      </div>
+
+      <div class="input-wrapper bottom-input">
+        <label class="head-text" for="edit-email-user">Email*</label>
+        <input class="devices" type="email" name="edit-email-user" id="edit-email-user"
+               placeholder="Введите e-mail" formControlName="email" (blur)="checkEmail()"
+               (keyup)="refreshEmailValidity()"/>
+        <span class="error-text">{{emailAlreadyTaken ? 'Email уже занят' : 'неверный формат данных'}}</span>
+      </div>
+    </div>
+
+    <div class="col-right">
+      <div class="input-wrapper">
+        <div class="input-wrapper phone">
+          <label class="head-text" for="edit-phone-user">Телефон*</label>
+          <div class="phone-inpup-wrapper">
+            <div [formGroup]="userProfile" class="phone-body">
+              <input class="devices id-devices phone-input" type="text" name="edit-phone-user" id="edit-phone-user"
+                     placeholder="Введите телефон" formControlName="phone"/>
+              <span class="error-text">{{phoneAlreadyTaken ? 'Номер уже занят' : 'неверный формат данных'}}</span>
+            </div>
+          </div>
+        </div>
+        <mat-form-field [formGroup]="userProfile">
+          <label class="head-text" for="edit-date-birth">Дата рождения*</label>
+          <input #dateInput matInput [matDatepicker]="picker" class="devices date-birth" id="edit-date-birth"
+                 lang="ru"
+                 [min]="minDate" [max]="maxDate" formControlName="birthday" (click)="picker.open()">
+          <mat-datepicker #picker startView="year" disabled="false"></mat-datepicker>
+          <span class="error-text">неверный формат данных</span>
+        </mat-form-field>
+      </div>
+      <div *ngIf="hasEmptyFields" class="error">Не заполнены обязательные поля</div>
+    </div>
+  </div>
+  <div class="row-btn-modal" id="my-profile-btn">
+    <button type="button" class="btn btn-cancel" (click)="closeDialogProfile()"><span>Закрыть</span></button>
+    <button type="button" class="btn btn-save" (click)="updateUserProfile()"><span>Сохранить</span></button>
+  </div>
+</div>

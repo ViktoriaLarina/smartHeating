@@ -1,0 +1,29 @@
+<td>{{item.id}}</td>
+<td class="td-description" [formGroup]="editFirmware">
+  <textarea rows="5" wrap="hard" class="textarea-description" formControlName="name"></textarea>
+</td>
+<td class="td-description info-wrapper">
+  <p *ngIf="selectType"><span>тип устройства:</span>{{selectType}}</p>
+  <p *ngIf="item.version"><span>версия:</span>{{item.version}}</p>
+  <p><span>дата:</span>{{item.dateCreation}}</p>
+</td>
+<td class="td-description" [formGroup]="editFirmware">
+  <span>Ru</span>
+  <textarea rows="5" wrap="hard" class="textarea-description" formControlName="editDescriptionRu"></textarea>
+  <span>En</span>
+  <textarea rows="5" wrap="hard" class="textarea-description" formControlName="editDescriptionEn"></textarea>
+</td>
+<td class="control-block">
+  <div class="upload-file-wrapper">
+    <p style="margin: 0">Заменить:</p>
+    <input type="file" id="file" style="width: auto"/>
+  </div>
+  <div id="row-btn">
+    <button class="button btn-in-table" [ngClass]="{'green-bg' : display, 'red-bg': !display}"
+            (click)="changeParamShowFirmwareForOwners()">Отображать
+    </button>
+    <button class="button btn-in-table" (click)="loadFirmware()">Скачать</button>
+    <button class="button btn-in-table" (click)="saveChangeDescription()">Изменить</button>
+    <button class="button btn-in-table red-bg" (click)="openDialogVerification()">Удалить</button>
+  </div>
+</td>

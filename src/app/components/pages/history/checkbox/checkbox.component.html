@@ -1,0 +1,64 @@
+<span class="header-modal">{{'HISTORY.GRAPH_OPTION' | translate}}</span>
+<div id="checkbox-wrapper">
+  <div class="hold-checkbox-dark">
+    <div class="date-sort" [formGroup]="dateInterval">
+      <div class="date-from">
+        <label for="from-history-date">{{'HISTORY.START_DATE' | translate}}</label>
+        <input [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" class="filter-date" id="from-history-date"
+               formControlName="from" [min]="minDate" [max]="maxDate">
+        <owl-date-time #dt1></owl-date-time>
+      </div>
+      <div class="date-to">
+        <label for="to-history-date">{{'HISTORY.END_DATE' | translate}}</label>
+        <input [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" class="filter-date" id="to-history-date"
+               formControlName="to" [min]="minDate" [max]="maxDate">
+        <owl-date-time #dt2></owl-date-time>
+      </div>
+    </div>
+    <div class="w100" *ngIf="device.type === 'BIO_UNIVERSAL'">
+      <div [formGroup]="criterias">
+        <div class="row-checkbox">
+          <input type="checkbox" class="checkbox-dark" name="type-history-1" id="type-history-1"
+                 formControlName="0">
+          <label for="type-history-1">{{arrayOfCriterias[0].name | translate}}</label>
+          <input type="checkbox" class="checkbox-dark" name="type-history-5" id="type-history-5"
+                 formControlName="1">
+          <label for="type-history-5">{{arrayOfCriterias[1].name | translate}}</label>
+        </div>
+        <div class="row-checkbox">
+          <input type="checkbox" class="checkbox-dark" name="type-history-2" id="type-history-2"
+                 formControlName="2">
+          <label for="type-history-2">{{arrayOfCriterias[2].name | translate}}</label>
+          <input type="checkbox" class="checkbox-dark" name="type-history-6" id="type-history-6"
+                 formControlName="3">
+          <label for="type-history-6">{{arrayOfCriterias[3].name | translate}}</label>
+        </div>
+        <div class="row-checkbox">
+          <input type="checkbox" class="checkbox-dark" name="type-history-3" id="type-history-3"
+                 formControlName="4">
+          <label for="type-history-3">{{arrayOfCriterias[4].name | translate}}</label>
+          <input type="checkbox" class="checkbox-dark" name="type-history-7" id="type-history-7"
+                 formControlName="5">
+          <label for="type-history-7">{{arrayOfCriterias[5].name | translate}}</label>
+        </div>
+        <div class="row-checkbox">
+          <input type="checkbox" class="checkbox-dark" name="type-history-4" id="type-history-4"
+                 formControlName="6">
+          <label for="type-history-4">{{arrayOfCriterias[6].name | translate}}</label>
+          <input type="checkbox" class="checkbox-dark" name="type-history-8" id="type-history-8"
+                 formControlName="7">
+          <label for="type-history-8">{{arrayOfCriterias[7].name | translate}}</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="btn-wrapper">
+
+    <button class="btn bth-init-history btn-save" type="button" (click)="sendData()">{{'OTHER.SHOW' | translate}}
+    </button>
+    <button class="btn bth-init-history btn-cancel" type="button" (click)="closeDialogProfile()">{{'OTHER.CANCEL' |
+      translate}}
+    </button>
+
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="wrapper-block">
+  <p *ngIf="isGoodResult">{{'REGISTRATION.CONGRATULATION' | translate}}
+    <br>
+    {{'REGISTRATION.SUCCESS_REGISTRATION' | translate}}
+  </p>
+  <p *ngIf="!isGoodResult">
+    {{'REGISTRATION.ERROR' | translate}}<br>{{'REGISTRATION.RETRY' | translate}}
+  </p>
+</div>

@@ -1,0 +1,7 @@
+<td>{{item.name}}</td>
+<td>{{deviceType}}</td>
+<td class="description-style">{{description}}</td>
+<td *ngIf="item.version">{{item.version}}</td>
+<td class="min-width">{{item.size | changeByte}}</td>
+<td><a download (click)="downloadFile()"><span class="table-icon file-download-icon"></span></a></td>
+

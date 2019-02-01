@@ -1,0 +1,202 @@
+.bg-body {
+  background: #e5eeee;
+}
+
+header {
+  margin-bottom: 14px;
+  position: relative;
+}
+
+.chat-header {
+  position: fixed;
+  top: 0;
+  left: 225px;
+  right: 0;
+  padding: 15px;
+  background-color: #e5eeee;
+  z-index: 100;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+header .bg-body {
+  padding-left: 15px;
+}
+
+.btn-mobile-menu.open {
+  border-color: #6aa3ca;
+  background: #6aa3ca;
+}
+
+.btn-mobile-menu span {
+  margin: 4px;
+  display: block;
+  width: 17px;
+  height: 2px;
+  background: #fff;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.btn-mobile-menu.open span {
+  background: #fff;
+}
+
+.btn-mobile-menu.open span:nth-of-type(1) {
+  transform: translateX(0px) translateY(3px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(45deg);
+}
+
+.btn-mobile-menu.open span:nth-of-type(2) {
+  transform: rotateX(0deg) rotateY(0deg) translateY(-3px) rotateZ(315deg);
+}
+
+.btn-mobile-menu.open span:nth-of-type(3) {
+  display: none;
+}
+
+.header-profile-buttons {
+  display: block;
+  width: auto;
+  float: right;
+}
+
+header .exit {
+  margin-left: 15px;
+  padding: 14px 18px;
+  border-bottom: 1px solid #ced9d9;
+  display: inline-block;
+  vertical-align: top;
+  -webkit-transition: border-color 0.2s ease, background 0.2s ease;
+  -moz-transition: border-color 0.2s ease, background 0.2s ease;
+  -o-transition: border-color 0.2s ease, background 0.2s ease;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+header .exit:hover {
+  cursor: pointer;
+  border-color: #4a5e6b;
+}
+
+header .exit span {
+  font-size: 15px;
+  line-height: 18px;
+  color: #376f94;
+  font-weight: 500;
+}
+
+.admin-logo-p {
+  margin-top: 0;
+  color: #fff;
+  font-style: italic;
+}
+
+header .name {
+  margin-left: 15px;
+  padding: 16px 16px 16px 40px;
+  display: inline-block;
+  vertical-align: top;
+  border-bottom: 1px solid #ced9d9;
+  -webkit-transition: border-color 0.2s ease;
+  -moz-transition: border-color 0.2s ease;
+  -o-transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease;
+}
+
+.name:hover {
+  cursor: pointer;
+  border-color: #376f94;
+}
+
+.name:hover span {
+  color: #376f94;
+}
+
+.name span {
+  font-size: 15px;
+  line-height: 18px;
+  position: relative;
+  color: #508db6;
+}
+
+.name span:before {
+  content: "";
+  display: block;
+  width: 18px;
+  height: 18px;
+  background: url(../../../../img/bg/bg-header-name.png) no-repeat 0 0;
+  position: absolute;
+  top: 1px;
+  left: -24px;
+}
+
+/*-------------------------media 1260----------------------------------*/
+@media screen and (max-width: 1260px) {
+
+  header {
+    height: auto;
+  }
+
+  header:after {
+    bottom: -8px;
+  }
+
+  header .bl-btn {
+    background: #e5eeee !important;
+    float: none;
+    text-align: right;
+    padding-left: 0;
+  }
+}
+
+/*--------------------------------------------------------------------------*/
+
+/*---------------media 996-------------------------------*/
+@media screen and (max-width: 996px), screen and (max-device-width: 996px), screen and (max-width: 996px)
+and (-webkit-min-device-pixel-ratio: 2), screen and (max-device-width: 996px) and (-webkit-min-device-pixel-ratio: 2), screen and (max-width: 996px) and (-webkit-min-device-pixel-ratio: 1), screen and (max-device-width: 996px)
+and (-webkit-min-device-pixel-ratio: 1) {
+
+  .mobile-row {
+    margin: -15px -15px 0;
+    /*margin: 0;*/
+    padding: 15px 15px 20px;
+    display: block;
+  }
+
+  header .bl-btn {
+    margin: 0 -15px;
+    padding: 15px;
+    background: #fff !important;
+  }
+}
+
+/*---------------media 996--end-------------------------------*/
+/*-----------------media 790-----------------------------------*/
+@media screen and (max-width: 790px), screen and (max-device-width: 790px) {
+
+  .mobile-row {
+    padding: 30px !important;
+  }
+
+  .header-profile-buttons.mobile-off {
+    display: none;
+  }
+
+  .header-profile-buttons {
+    display: block;
+    width: 100%;
+  }
+
+  header .name, header .exit, header .change-lang {
+    margin-left: 0;
+    padding-top: 10px;
+    padding-bottom: 8px;
+  }
+
+  header .bl-btn {
+    text-align: center;
+    vertical-align: top;
+  }
+}
+
+/*-----------------media 790--end-----------------------------------*/

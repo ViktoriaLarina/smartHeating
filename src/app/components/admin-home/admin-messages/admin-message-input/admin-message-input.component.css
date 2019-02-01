@@ -1,0 +1,212 @@
+textarea {
+  resize: none;
+  color: #91a2a2;
+  border: none;
+}
+
+.hold-textarea-position {
+  left: 505px;
+  padding: 15px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background: #d0e0e0;
+  border-top: 1px solid rgba(195, 212, 212, .6);
+  box-shadow: 0 -4px 9px rgba(138, 156, 156, .1);
+}
+
+.hold-textarea {
+  padding-right: 50px;
+  position: relative;
+}
+
+.hold-textarea textarea {
+  margin: 0 0 -5px;
+  padding: 7px 10px;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  color: #000;
+}
+
+.hold-textarea textarea:focus {
+  outline: none;
+}
+
+.hold-textarea textarea::-webkit-scrollbar {
+  width: 5px;
+}
+
+.hold-textarea textarea::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px #42789c;
+  border-radius: 5px;
+  background: transparent;
+  opacity: 0;
+}
+
+.hold-textarea textarea::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 0 6px #42789c;
+  background: transparent;
+  opacity: 0;
+}
+
+.position-faile {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.filename {
+  background: transparent;
+  border: none;
+  position: absolute;
+  right: 0;
+  bottom: -14px;
+  width: auto;
+  max-width: 200px;
+  color: #000;
+  padding: 0;
+}
+
+.file-upload {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  background: #e5eeee;
+  border-radius: 3px;
+  color: #fff;
+  opacity: .9;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.file-upload:after {
+  content: "1";
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+  width: 15px;
+  height: 15px;
+  font-size: 12px;
+  line-height: 15px;
+  border-radius: 100%;
+  background: #c34a35;
+  color: #fff;
+  text-align: center;
+  display: none;
+}
+
+.file-upload:hover {
+  opacity: 1;
+}
+
+.file-upload input[type="file"] {
+  display: none;
+}
+
+.file-upload label {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  background: url(../../../../../img/bg/paperclip.png) no-repeat center;
+}
+
+.file-upload span {
+  line-height: 36px;
+}
+
+.hold-textarea .submit-support {
+  padding: 0;
+  position: absolute;
+  bottom: 50px;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 3px;
+  font-size: 15px;
+  line-height: 40px;
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
+  background: #3fbf8a url(../../../../../img/bg/send-ico.png) no-repeat center;
+  border: 2px solid #3fbf8a;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.hold-textarea .submit-support:hover {
+  background: #1d8d5d url(../../../../../img/bg/send-ico.png) no-repeat center;
+  border-color: #1d8d5d;
+}
+
+/*---------------media 996-------------------------------*/
+@media screen and (max-width: 996px), screen and (max-device-width: 996px), screen and (max-width: 996px)
+and (-webkit-min-device-pixel-ratio: 2), screen and (max-device-width: 996px) and (-webkit-min-device-pixel-ratio: 2), screen and (max-width: 996px) and (-webkit-min-device-pixel-ratio: 1), screen and (max-device-width: 996px)
+and (-webkit-min-device-pixel-ratio: 1) {
+
+  .hold-textarea-position {
+    left: 0;
+  }
+}
+
+/*---------------media 996--end------------------------------*/
+
+/*-----------------media 790-----------------------------------*/
+@media screen and (max-width: 790px), screen and (max-device-width: 790px) {
+
+  .hold-textarea {
+    padding-right: 50px;
+    position: relative;
+    padding-left: 50px;
+  }
+
+  .position-faile {
+    position: absolute;
+    right: auto;
+    left: 0;
+    top: 0;
+  }
+
+  .hold-textarea .submit-support {
+    top: 0;
+    height: 60px;
+  }
+
+  .hold-textarea .file-upload {
+    height: 60px;
+  }
+
+  .hold-textarea textarea {
+    height: 60px;
+  }
+}
+
+/*-------------------------media 790--end----------------*/
+/*-----------------media 480-----------------------------*/
+@media screen and (max-width: 480px), screen and (max-device-width: 480px) {
+
+  .hold-textarea-position {
+    padding: 10px;
+  }
+
+  .hold-textarea .submit-support {
+    height: 40px;
+  }
+
+  .file-upload {
+    height: 40px !important;
+  }
+
+  .hold-textarea textarea {
+    height: 44px;
+  }
+}

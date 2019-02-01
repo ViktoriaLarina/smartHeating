@@ -1,0 +1,9 @@
+<div *ngFor="let alert of alerts">
+  <div class="alert" *ngIf="alert">
+    <button class="close" (click)="closeAlert(alert)">
+      <span>×</span>
+    </button>
+    {{ (alert.message | translate) + ' (' + alert.errCode + ')'}}
+  </div>
+
+</div>

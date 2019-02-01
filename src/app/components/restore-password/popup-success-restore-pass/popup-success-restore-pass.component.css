@@ -1,0 +1,8 @@
+::ng-deep .mat-dialog-container {
+  width: 340px;
+  text-align: center;
+}
+
+::ng-deep .cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
+  opacity: 0;
+}

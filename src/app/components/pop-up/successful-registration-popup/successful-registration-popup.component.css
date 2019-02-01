@@ -1,0 +1,12 @@
+.wrapper-block {
+  min-width: 230px;
+  text-align: center;
+}
+
+::ng-deep .cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
+  opacity: 0;
+}
+
+::ng-deep .mat-dialog-container {
+  box-shadow: 0 0 0 -2px rgba(0, 0, 0, .1), 0 2px 5px 3px rgba(0, 0, 0, .1), 0 5px 5px 4px rgba(0, 0, 0, .1) !important;
+}

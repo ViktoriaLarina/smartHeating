@@ -1,0 +1,31 @@
+<span class="title title-center"  *ngIf="item.flag">{{item.date | amCalendar :{sameDay:'[Сегодня]', lastDay:'[Вчера]'} }}</span>
+<div class="hold-support"  [ngClass]="{left: !item.admin, right: item.admin}">
+  <div class="time"><i class="fa-clock"></i>{{item.date | date: 'MM.dd.yyyy HH:mm'}}</div>
+  <div class="row-support">
+    <div class="img-support">
+      <img [src]="'img/support-img.png'" alt="" *ngIf="item.admin">
+      <img [src]="'img/no-noavatar.png'" alt="" *ngIf="!item.admin">
+    </div>
+
+    <div class="txt-support">
+      <span>{{item.msg}}</span>
+    </div>
+
+    <div class="file-uploaded" *ngIf="item.fileName && item.admin"
+         [ngClass]="{ 'file-uploaded-left': !item.admin, 'file-uploaded-right': item.admin }">
+      <div class="file-uploaded-title">{{item.fileName}}</div>
+      <div class="file-uploaded-img">
+        <button (click)="downloadData()"><img class="" src="../../../../../img/uploaded.png" alt=""></button>
+      </div>
+      <div class="file-uploaded-info">File size: <span>{{item.fileSize | changeByte}}</span></div>
+    </div>
+    <div class="file-uploaded" *ngIf="item.fileName && !item.admin" style="float: right"
+         [ngClass]="{ 'file-uploaded-left': !item.admin, 'file-uploaded-right': item.admin }">
+      <div class="file-uploaded-title">{{item.fileName}}</div>
+      <div class="file-uploaded-img">
+        <button (click)="downloadData()"><img class="" src="../../../../../img/uploaded.png" alt=""></button>
+      </div>
+      <div class="file-uploaded-info">File size: <span>{{item.fileSize | changeByte}}</span></div>
+    </div>
+  </div>
+</div>

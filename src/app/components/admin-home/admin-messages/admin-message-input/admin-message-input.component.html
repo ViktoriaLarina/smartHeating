@@ -1,0 +1,15 @@
+<div class="hold-textarea-position">
+  <form class="hold-textarea" [formGroup]="newMessage">
+    <textarea name="send-message-support" cols="30" rows="5" formControlName="textOfMessage" (keydown.enter)="sendMessage($event)"></textarea>
+    <div class="position-faile">
+      <div class="file-upload">
+        <label>
+          <input type="file" name="file" id="addFile" formControlName="fileOfMessage">
+        </label>
+        <input type="text" id="filename" class="filename" disabled>
+      </div>
+    </div>
+    <input type="submit" class="btn submit-support" (click)="sendMessage()" value=""
+           [disabled]='newMessage.invalid'>
+  </form>
+</div>

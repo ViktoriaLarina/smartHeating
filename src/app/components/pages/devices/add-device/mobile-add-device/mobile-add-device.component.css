@@ -1,0 +1,157 @@
+::ng-deep .mat-dialog-container {
+  padding: 0 !important;
+  border-radius: 5px;
+}
+
+::ng-deep .mat-dialog-content {
+  margin: 0;
+}
+
+::ng-deep .cdk-overlay-pane {
+  max-height: 95vh;
+}
+
+.error-img {
+  margin: 10px auto 30px auto;
+}
+
+.error-block {
+  border: solid #b94a48 1px;
+  background-color: #f2dede;
+}
+
+.add-device-mobile {
+  min-height: 160px;
+}
+
+.add-device-mobile .header {
+  text-align: center;
+}
+
+.hold-loader img {
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+}
+
+.add-device-mobile .info-loader {
+  margin-top: 0;
+  line-height: normal;
+  font-size: 14px;
+  padding: 20px 0;
+}
+
+.add-device-mobile div.info-loader {
+  margin: auto;
+}
+
+#next-but-2 {
+  margin-top: 10px;
+}
+
+.margin-bottom-0 {
+  margin-bottom: 0;
+}
+
+.add-device-mobile {
+  background-color: #6aa3ca;
+  outline: 1px solid #6aa3ca;
+  border-radius: 0;
+}
+
+.add-device-mobile .content {
+  background-color: white;
+}
+
+.add-device-mobile .header {
+  display: block;
+  padding: 15px 10px;
+  background: #6aa3ca;
+  font-size: 18px;
+  line-height: 26px;
+  color: #fff;
+}
+
+.add-device-mobile .content {
+  padding: 25px 20px;
+}
+
+.but-container {
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.but-next-mob {
+  border-radius: 5px;
+  padding: 7px;
+  background: #c1ccda;
+  color: #000;
+  font-size: 16px;
+  border: 1px solid #6aa3ca;
+}
+
+#content-mob-1 {
+  display: block;
+}
+
+.btn-next {
+  border-color: #3fbf8a;
+  background: #3fbf8a;
+  color: #fff;
+  padding: 6px 26px 8px;
+  width: 100%;
+  font-size: 18px;
+  line-height: 24px;
+  border-radius: 4px;
+}
+
+.btn-close {
+  border-color: #6aa3ca;
+  background: #6aa3ca;
+  color: #fff;
+  padding: 6px 26px 8px;
+  width: 100%;
+  font-size: 18px;
+  line-height: 24px;
+  border-radius: 4px;
+}
+
+::ng-deep #add-device-mob .mat-progress-spinner circle, .mat-spinner circle {
+  stroke: #508db6 !important;
+  width: 300px;
+  height: 300px;
+}
+
+#add-device-mob .spinner-wrapper {
+  padding: 44px 70px;
+}
+
+#add-device-mob .error {
+  margin: auto;
+  margin-bottom: 10px;
+  color: #b94a48;
+}
+
+#add-device-mob select {
+  margin-bottom: 10px;
+}
+
+input.ng-touched.ng-dirty.ng-invalid {
+  border: solid #b94a48 1px;
+  background-color: #f2dede;
+}
+
+#add-device-desktop .error-block {
+  border: solid #b94a48 1px;
+  background-color: #f2dede;
+}
+
+@media screen and (max-width: 480px), screen and (max-device-width: 480px) {
+
+  .add-device-mobile .content {
+    padding: 15px 10px;
+  }
+
+}
+

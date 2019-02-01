@@ -1,0 +1,110 @@
+<md2-accordion-tab (click)="getInfo()">
+  <md2-accordion-header>
+    <div id="circle" [ngClass]="{'green' : user.isOnline, 'red' : !user.isOnline}"></div>
+    <span class="item-title">{{user['firstName'] + ' ' + user['lastName']}}</span>
+    <span class='lastOnline' *ngIf="lastOnline">{{'Последний раз в сети: ' + lastOnline}}</span>
+  </md2-accordion-header>
+  <div class="bl-top-menu">
+    <ul class="top-menu">
+      <li (click)="index=1">
+        <p [ngClass]="{active: index===1}">Общая информация</p>
+      </li>
+      <li (click)="getUsersDevices()">
+        <p [ngClass]="{active: index===2}">Устройства</p>
+      </li>
+      <li>
+        <p (click)="findGroupOwner()" [ngClass]="{active: index===3}">Состоит в субюзера</p>
+      </li>
+      <li (click)="findGroupIn()">
+        <p [ngClass]="{active: index===4}">Его субюзеры</p>
+      </li>
+    </ul>
+  </div>
+  <div class="item-info-content">
+    <!----------------------------------------------------------------------------desktop-history-table-version-->
+    <div *ngIf="index===1">
+      <table class="user-info">
+        <thead>
+        <tr>
+          <th>Name:</th>
+          <th>Email:</th>
+          <th>Role:</th>
+          <th>Phone:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>{{user.firstName + ' ' + user.lastName}}</td>
+          <td class="click-link" (click)="redirctToGoogle()">{{user.email}}</td>
+          <td>user</td>
+          <td>{{user.phone}}</td>
+        </tr>
+        </tbody>
+      </table>
+      <button type="button" (click)="ChangeUserInfo()" class="action-btn show">Редактировать</button>
+    </div>
+    <div *ngIf="index===2">
+      <table class="user-info" *ngIf="devices && devices.length !== 0">
+        <thead>
+        <tr>
+          <th>Name:</th>
+          <th>Type:</th>
+          <th>Perm:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let device of devices; index as i">
+          <td class="click-link" (click)="showDeviceInfo(device.devId)">{{device.deviceName}}</td>
+          <td *ngIf="selectType[i]">{{selectType[i]}}</td>
+          <td *ngIf="!device.isOwner">{{device.permission}}</td>
+          <td *ngIf="device.isOwner" class="green-upper">OWNER</td>
+        </tr>
+        </tbody>
+      </table>
+      <app-item-admin-device *ngIf="devices && devices.length !== 0 && item" [device]="item"></app-item-admin-device>
+      <p *ngIf="!devices || devices.length === 0" class="empty-block">Список пуст</p>
+    </div>
+    <div *ngIf="index===3">
+      <p *ngIf="!groupOwner || groupOwner.length === 0" class="empty-block">Список пуст</p>
+      <table class="user-info" *ngIf="groupOwner && groupOwner.length !== 0">
+        <thead>
+        <tr>
+          <th>Name:</th>
+          <th>Email:</th>
+          <th>Role:</th>
+          <th>Phone:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let user of groupOwner">
+          <td>{{user.firstName + ' ' + user.lastName}}</td>
+          <td>{{user.email}}</td>
+          <td>user</td>
+          <td>{{user.phone}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf="index===4">
+      <p *ngIf="!groupIn || groupIn.length === 0" class="empty-block">Список пуст</p>
+      <table class="user-info" *ngIf="groupIn && groupIn.length !== 0">
+        <thead>
+        <tr>
+          <th>Name:</th>
+          <th>Email:</th>
+          <th>Role:</th>
+          <th>Phone:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let user of groupIn">
+          <td>{{user.firstName + ' ' + user.lastName}}</td>
+          <td>{{user.email}}</td>
+          <td>user</td>
+          <td>{{user.phone}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</md2-accordion-tab>

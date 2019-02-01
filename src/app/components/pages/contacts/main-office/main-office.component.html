@@ -1,0 +1,28 @@
+<div id="head-office">
+  <div class="center" *ngIf="role">
+    <app-grid [gutter]="20" [width]="260" *ngIf="mainOffice">
+      <div class="cards" *ngFor="let office of mainOffice['offices']">
+        <div class="cards-title">
+          <button *ngIf="role === 'admin' " class="delete-btn"
+                  (click)="deleteContact(office.id)">Delete
+          </button>
+          <b>{{office['title']}}</b>
+        </div>
+        <hr class="cardshr">
+        <div class="cardsinfo">
+          <div *ngIf="office.workingHours">
+            <span><b>{{office.workingHours}}</b></span>
+          </div>
+          <div *ngFor="let contact of office['departments'][0].contacts">
+            <span>
+              <b *ngIf="contact.type">{{contact.type + ''}}</b>
+              <a class="cardslink" *ngIf="contact.link" href="{{contact.link + contact.value}}">{{contact.value}}</a>
+              <span *ngIf="!contact.link">{{contact.value}}</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </app-grid>
+  </div>
+</div>
+<app-main-office-map *ngIf="latitude && longitude" [lat]="latitude" [lng]="longitude"></app-main-office-map>

@@ -1,0 +1,35 @@
+#support {
+  padding-bottom: 120px;
+  position: relative;
+  margin-top: 88px;
+}
+
+/*::ng-deep .go-top-button {*/
+  /*bottom: 130px !important;*/
+  /*top: auto !important;*/
+  /*right: 20px !important;*/
+  /*color: #000000 !important;*/
+  /*text-align: center !important;*/
+  /*opacity: .4 !important;*/
+  /*border: 1px solid #1c19ff !important;*/
+  /*border-radius: 3px !important;*/
+  /*width: 70px !important;*/
+  /*height: 40px !important;*/
+  /*background-color: rgba(37, 88, 255, 0.58) !important;*/
+  /*content: "Вверх" !important;*/
+  /*line-height: normal !important;*/
+/*}*/
+
+/*-----------------media 790-----------------------------------*/
+@media screen and (max-width: 996px), screen and (max-device-width: 996px) {
+
+  #support {
+    margin: 152px 10px 0 10px;
+  }
+}
+
+/*-----------------media 790--end-----------------------------------*/
+#scroll-down-target {
+  position: absolute;
+  bottom: 0;
+}

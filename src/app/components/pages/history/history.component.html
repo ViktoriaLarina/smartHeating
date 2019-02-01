@@ -1,0 +1,10 @@
+<div id="event_log">
+  <!--<app-checkbox></app-checkbox>-->
+  <div class="card-container">
+    <app-mobile *ngIf="arrayOfData && !isMobileSize && arrayOfData.length > 0" [items]="arrayOfData"></app-mobile>
+  </div>
+  <app-desktop *ngIf="arrayOfData && isMobileSize && arrayOfData.length > 0" [items]="arrayOfData"></app-desktop>
+  <div class="historyDataBorder empty" *ngIf="arrayOfData && arrayOfData.length === 0">
+    <p class="empty-container-message">{{'UPDATES.EMPTY_LIST_UPDATES' | translate}}</p>
+  </div>
+</div>

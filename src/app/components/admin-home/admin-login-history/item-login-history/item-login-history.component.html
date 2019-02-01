@@ -1,0 +1,24 @@
+<td>{{time}}</td>
+<td>{{item.ipAddress}}</td>
+
+<td *ngIf="!isLogin" class="click-link" (click)="showDeviceData()">{{item.path}}</td>
+<td *ngIf="!isLogin">{{item.agent}}</td>
+<td *ngIf="!isLogin">{{item.changes}}</td>
+
+<td *ngIf="isLogin">{{item.login}}</td>
+<td *ngIf="isLogin" class="click-link" (click)="showFullInfoUser()">{{item.userName}}
+</td>
+<td *ngIf="isLogin" class="click-link" (click)="showMap()">{{item.location !==
+  'undefined' ? item.location : ''}}
+</td>
+<td *ngIf="isLogin">{{item.agent}}</td>
+
+<!--<td colspan="6"-->
+<!--*ngIf="item.dataToLoginHistoryTable && item.dataToLoginHistoryTable.latitude && item.dataToLoginHistoryTable.longitude">-->
+<!--<app-main-office-map-->
+<!--[lat]="item.dataToLoginHistoryTable.latitude" [lng]="item.dataToLoginHistoryTable.longitude"></app-main-office-map>-->
+<!--</td>-->
+
+<!--<td colspan="6" class="border-add" *ngIf="item.dataToLoginHistoryTable && item.dataToLoginHistoryTable.email">-->
+<!--<app-item-admin-user [user]="item.dataToLoginHistoryTable"></app-item-admin-user>-->
+<!--</td>-->

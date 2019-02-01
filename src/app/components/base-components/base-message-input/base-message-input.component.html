@@ -1,0 +1,21 @@
+<div class="hold-textarea-position">
+  <form class="hold-textarea" [formGroup]="newMessage">
+    <textarea name="send-message-support" cols="30" rows="5" formControlName="textOfMessage" (keydown.enter)="sendMessage($event)"></textarea>
+    <div class="position-faile">
+      <div class="file-upload" [ngClass]="{'selected-file' : fileData || loadingProgress !== null }">
+        <label [ngClass]="{'show-icon': loadingProgress === null }">
+          <mat-progress-spinner *ngIf="loadingProgress > 0"
+                                [diameter]="30"
+                                [color]="'primary'"
+                                [mode]="'determinate'"
+                                [value]="loadingProgress">
+          </mat-progress-spinner>
+          <span *ngIf="loadingProgress !== null">{{loadingProgress}}%</span>
+          <input #fileInput type="file" name="file" id="addFile" (change)="onFileSelect($event)" [disabled]="loadingProgress !== null">
+        </label>
+        <input type="text" id="filename" class="filename" disabled>
+      </div>
+    </div>
+    <input type="submit" class="btn submit-support" (click)="sendMessage()" value="">
+  </form>
+</div>

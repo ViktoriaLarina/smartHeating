@@ -1,0 +1,19 @@
+<div class="desktop-container">
+  <table class="table-device">
+    <thead>
+    <tr>
+      <td>{{'NAVIGATION.DEVICE_NAME' | translate}}</td>
+      <td>{{'NAVIGATION.DEVICE_TYPE' | translate}}</td>
+      <td>{{'HISTORY.DEVICE_IP' | translate}}</td>
+      <td>{{'HISTORY.DEVICE_ID' | translate}}</td>
+      <td></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr app-history-item
+        *ngFor="let card of items"
+        [card]=card [ChartPoints]="ChartPoints"
+    ></tr>
+    </tbody>
+  </table>
+</div>

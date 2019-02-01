@@ -1,0 +1,10 @@
+<app-admin-devices *ngIf="rout.url.indexOf('devices') > -1">
+  <ng-template let-item>
+    <app-item-admin-device [device]="item"></app-item-admin-device>
+  </ng-template>
+</app-admin-devices>
+<app-admin-users *ngIf="rout.url.indexOf('users') > -1">
+  <ng-template let-item>
+    <app-item-admin-user [user]="item"></app-item-admin-user>
+  </ng-template>
+</app-admin-users>

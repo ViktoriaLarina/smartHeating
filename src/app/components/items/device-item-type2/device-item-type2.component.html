@@ -1,0 +1,100 @@
+<div class="row-device" [ngClass]="{'offline-error': !device['isOnline']}" *ngIf="deviceTypeToShow !== 0">
+  <div class="img-error offline-warning">
+    <div class="row info-device" *ngIf="!device['isOnline'] && !isRemoved">
+      <img src="../../../../img/no_wifi.png">
+      <span>{{'DEVICES.OFFLINE' | translate}}</span>
+    </div>
+    <div class="row info-device" *ngIf="isRemoved">
+      <span class="head-text">{{'DEVICES.COUNTER' | translate}}</span>
+      <!-- Countdown dashboard start -->
+      <div id="countdown_dashboard">
+        <div class="dash days_dash">
+          <div class="hold-time">
+            <div class="digit">{{day}}</div>
+          </div>
+          <span class="dash_title">{{'DEVICES.DAYS' | translate}}</span>
+        </div>
+        <div class="dash hours_dash">
+          <div class="hold-time">
+            <div class="digit">{{hours}}</div>
+          </div>
+          <span class="dash_title">{{'DEVICES.HOURS' | translate}}</span>
+        </div>
+        <div class="dash minutes_dash">
+          <div class="hold-time">
+            <div class="digit">{{minutes}}</div>
+          </div>
+          <span class="dash_title">{{'DEVICES.MINUTES' | translate}}</span>
+        </div>
+        <div class="dash seconds_dash">
+          <div class="hold-time">
+            <div class="digit">{{seconds}}</div>
+          </div>
+          <span class="dash_title">{{'DEVICES.SECONDS' | translate}}</span>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="btn-devices btn-devices-none add-devices" *ngIf="isRemoved"
+            (click)="restoreDevice()">{{'DEVICES.RESTORE_DEVICE' | translate}}
+    </button>
+  </div>
+  <div *ngIf="device['data'] !== null && deviceTypeToShow===1" class="row-device device-type-2">
+    <div class="row row-info-head">
+      <div class="object-info device-type-2">
+        <span class="object-name active" *ngIf="houseType">{{name + ' ' + '[' + (houseType | translate) + ']'}}</span>
+        <span class="object-name active" *ngIf="!houseType">{{name}}</span>
+      </div>
+      <a class="settings_link pull-right" (click)="openDialogSettings()">{{'DEVICES.SETTINGS' | translate}}</a>
+    </div>
+    <div class="row-mobile" *ngIf="device['data']">
+      <div class="row-mobile">
+        <div class="w50">
+          <div class="bl-power fix-height">
+            <span class="head-device">{{deviceType}}</span>
+            <div *ngIf="currentLevel !== 3">
+              <span class="txt-level-fuel" *ngIf="currentLevel === 0">{{'DEVICES.FULL' | translate}}</span>
+              <span class="txt-level-fuel" *ngIf="currentLevel === 1">{{'DEVICES.MEDIUM' | translate}}</span>
+              <span class="txt-level-fuel" *ngIf="currentLevel === 2">{{'DEVICES.EMPTY' | translate}}</span>
+              <span class="txt2">{{'DEVICES.PELLETS_LEVEL' | translate}}</span>
+            </div>
+            <div *ngIf="currentLevel === 3">
+              <img class="img-error img-error2" src="../../../../img/error_icon72.png" alt="">
+              <span class="txt2 heightSize">{{'DEVICES.CHECK_SENSOR' | translate}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="w50 ">
+          <div class="condition">
+            <div class="row row-info device-style2 border">
+              <div class="bl-left">
+                <span class="txt1">{{'DEVICES.RELAY' | translate}}</span>
+                <span class="txt2 device-style-text2" *ngIf="relay">{{'DEVICES.WORK' | translate}}</span>
+                <span class="txt2 device-style-text2" *ngIf="!relay">{{'DEVICES.DOES_NOT_WORK' | translate}}</span>
+              </div>
+              <div class="bl-right">
+                <span class="txt1">{{'DEVICES.ACCESS' | translate}}</span>
+                <span class="txt2 device-style-text2 permission-style"
+                      *ngIf="device.permission === 'WRITE'">{{'DEVICES.WRITE' | translate}}</span>
+                <span class="txt2 device-style-text2 permission-style"
+                      *ngIf="device.permission === 'READ'">{{'DEVICES.READ' | translate}}</span>
+              </div>
+            </div>
+            <div class="row row-info device-style2">
+              <div class="bl-left">
+                <span class="txt1">{{'DEVICES.SENSOR' | translate}} 1</span>
+                <span class="txt2 device-style-text2" *ngIf="sensor1">{{'DEVICES.OPEN' | translate}}</span>
+                <span class="txt2 device-style-text2" *ngIf="!sensor1">{{'DEVICES.CLOSE' | translate}}</span>
+              </div>
+              <div class="bl-right">
+                <span class="txt1">{{'DEVICES.SENSOR' | translate}} 2</span>
+                <span class="txt2 device-style-text2" *ngIf="sensor2">{{'DEVICES.OPEN' | translate}}</span>
+                <span class="txt2 device-style-text2" *ngIf="!sensor2">{{'DEVICES.CLOSE' | translate}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row-border-popup"></div>
+  </div>
+</div>

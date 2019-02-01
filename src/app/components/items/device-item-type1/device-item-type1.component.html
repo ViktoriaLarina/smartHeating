@@ -1,0 +1,170 @@
+<div class="row-device" [ngClass]="{'offline-error': !device['isOnline']}">
+  <div class="img-error offline-warning">
+    <div class="row info-device" *ngIf="!device['isOnline'] && !isRemoved">
+      <img src="../../../../img/no_wifi.png">
+      <span>{{'DEVICES.OFFLINE' | translate}}</span>
+    </div>
+    <div class="row info-device bg-counter-style" *ngIf="isRemoved">
+      <span class="head-text">{{'DEVICES.COUNTER' | translate}}</span>
+      <div id="countdown_dashboard">
+        <div class="dash days_dash">
+          <div class="hold-time">
+            <div class="digit">{{day}}</div>
+          </div>
+          <span class="dash_title">{{'DEVICES.DAYS' | translate}}</span>
+        </div>
+        <div class="dash hours_dash">
+          <div class="hold-time">
+            <div class="digit">{{hours}}</div>
+          </div>
+          <span class="dash_title">{{'DEVICES.HOURS' | translate}}</span>
+        </div>
+        <div class="dash minutes_dash">
+          <div class="hold-time">
+            <div class="digit">{{minutes}}</div>
+          </div>
+          <span class="dash_title">{{'DEVICES.MINUTES' | translate}}</span>
+        </div>
+        <div class="dash seconds_dash">
+          <div class="hold-time">
+            <div class="digit">{{seconds}}</div>
+          </div>
+          <span class="dash_title">{{'DEVICES.SECONDS' | translate}}</span>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="btn-devices btn-devices-none add-devices" *ngIf="isRemoved"
+            (click)="restoreDevice()">{{'DEVICES.RESTORE_DEVICE' | translate}}
+    </button>
+  </div>
+  <div class="row row-info-head">
+    <div class="object-info">
+      <span class="object-name active" *ngIf="houseType">{{name + ' ' + '[' + (houseType | translate) + ']'}}</span>
+      <span class="object-name active" *ngIf="!houseType">{{name}}</span>
+      <div class="pull-right hold-on_off">
+        <button type="button" class="on active" id="button-state" *ngIf="!isWaitingBtn" (click)="changeDeviceSetate()">
+          {{actualStateSwitch? ('DEVICES.BUTTON_OFF' | translate) : ('DEVICES.BUTTON_ON' | translate) }}
+        </button>
+        <mat-spinner *ngIf="isWaitingBtn" [diameter]="20"></mat-spinner>
+      </div>
+    </div>
+    <a class="settings_link pull-right" (click)="openDialogSettings()">{{'DEVICES.SETTINGS' | translate}}</a>
+  </div>
+  <div class="row-mobile" *ngIf="device['data'] !== null">
+    <div class="row-mobile">
+      <div class="w50">
+        <div class="bl-power">
+          <span class="head-device">{{deviceType}}</span>
+          <div *ngIf="!error">
+            <span class="txt1">{{workingPower}}<span class="txt1-1">%</span></span>
+            <span class="txt2">{{'DEVICES.POWER' | translate}}</span>
+          </div>
+          <div *ngIf="error">
+            <img class="img-error img-error2" src="../../../../img/error_icon72.png">
+            <span class="txt2 heightSize">{{'DEVICES.ERROR_' + error | translate }}</span>
+          </div>
+          <div class="row row-info-device">
+
+            <div class="bl-left" *ngIf="sensorType !== 0">
+              <span class="txt3">{{'DEVICES.VALUE_1' | translate}}</span>
+              <span class="txt4">{{opticalSensor}}<span class="txt4-1">°C</span></span>
+            </div>
+
+            <div class="bl-left" *ngIf="sensorType === 0">
+              <span class="txt3">{{'DEVICES.VALUE_2' | translate}}</span>
+              <span class="txt4">{{opticalSensor}}</span>
+            </div>
+
+            <div class="bl-right">
+              <span class="txt3">{{'DEVICES.USED' | translate}}</span>
+              <span class="txt4">{{usedFuel}}<span class="txt4-1"> {{'DEVICES.KG' | translate}}</span></span>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="w50 ">
+        <div class="condition">
+          <div class="row border-bottom">
+            <span class="txt1">{{'DEVICES.STATE' | translate}}</span>
+            <span class="txt2" *ngIf="actualState === 0">{{'DEVICES.STOPPED' | translate}}</span>
+            <span class="txt2" *ngIf="actualState === 1">{{'DEVICES.STARTED' | translate}}</span>
+            <span class="txt2" *ngIf="actualState === 2">{{'DEVICES.HEAT' | translate}}</span>
+            <span class="txt2" *ngIf="actualState === 3">{{'DEVICES.SUPPORT' | translate}}</span>
+            <span class="txt2" *ngIf="actualState === 4">{{'DEVICES.QUENCHING' | translate}}</span>
+          </div>
+          <div class="row border-bottom">
+            <span class="txt1">{{'DEVICES.CURRENT_MODE' | translate}}</span>
+            <span class="txt2" *ngIf="workPriority === 0">{{'DEVICES.HOUSE_HEATING' | translate}}</span>
+            <span class="txt2 txt-fix" *ngIf="workPriority === 1">{{'DEVICES.PARALLEL_PUMPS' | translate}}</span>
+            <span class="txt2" *ngIf="workPriority === 2">{{'DEVICES.SUMMER_MODE' | translate}}</span>
+          </div>
+          <div class="row row-info">
+            <div class="bl-left">
+              <span class="txt1">{{'DEVICES.ACCESS' | translate}}</span>
+              <span class="txt2" *ngIf="device.permission === 'WRITE'">{{'DEVICES.WRITE' | translate}}</span>
+              <span class="txt2" *ngIf="device.permission === 'READ'">{{'DEVICES.READ' | translate}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="temperature">
+      <div class="bl-top">
+        <div class="block1">
+          <span class="txt1">{{'DEVICES.VALUE_3' | translate}}</span>
+          <span class="txt2">{{'DEVICES.TEMPERATURE' | translate}}</span>
+        </div>
+        <div class="block2">
+          <span class="txt3">{{rangeTemperature1}}<span class="txt3-1">°C</span></span>
+          <span class="txt4">{{'DEVICES.CURRENT' | translate}}</span>
+        </div>
+        <div class="block3">
+          <div class="row">
+            <div class="slider-nav">
+              <button class="minus" type="button" (click)="onValueChangeMinus('currentTemperature1')">–</button>
+              <span class="limits left-limit">40</span>
+            </div>
+            <nouislider [connect]="false" [min]="40" [max]="90" [step]="1" [tooltips]="[true]"
+                        [(ngModel)]="currentTemperature1"></nouislider>
+            <div class="slider-nav">
+              <span class="limits">90</span>
+              <button class="plus" type="button" (click)="onValueChangePlus('currentTemperature1')">+</button>
+            </div>
+          </div>
+          <span class="txt5">{{'DEVICES.SPECIFIED' | translate}}</span>
+        </div>
+      </div>
+      <div class="bl-bottom">
+        <div class="block1">
+          <span class="txt1">{{'DEVICES.VALUE_4' | translate}}</span>
+          <span class="txt2">{{'DEVICES.TEMPERATURE' | translate}}</span>
+        </div>
+        <div class="block2">
+            <span class="txt3">{{rangeTemperature2}}<span
+              class="txt3-1">°C</span></span>
+          <span class="txt4">{{'DEVICES.CURRENT' | translate}}</span>
+        </div>
+
+        <div class="block3">
+          <div class="row">
+            <div class="slider-nav">
+              <button class="minus" type="button" (click)="onValueChangeMinus('currentTemperature2')">–</button>
+              <span class="limits left-limit">40</span>
+            </div>
+            <nouislider [connect]="false" [min]="40" [max]="90" [step]="1" [tooltips]="[true]"
+                        [(ngModel)]="currentTemperature2"></nouislider>
+            <div class="slider-nav">
+              <span class="limits">90</span>
+              <button class="plus" type="button" (click)="onValueChangePlus('currentTemperature2')">+</button>
+            </div>
+          </div>
+          <span class="txt5">{{'DEVICES.SPECIFIED' | translate}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="row-border-popup"></div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+.spinner-wrapper {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+}
+
+::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+  stroke: #508db6 !important;
+}
+
+mat-spinner {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -50px;
+  z-index: 10;
+}

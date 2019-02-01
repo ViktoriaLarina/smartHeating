@@ -1,0 +1,26 @@
+.swipe-area-open {
+  position: fixed;
+  width: 15px;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  background: transparent;
+  z-index: 201;
+}
+
+router-outlet {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.alert-wrapper {
+  top: 5vh;
+  position: absolute;
+  z-index: 1500;
+  max-width: 50vw;
+  right: 5vw;
+  left: auto;
+}
+

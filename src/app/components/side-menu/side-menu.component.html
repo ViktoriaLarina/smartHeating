@@ -1,0 +1,146 @@
+<div id="side-menu-container" (touchstart)="swipe($event, 'start')" (touchend)="swipe($event, 'end')">
+  <div id="swipe-area" (click)="InverseMenuState()" *ngIf="showMobMenu"></div>
+  <aside id="sidebar" class="sadebar " [ngClass]="{mobileMenuShow : showMobMenu}">
+    <a href="#" class="logo" [ngClass]="'OTHER.LOGO' | translate"></a>
+    <hr class="side-head-hr"/>
+    <div class="side-head">
+      <div class="side-lang">
+        <select name="" id="" class="side-lang-select" [(ngModel)]="locale" title=""
+                (change)="onChange($event.target.selectedIndex)">
+          <option *ngFor="let lang of arrayOfLanguages" [ngValue]="lang.value" [selected]="lang[0]">{{lang.name}}
+          </option>
+        </select>
+      </div>
+      <div class="side-log-area clearfix">
+        <div class="side-log">
+          <button class="side-log-but" (click)="showMobileMyProfile()"></button>
+        </div>
+        <div class="side-exit">
+          <div class="side-exit-but">
+            <a class="link-exit" (click)="logout()"></a>
+          </div>
+        </div>
+      </div>
+      <hr class="side-head-hr"/>
+    </div>
+    <ul class="menu-sidebare">
+      <li class="reload-height-sidebar" [ngClass]="{ active: index===1}">
+        <a [routerLink]="['devices']" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active"
+           (click)="index=1"><span>{{'NAVIGATION.DEVICES' | translate}}</span></a>
+        <md2-accordion [multiple]="true" [ngClass]="{invisible : !indexShow}">
+          <md2-accordion-tab>
+            <md2-accordion-header class="head-device">
+              <span class="itemName">{{'NAVIGATION.DEVICE_TYPE' | translate}}</span>
+            </md2-accordion-header>
+            <div>
+              <div class="filtr-device">
+                <div class="open-device">
+                  <div class="hold-filter">
+                    <div class="row-filter" *ngFor="let item of deviceTypes; index as i;">
+                      <input type="checkbox" class="checkbox-filter" id="{{'deviceType_' + i}}"
+                             (change)="applyTypeFilter(i, $event.target.checked)"/>
+                      <label for="{{'deviceType_' + i}}">{{item.name | translate}}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </md2-accordion-tab>
+
+          <md2-accordion-tab>
+            <md2-accordion-header class="head-device">
+              <span class="itemName">{{'NAVIGATION.HOUSE_TYPE' | translate}}</span>
+            </md2-accordion-header>
+            <div>
+              <div class="filtr-device">
+                <div class="open-device">
+                  <div class="hold-filter">
+                    <div class="row-filter" *ngFor="let place of places; index as i">
+                      <input type="checkbox" class="checkbox-filter" id="{{'type-room-' + (i+1)}}"
+                             (change)="applyBuildFilter(i, $event.target.checked)">
+                      <label for="{{'type-room-' + (i+1)}}">{{place.name | translate}}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </md2-accordion-tab>
+          <md2-accordion-tab>
+            <md2-accordion-header class="head-device">
+              <span class="itemName">{{'NAVIGATION.DEVICE_STATUS' | translate}}</span>
+            </md2-accordion-header>
+            <div>
+              <div class="filtr-device">
+                <div class="open-device">
+                  <div class="hold-filter">
+                    <div class="row-filter">
+                      <input type="checkbox" class="checkbox-filter" name="status-device-1" id="status-device-1"
+                             (change)="devicesByStatusSelect(0, $event.target.checked)">
+                      <label for="status-device-1">{{'NAVIGATION.WORK' | translate}}</label>
+                    </div>
+                    <div class="row-filter">
+                      <input type="checkbox" class="checkbox-filter" name="status-device-2" id="status-device-2"
+                             (change)="devicesByStatusSelect(1, $event.target.checked)">
+                      <label for="status-device-2">{{'NAVIGATION.WAITING' | translate}}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </md2-accordion-tab>
+          <md2-accordion-tab>
+            <md2-accordion-header class="head-device">
+              <span class="itemName">{{'NAVIGATION.DEVICE_MODEL' | translate}}</span>
+            </md2-accordion-header>
+            <div>
+              <div class="filtr-device">
+                <div class="open-device">
+                  <div class="hold-filter">
+                    <div class="row-filter" *ngFor="let item of modelsTypes; index as i;">
+                      <input type="checkbox" class="checkbox-filter" id="{{'model-device-' + i}}"
+                             (change)="devicesByModelSelect(i, $event.target.checked)">
+                      <label for="{{'model-device-' + i}}">{{item.name}}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </md2-accordion-tab>
+          <div class="aside-device-search">
+            <span class="search">{{'NAVIGATION.DEVICE_SEARCH' | translate}}</span>
+            <input type="text" class="searh-device" id="from-searh-device" [(ngModel)]="deviceNameToSearch"
+                   placeholder="{{'NAVIGATION.DEVICE_NAME' | translate}}">
+            <button type="button" class="btn-searh-device" (click)="searchByName()"><i class="arrow"></i></button>
+          </div>
+        </md2-accordion>
+      </li>
+      <li class="reload-height-sidebar reload-masonry" [ngClass]="{active : index===2}">
+        <a [routerLink]="['users']" routerLinkActive="active" (click)="index=2">
+          <span>{{'NAVIGATION.USERS' | translate}}</span>
+        </a>
+      </li>
+      <li class="reload-height-sidebar reload-masonry" [ngClass]="{active : index===3}">
+        <a [routerLink]="['history']" routerLinkActive="active" (click)="index=3">
+          <span>{{ 'NAVIGATION.HISTORY' | translate }}</span>
+        </a>
+      </li>
+      <li [ngClass]="{active : index===4}">
+        <a [routerLink]="['instruction']" routerLinkActive="active" (click)="index=4"><span>{{ 'NAVIGATION.FILES' | translate }}</span></a>
+      </li>
+      <li [ngClass]="{active : index===5}">
+        <a [routerLink]="['firmware']" routerLinkActive="active" (click)="index=5"><span>{{'NAVIGATION.UPDATES' | translate}}</span></a>
+      </li>
+      <li id="support-btn" class="reload-height-sidebar" [ngClass]="{active : index===6}">
+        <a [routerLink]="['support']" routerLinkActive="active" (click)="index=6">
+          <span class="float-left">{{'NAVIGATION.SUPPORT' | translate}}</span>
+          <div class="new-message-output" *ngIf="countUnreadMsg">{{countUnreadMsg}}</div>
+        </a>
+      </li>
+      <li class="reload-height-sidebar contacts reload-masonry" [ngClass]="{active : index===7}">
+        <a [routerLink]="['contacts']" routerLinkActive="active" (click)="index=7"><span>{{'NAVIGATION.CONTACTS' | translate}}</span></a>
+      </li>
+      <li class="reload-height-sidebar contacts reload-masonry">
+        <a (click)="openYoutube()"><span>{{'NAVIGATION.YOUTUBE' | translate}}</span></a></li>
+    </ul>
+  </aside>
+</div>

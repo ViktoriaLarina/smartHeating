@@ -1,0 +1,9 @@
+<td><span class="user-table-data user-firstname-output">{{user.firstName}}</span></td>
+<td><span class="user-table-data user-lastname-output">{{user.lastName}}</span></td>
+<td><span class="user-table-data user-login-output">{{user.email}}</span></td>
+<td>
+  <button class="btn btn-user-edit" type="button" (click)="openDialog()"><span
+    class="table-icon user-edit-icon"></span></button>
+  <button class="btn btn-user-edit" type="button" (click)="deleteUser()"><span
+    class="table-icon user-delete-icon"></span></button>
+</td>

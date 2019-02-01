@@ -1,0 +1,140 @@
+<div class="bl-top-menu">
+  <ul class="top-menu">
+    <li (click)="setPage(1)">
+      <a [ngClass]="{active: index===1}">
+        <span class="first-tab">Головной офис</span>
+      </a>
+    </li>
+    <li (click)="setPage(2)">
+      <a [ngClass]="{active: index===2}">
+        <span>Региональные представительства</span>
+      </a>
+    </li>
+  </ul>
+</div>
+<div *ngIf="index===1">
+  <div class="search-wrapper">
+    <div class="input-wrapper">
+      <div>
+        <div class="error-text" *ngIf="error">Проверьте правильность введенных данных</div>
+        <div class="error-text" *ngIf="googleError">Google не смог обработать данные</div>
+        <!--<label class="label-for-block">Язык сайта*:</label>-->
+        <!--<select class="select" [(ngModel)]="locale" title="">-->
+        <!--<option *ngFor="let lang of arrayOfLanguages" [ngValue]="lang.value">{{lang.name}}</option>-->
+        <!--</select>-->
+        <div [formGroup]="newMainOfficeContact">
+          <div class="input-wrapper">
+            <label for="titleMain" class="label-for-block">RU Название отдела*:</label>
+            <textarea id="titleMain" type="text" class="form-control" formControlName="title"></textarea>
+            <label for="titleMainEn" class="label-for-block">EN Название отдела*:</label>
+            <textarea id="titleMainEn" type="text" class="form-control" formControlName="titleEn"></textarea>
+          </div>
+          <div>
+            <input type="checkbox" name="main" id="main" formControlName="firstBlockOfArray">
+            <span for="main">Первый в отображаемом списке</span>
+          </div>
+          <div class="input-wrapper" *ngIf="newMainOfficeContact.controls['firstBlockOfArray'].value">
+            <label for="placeMain" class="label-for-block">RU Адрес (для карты):</label>
+            <textarea id="placeMain" type="text" class="form-control" formControlName="place"></textarea>
+          </div>
+        </div>
+        <div class="contacts-wrapper">
+          <div style="overflow: visible; position: relative; height: 34px">
+            <label class="label-for-block" style="display: inline; position: absolute; bottom: 0;">Контакты:</label>
+            <button class="btn-add" (click)="addNewContactMainOffice()">+ Контакт</button>
+          </div>
+          <div [formGroup]="newMainOfficeContact">
+            <div formArrayName="contacts">
+              <div *ngFor="let child of newMainOfficeContact.controls.contacts.controls; let i = index">
+                <div formGroupName="{{i}}">
+                  <select class="select" (change)="onMainOfficeContactTypeChange($event.target.selectedIndex, i)"
+                          title="тип контакта: не выбран"
+                          style="width: 300px; display: block;">
+                    <option *ngFor="let type of arrayOfTypes">{{type.name}}</option>
+                  </select>
+                  <input type="text" class="form-control" formControlName="title"
+                         placeholder="RU Название контакта отображаемое пользователю: Адрес/Сайт/Тел/skype/viber..."/>
+                  <input type="text" class="form-control" formControlName="titleEn"
+                         placeholder="EN Название контакта отображаемое пользователю: Адрес/Сайт/Тел/skype/viber..."/>
+                  <input type="text" class="form-control" formControlName="value"
+                         placeholder="RU +380954060000/contact@gmail.com/google.com/г.Харьков пр. Науки 46а офис 3..."/>
+                  <input type="text" class="form-control" formControlName="valueEn"
+                         placeholder="EN +380954060000/contact@gmail.com/google.com/г.Харьков пр. Науки 46а офис 3..."/>
+                  <hr>
+                </div>
+              </div>
+            </div>
+            <label for="title" class="label-for-block">Часы работы:</label>
+            <textarea type="text" class="form-control" formControlName="workingHours"></textarea>
+          </div>
+        </div>
+        <button class="btn-save-contacts" (click)="sendDataMainOffice()">Сохранить</button>
+      </div>
+    </div>
+  </div>
+  <app-main-office [role]="'admin'"></app-main-office>
+</div>
+<div *ngIf="index===2">
+  <div class="search-wrapper">
+    <div class="input-wrapper">
+      <div>
+        <div class="error-text" *ngIf="error">Проверьте правильность введенных данных</div>
+        <div class="error-text" *ngIf="googleError">Google не смог обработать данные</div>
+        <!--<label class="label-for-block">Язык сайта*:</label>-->
+        <!--<select class="select" [(ngModel)]="locale" title="" style="width: 100px">-->
+        <!--<option *ngFor="let lang of arrayOfLanguages" [ngValue]="lang.value">{{lang.name}}</option>-->
+        <!--</select>-->
+        <label class="label-for-block">Страна*:</label>
+        <select class="select" [(ngModel)]="selectCountry" title="">
+          <option *ngFor="let country of arrayOfCountries" [ngValue]="country.value">{{country.name | translate}}
+          </option>
+        </select>
+        <div [formGroup]="newRegionContact">
+          <div class="input-wrapper">
+            <label for="title" class="label-for-block">RU Название представительства*:</label>
+            <textarea id="title" type="text" class="form-control" formControlName="title"></textarea>
+
+            <label for="title-en" class="label-for-block">EN Название представительства*:</label>
+            <textarea id="title-en" type="text" class="form-control" formControlName="titleEn"></textarea>
+          </div>
+          <div class="input-wrapper">
+            <label for="place" class="label-for-block">RU Адрес (метка на карте):</label>
+            <textarea id="place" type="text" class="form-control" formControlName="place"></textarea>
+          </div>
+        </div>
+        <div class="contacts-wrapper">
+          <div class="add-btn-wrapper">
+            <label class="label-for-block">Контакты:</label>
+            <button class="btn-add" (click)="addNewContact()">+ Контакт</button>
+          </div>
+
+          <div [formGroup]="newRegionContact">
+            <div formArrayName="contacts">
+              <div *ngFor="let child of newRegionContact.controls.contacts.controls; let i = index">
+                <div formGroupName="{{i}}">
+                  <select class="select contact-select" (change)="onRegionContactTypeChange($event.target.selectedIndex, i)"
+                          title="тип контакта: не выбран">
+                    <option *ngFor="let type of arrayOfTypes">{{type.name}}</option>
+                  </select>
+                  <input type="text" class="form-control" formControlName="title"
+                         placeholder="RU Название контакта отображаемое пользователю: Адрес/Сайт/Тел/skype/viber..."/>
+                  <input type="text" class="form-control" formControlName="titleEn"
+                         placeholder="EN Название контакта отображаемое пользователю: Адрес/Сайт/Тел/skype/viber..."/>
+                  <input type="text" class="form-control" formControlName="value"
+                         placeholder="RU +380954060000/contact@gmail.com/google.com/г.Харьков пр. Науки 46а офис 3..."/>
+                  <input type="text" class="form-control" formControlName="valueEn"
+                         placeholder="EN +380954060000/contact@gmail.com/google.com/г.Харьков пр. Науки 46а офис 3..."/>
+                  <hr>
+                </div>
+              </div>
+            </div>
+            <label for="title" class="label-for-block">Часы работы:</label>
+            <textarea type="text" class="form-control" formControlName="workingHours"></textarea>
+          </div>
+        </div>
+        <button class="btn-save-contacts" (click)="sendData()">Сохранить</button>
+      </div>
+    </div>
+  </div>
+  <app-regions [role]="'admin'"></app-regions>
+</div>

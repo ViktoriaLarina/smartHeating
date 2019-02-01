@@ -1,0 +1,44 @@
+.user-edit-icon {
+  background-image: url(../../../../../../img/bg/write-pencil-icon.png);
+}
+
+.user-delete-icon {
+  padding: 5px;
+  background-image: url(../../../../../../img/bg/bg-dev-add-complete1.png);
+}
+
+.user-access-output {
+  display: block;
+  text-align: center;
+}
+
+.btn.btn-user-edit {
+  display: inline-block;
+  border: none;
+  text-align: center;
+  padding: 0 10px;
+  line-height: 1;
+  height: auto;
+  margin: 0;
+}
+
+.table-icon {
+  display: inline-block;
+}
+
+.table-device-item-btn .btn {
+  width: auto !important;
+  height: 36px;
+  display: block;
+  margin: 3px 0;
+  padding: 5px 10px;
+  font-size: 15px;
+  line-height: 24px;
+  text-align: center;
+  border: 1px solid #6aa3ca;
+  color: #6aa3ca;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}

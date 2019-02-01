@@ -1,0 +1,85 @@
+.empty-box {
+  font-size: 18px;
+  line-height: normal;
+}
+
+chart {
+  display: block;
+  max-width: 100%;
+  min-width: 99%;
+  margin: 0 auto;
+}
+
+#highcharts-p23ctcl-12 {
+  width: 100%;
+}
+
+
+.data-table {
+  background: #fff;
+  padding: 10px;
+}
+
+canvas {
+  background: #fff;
+  width: 100% !important;
+}
+
+.data-table {
+  width: 100%;
+  text-align: left;
+}
+
+.data-table p span {
+  float: right;
+  font-weight: 600;
+}
+
+.data-table p {
+  display: inline-block;
+}
+
+.data-table th {
+  color: black;
+  font-weight: 600;
+  background: #fff;
+}
+
+.data-table span {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.mobile-table tbody {
+  text-align: center;
+  margin: auto;
+  display: table;
+}
+
+.mobile-table tbody td:first-child {
+  text-align: left;
+}
+
+.mobile-table tbody td:last-child {
+  text-align: right;
+}
+
+.data-error {
+  background: #fff;
+  padding: 10px 0;
+  color: #b94a48;
+  text-align: center;
+  font-size: 16px;
+}
+
+@media screen and (max-width: 790px) {
+
+  canvas {
+    background: #fff;
+  }
+
+  .chart-wrapper {
+    height: 400px;
+  }
+
+}

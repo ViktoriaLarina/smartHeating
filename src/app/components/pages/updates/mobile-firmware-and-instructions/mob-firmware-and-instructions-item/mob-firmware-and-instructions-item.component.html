@@ -1,0 +1,19 @@
+<div class="cards">
+  <div class="cards-title load">
+    <b>{{'UPDATES.MODEL' | translate}}: <span>{{deviceType}}</span></b>
+  </div>
+  <hr class="cardshr">
+  <div class="cardsinfo description-style">
+    <span>{{description}}</span>
+  </div>
+  <hr class="cardshr">
+  <div class="load">
+    <a download>
+      <div class="cardsversion load" *ngIf="item.version">{{item.version}}</div>
+      <div class="loadarea" [ngClass]="{ 'instruction-size' : !item.version }" (click)="downloadFile()">
+        {{'UPDATES.DOWNLOAD' | translate}}
+      </div>
+      <div class="cardssize load" [ngClass]="{ 'instruction-size' : !item.version }">{{item.size | changeByte}}</div>
+    </a>
+  </div>
+</div>

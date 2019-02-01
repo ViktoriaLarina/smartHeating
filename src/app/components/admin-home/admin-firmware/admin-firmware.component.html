@@ -1,0 +1,87 @@
+<div class="bl-top-menu">
+  <ul class="top-menu">
+    <li (click)="setPage(1)">
+      <a [ngClass]="{active: currentPage===1}">
+        <span class="first-tab">Добавить новый</span>
+      </a>
+    </li>
+    <li (click)="setPage(2)">
+      <a [ngClass]="{active: currentPage===2}">
+        <span>Весь список</span>
+      </a>
+    </li>
+  </ul>
+</div>
+<div *ngIf="currentPage===1">
+  <div class="tab-content">
+    <div id="addInstruction" class="tab-pane">
+      <p class="error" *ngIf="isErrorBlockShow">Проверьте корректность введенных данных</p>
+      <p class="error" *ngIf="isServerError">Произошла ошибка! Повторите операцию</p>
+      <div class="form-group" [formGroup]="newFirmware">
+        <div class="input-wrapper">
+          <label for="nameFile" class="label-for-block">Имя*:</label>
+          <input id="nameFile" type="text" class="form-control" formControlName="name"/>
+        </div>
+        <div class="input-wrapper" *ngIf="isFirmware">
+          <mat-form-field>
+            <label for="versionFile" class="label-for-block">Версия*:</label>
+            <input matInput #dateInput [matDatepicker]="picker" formControlName="version" class="form-control"
+                   id="versionFile" (click)="picker.open()" disabled>
+            <mat-datepicker #picker startView="year" disabled="false"></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="input-wrapper">
+          <label for="addInstructionFile" class="label-for-block">Файл*:</label>
+          <input id="addInstructionFile" type="file" class="form-control"/>
+        </div>
+        <div class="input-wrapper">
+          <label for="addInstructionDescRu" class="label-for-block">Описание Ru:</label>
+          <textarea id="addInstructionDescRu" rows="5" formControlName="descriptionRu"
+                    placeholder="Введите описание"></textarea>
+        </div>
+
+        <div class="input-wrapper">
+          <label for="addInstructionDescEn" class="label-for-block">Описание En:</label>
+          <textarea id="addInstructionDescEn" rows="5" formControlName="descriptionEn"
+                    placeholder="Введите описание"></textarea>
+        </div>
+      </div>
+      <div class="input-wrapper">
+        <label for="checkBox" class="label-for-block">Отображать пользователям:</label>
+        <input id="checkBox" type="checkbox" [(ngModel)]="isCheckboxChecked" (change)="!isCheckboxChecked">
+      </div>
+      <label class="label-for-block">Тип устройства:</label>
+      <select [(ngModel)]="selectType" id="add-type" (change)="isTypeSelect = false">
+        <option *ngFor="let type of typesDevices" [ngValue]="type.value">{{type.name}}</option>
+      </select>
+      <button type="button" class="btn-send" (click)="sendData()">Загрузить</button>
+    </div>
+  </div>
+</div>
+<!----------------------------------------second window-------------------------------------------------------------->
+<div *ngIf="currentPage===2">
+  <table class="table-device" *ngIf="items && items.length>0">
+    <thead>
+    <tr>
+      <th (click)="sortByName('id')" class="btn-filter"
+          [ngClass]="{isUp : sortBy==='id' && isUp, isDown : sortBy==='id' && !isUp}"><span
+        class="desc">Id:</span></th>
+      <th (click)="sortByName('name')" class="btn-filter"
+          [ngClass]="{isUp : sortBy==='name' && isUp, isDown : sortBy==='name' && !isUp}"><span
+        class="desc">Name:</span>
+      </th>
+      <th>Info:</th>
+      <th>Description:</th>
+      <th>Control:</th>
+    </tr>
+    </thead>
+    <tbody *ngIf="this.items">
+    <tr app-item-firmware
+        *ngFor="let item of items"
+        [item]="item" [isFirmware]="isFirmware"
+    ></tr>
+    </tbody>
+  </table>
+  <div class='empty-block' *ngIf="items && items.length === 0">Список пуст</div>
+</div>
+

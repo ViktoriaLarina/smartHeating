@@ -1,0 +1,20 @@
+{
+  "/weather": {
+    "target": "http://api.openweathermap.org/",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/weather": ""
+    }
+  },
+  "/api": {
+    "target": "http://94.130.78.151:8090/",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/api": ""
+    }
+  }
+}

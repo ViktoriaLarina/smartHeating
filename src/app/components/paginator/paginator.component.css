@@ -1,0 +1,46 @@
+.mat-paginator {
+  display: block;
+}
+
+.mat-paginator-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 56px;
+  padding: 0 8px;
+  flex-wrap: wrap-reverse;
+}
+
+.mat-paginator-page-size {
+  display: flex;
+  align-items: baseline;
+  margin-right: 8px;
+}
+
+.mat-paginator-page-size-label {
+  margin: 0 4px;
+}
+
+.mat-paginator-page-size-select {
+  margin: 6px 4px 0 4px;
+  width: 56px;
+}
+
+.mat-paginator-range-label {
+  margin: 0 32px 0 24px;
+}
+
+.mat-paginator-range-actions {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+}
+
+.mat-paginator-icon {
+  width: 28px;
+  fill: currentColor;
+}
+
+[dir='rtl'] .mat-paginator-icon {
+  transform: rotate(180deg);
+}

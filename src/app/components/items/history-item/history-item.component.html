@@ -1,0 +1,16 @@
+<td *ngIf="!card.diagram">{{card.name}}</td>
+<td *ngIf="!card.diagram">{{deviceType}}</td>
+<td *ngIf="!card.diagram">{{card.ip}}</td>
+<td *ngIf="!card.diagram">{{card.devId}}</td>
+<td *ngIf="!card.diagram">
+  <button class="btn bth-init-history" type="button" (click)="showHistory()">{{'HISTORY.GRAPH_OPTION' | translate}}
+  </button>
+</td>
+
+<td colspan="5" *ngIf="card.diagram">
+  <div class="chart-wrapper-desktop">
+    <app-chart-history *ngIf="ChartPoints" [ChartPoints]="ChartPoints"
+                       [DeviceType]="card.deviceType"></app-chart-history>
+
+  </div>
+</td>

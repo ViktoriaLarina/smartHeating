@@ -1,0 +1,23 @@
+<div class="cards">
+  <div class="cards-title load">
+    <b><span>{{card.name}}</span></b>
+    <br>
+    <span>{{deviceType}}</span>
+  </div>
+  <hr class="cardshr">
+  <div class="cardsadress">
+    <span>IP: {{card.ip}}</span>
+  </div>
+  <hr class="cardshr">
+  <div class="cardsinfo">
+    <span>ID: {{card.devId}}</span>
+  </div>
+  <hr class="cardshr">
+  <app-chart-history *ngIf="ChartPoints && card.selected" [ChartPoints]="ChartPoints"
+                     [DeviceType]="deviceTypeToSend"></app-chart-history>
+  <hr class="cardshr">
+  <div class="load">
+    <div class="cards-load-history" (click)="showHistory()">{{'HISTORY.GRAPH_OPTION' | translate}}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,115 @@
+::ng-deep md2-accordion-tab.md2-accordion-tab-active > .md2-accordion-header {
+  border-bottom: solid 1px #ccc !important;
+  box-shadow: none !important;
+}
+
+::ng-deep .mat-form-field.mat-focused.mat-primary .mat-select-arrow {
+  color: #508db6;
+}
+
+::ng-deep .mat-form-field-ripple {
+  background-color: #508db6;
+}
+
+.empty-block {
+  color: black;
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 100px;
+}
+
+.error {
+  text-align: center;
+  color: darkred;
+  margin: 0;
+  padding-top: 10px;
+}
+
+input, select {
+  color: black;
+}
+
+.main-wrapper {
+  position: relative;
+  background: #fff;
+  padding-bottom: 20px;
+}
+
+.mat-paginator {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.search-row {
+  padding: 10px;
+  text-align: center;
+  color: #000;
+}
+
+.search-param {
+  position: relative;
+  background-color: #fff;
+  margin-bottom: 0;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 2px;
+  width: 150px;
+}
+
+.search-input {
+  border: 1px solid #ccc;
+  width: 400px;
+}
+
+.style-by-select {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  padding: 11px 2px;
+}
+
+.btn-search-start {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  padding: 11px 12px;
+}
+
+.accordion-item-wrapper {
+  margin: 0 10px 56px 10px;
+}
+
+::ng-deep .md2-accordion-header {
+  background-color: #fff;
+  border-bottom: solid 1px #ccc;
+}
+
+
+::ng-deep .md2-accordion-tab-body {
+  overflow: hidden !important;
+}
+
+@media screen and (max-width: 790px), screen and (max-device-width: 790px) {
+
+  .search-param {
+    width: 100%;
+  }
+
+  .search-input {
+    width: 100%;
+    margin: 5px 0;
+    border-radius: 2px;
+  }
+
+  .btn-search-start {
+    background: #508db6;
+    color: #fff;
+  }
+}
+
+/*-----------------------------------check-box-end-------------------------------------------*/

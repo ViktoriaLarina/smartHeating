@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="chart-wrapper" *ngIf="ChartPoints && ChartPoints.length !== 0">
+
+
+    <chart [options]="options">
+      <series>
+        <point (select)="onPointSelect($event)"></point>
+      </series>
+    </chart>
+  </div>
+  <div class="chart-wrapper data-error" *ngIf="ChartPoints && ChartPoints.length === 0">{{'HISTORY.NO_DATA' |
+    translate}}
+  </div>
+  <hr class="cardshr">
+  <p *ngIf="point">{{('HISTORY.DATA_FOR'| translate) + ' ' + point }}</p>
+  <div *ngIf="fullPointInfo">
+    <table class="data-table" ngClass="{ 'mobile-table' : !isMobileSize}">
+      <tr *ngFor="let row of fullPointInfo;">
+        <td *ngFor="let col of row;">
+          {{(col.name | translate) + ':'}} <span>{{col.value}}</span>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div class="historyDataBorder empty" *ngIf="chart">
+  <p class="empty-container-message empty-box">{{'HISTORY.NO_DATA_SELECTED' | translate}}</p>
+</div>

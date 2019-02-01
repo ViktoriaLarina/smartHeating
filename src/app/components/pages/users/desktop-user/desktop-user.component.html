@@ -1,0 +1,20 @@
+<div class="desktop-container">
+  <div class="table-users-wrapper">
+    <table class="table-device table-users" border="0">
+      <thead>
+      <tr>
+        <td>{{'REGISTRATION.FIRST_NAME' | translate}}</td>
+        <td>{{'REGISTRATION.LAST_NAME' | translate}}</td>
+        <td>{{'REGISTRATION.EMAIL' | translate}}</td>
+        <td>{{'USERS.OPTIONS' | translate}}</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr app-user-item
+            *ngFor="let user of users"
+          [user]="user">
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+.wrapper-item {
+  margin: 5px;
+  padding: 5px;
+  background: #fff;
+}
+
+span {
+  color: black;
+  margin-bottom: 5px;
+}
+
+.bold {
+  font-weight: bold;
+}

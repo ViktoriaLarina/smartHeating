@@ -1,0 +1,8 @@
+
+<p class="title">Устройства, ожидающие регистрацию:</p>
+<div *ngIf="arrayOfWaitingDevices && arrayOfWaitingDevices.length !==0">
+  <app-waiting-device-item  *ngFor="let device of arrayOfWaitingDevices"
+                            [device]="device" ></app-waiting-device-item>
+</div>
+
+<div *ngIf="!arrayOfWaitingDevices || arrayOfWaitingDevices.length ===0">Список пуст</div>

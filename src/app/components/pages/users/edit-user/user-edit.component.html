@@ -1,0 +1,25 @@
+<div class="edit-user-wrapp" *ngIf="currentUser">
+  <div class="modal modal-settings modal-userlist-editing">
+    <span mat-dialog-title class="header-modal" *ngIf="currentUser['firstName'] && currentUser['lastName']">{{'USERS.ACCESS_USER' | translate}}{{currentUser['firstName'] + ' ' + currentUser['lastName']}}</span>
+    <div mat-dialog-content *ngIf="permissionOfDevices">
+      <div *ngFor="let device of permissionOfDevices; let i = index"
+           class="device-item">
+        <label class="head-text" for="edit-access-userlist+{{device.id}}">{{device.name}}</label>
+        <select class="devices" name="access" id="edit-access-userlist+{{device.id}}"
+                (change)="changePermission($event.target.selectedIndex, i)">
+          <option *ngFor="let permission of typePermissions" [selected]="permission.value === device.value">
+            {{permission.name | translate}}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div mat-dialog-actions class="btn-wrapper">
+      <div class="row-btn-modal user-edit-row-btn-modal">
+        <button type="button" class="btn btn-save" (click)="sendData()">
+          <span>{{'OTHER.SAVE' | translate}}</span></button>
+        <button type="button" class="btn btn-cancel" (click)="closeDialog()"><span>{{'OTHER.CANCEL' | translate}}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

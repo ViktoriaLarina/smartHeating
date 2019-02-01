@@ -1,0 +1,747 @@
+<div class="modal modal-settings settings-win" id="settings">
+  <div class="tabs-hold">
+    <div class="active-tab-display clearfix">
+      <span class="tab-display-name"></span>
+      <button class="more-settings" (click)="showMobMenu()">
+        <span class="element-to-hide">{{'DEVICES.OTHER_SETTINGS' | translate}}</span><span class="caret"></span>
+      </button>
+    </div>
+    <ul id="modal-settings-menu" class="tabs-menu" *ngIf="isMobileSize">
+      <li><a class="modalsetting-menu-item" (click)="count = 1; showMobMenu(false)"
+             [ngClass]="{'active' : count === 1}"><span>{{'DEVICES.LIGHTING_SETUP_1' | translate}} <br/>{{'DEVICES.LIGHTING_SETUP_2' | translate}}</span></a>
+      </li>
+      <li><a class="modalsetting-menu-item" (click)="count = 2; showMobMenu(false)"
+             [ngClass]="{'active' : count === 2}"><span>{{'DEVICES.PRIORITY_WORK_1' | translate}} <br/>{{'DEVICES.PRIORITY_WORK_2' | translate}}</span></a>
+      </li>
+      <li><a class="modalsetting-menu-item" (click)="count = 3; showMobMenu(false)"
+             [ngClass]="{'active' : count === 3}"><span>{{'DEVICES.CONFIGURING_AUGER_1' | translate}} <br/>{{'DEVICES.CONFIGURING_AUGER_2' | translate}}</span></a>
+      </li>
+      <li><a class="modalsetting-menu-item" (click)="count = 4; showMobMenu(false)"
+             [ngClass]="{'active' : count === 4}"><span>{{'DEVICES.CONFIGURE_FANS_1' | translate}} <br/>{{'DEVICES.CONFIGURE_FANS_2' | translate}}</span></a>
+      </li>
+      <li><a class="modalsetting-menu-item" (click)="count = 5; showMobMenu(false)"
+             [ngClass]="{'active' : count === 5}"><span>{{'DEVICES.SETTING_UP_PUMPS_1' | translate}} <br/>{{'DEVICES.SETTING_UP_PUMPS_2' | translate}}</span></a>
+      </li>
+      <li><a class="modalsetting-menu-item" (click)="count = 6; showMobMenu(false)"
+             [ngClass]="{'active' : count === 6}">
+        <span>{{'DEVICES.WORKING_MODE_1' | translate}} <br/>{{'DEVICES.WORKING_MODE_2' | translate}}</span></a>
+      </li>
+      <li><a class="modalsetting-menu-item" (click)="count = 7; showMobMenu(false)"
+             [ngClass]="{'active' : count === 7}"><span>{{'DEVICES.WEEKLY' | translate}} <br/>{{'DEVICES.CONTROL' | translate}}</span></a>
+      </li>
+      <li><a class="modalsetting-menu-item" (click)="count = 8; showMobMenu(false)"
+             [ngClass]="{'active' : count === 8}">
+        <span>{{'DEVICES.ABOUT' | translate}} <br/>{{'DEVICES.ABOUT_DEVICE' | translate}}</span></a>
+      </li>
+    </ul>
+    <div mat-dialog-content [ngClass]="{'mat-dialog-content-fixed' : count === 8}">
+      <ul id="modal-settings-menu1" class="tabs-menu"
+          *ngIf="!isMobileSize && mobMenu">
+        <li><a class="modalsetting-menu-item" (click)="count = 1; showMobMenu(false)"
+               [ngClass]="{'active' : count === 1}"><span>{{'DEVICES.LIGHTING_SETUP_1' | translate}} <br/>{{'DEVICES.LIGHTING_SETUP_2' | translate}}</span></a>
+        </li>
+        <li><a class="modalsetting-menu-item" (click)="count = 2; showMobMenu(false)"
+               [ngClass]="{'active' : count === 2}"><span>{{'DEVICES.PRIORITY_WORK_1' | translate}} <br/>{{'DEVICES.PRIORITY_WORK_2' | translate}}</span></a>
+        </li>
+        <li><a class="modalsetting-menu-item" (click)="count = 3; showMobMenu(false)"
+               [ngClass]="{'active' : count === 3}"><span>{{'DEVICES.CONFIGURING_AUGER_1' | translate}} <br/>{{'DEVICES.CONFIGURING_AUGER_2' | translate}}</span></a>
+        </li>
+        <li><a class="modalsetting-menu-item" (click)="count = 4; showMobMenu(false)"
+               [ngClass]="{'active' : count === 4}"><span>{{'DEVICES.CONFIGURE_FANS_1' | translate}} <br/>{{'DEVICES.CONFIGURE_FANS_2' | translate}}</span></a>
+        </li>
+        <li><a class="modalsetting-menu-item" (click)="count = 5; showMobMenu(false)"
+               [ngClass]="{'active' : count === 5}"><span>{{'DEVICES.SETTING_UP_PUMPS_1' | translate}} <br/>{{'DEVICES.SETTING_UP_PUMPS_2' | translate}}</span></a>
+        </li>
+        <li><a class="modalsetting-menu-item" (click)="count = 6; showMobMenu(false)"
+               [ngClass]="{'active' : count === 6}">
+          <span>{{'DEVICES.WORKING_MODE_1' | translate}} <br/>{{'DEVICES.WORKING_MODE_2' | translate}}</span></a>
+        </li>
+        <li><a class="modalsetting-menu-item" (click)="count = 7; showMobMenu(false)"
+               [ngClass]="{'active' : count === 7}"><span>{{'DEVICES.WEEKLY' | translate}} <br/>{{'DEVICES.CONTROL' | translate}}</span></a>
+        </li>
+        <li><a class="modalsetting-menu-item" (click)="count = 8; showMobMenu(false)"
+               [ngClass]="{'active' : count === 8}">
+          <span>{{'DEVICES.ABOUT' | translate}} <br/>{{'DEVICES.ABOUT_DEVICE' | translate}}</span></a>
+        </li>
+      </ul>
+      <div class="switch" [ngSwitch]="count" *ngIf="(( isMobileSize ) || ( !isMobileSize && !mobMenu))">
+        <div>
+          <div id="menu-modal-01" class="tabs-content" *ngSwitchCase="1">
+            <div class="row-modal" *ngIf="device['data']">
+              <div class="clearfix slide-row">
+                <div [ngClass]="{'disabled' : notPresentData}">
+                </div>
+                <span class="head-text slide-text">{{'DEVICES.FAN_POWER_RANGE' | translate}} 1</span>
+                <div class="slide-cont">
+                  <div class="input-window">
+                    <div class="slider-input-holder left">
+                      <input class="slide-input" type="number" max="100" min="1" [(ngModel)]="range[0]"
+                             (ngModelChange)="onFirstValueChange($event)"/>
+                      <span>&#37;</span>
+                    </div>
+                    <span class="span-value left">1&#37;</span>
+                    <nouislider class="temperature" [connect]="true" [min]="1" [max]="100" [step]="1"
+                                [tooltips]="[ true, true ]"
+                                [(ngModel)]="range"></nouislider>
+                    <span class="span-value right">100&#37;</span>
+                    <div class="slider-input-holder right">
+                      <input class="slide-input" type="number" max="100" min="1" [(ngModel)]="range[1]"
+                             (ngModelChange)="onSecondValueChange($event)"/>
+                      <span>&#37;</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row-border-popup"></div>
+              <div class="clearfix slide-row">
+                <div [ngClass]="{'disabled' : notPresentData21}">
+                </div>
+                <span class="head-text slide-text">{{'DEVICES.FAN_POWER_RANGE' | translate}} 2</span>
+                <div class="slide-cont">
+                  <div class="input-window">
+                    <div class="slider-input-holder left">
+
+                      <input class="slide-input" type="number" max="100" min="1" [(ngModel)]="range21[0]"
+                             (ngModelChange)="onFirstValueChange($event)"/>
+                      <span>&#37;</span>
+                    </div>
+                    <span class="span-value left">1&#37;</span>
+                    <nouislider class="temperature" [connect]="true" [min]="1" [max]="100" [step]="1"
+                                [tooltips]="[ true, true ]"
+                                [(ngModel)]="range21"></nouislider>
+                    <span class="span-value right">100&#37;</span>
+                    <div class="slider-input-holder right">
+                      <input class="slide-input" type="number" max="100" min="1" [(ngModel)]="range21[1]"
+                             (ngModelChange)="onSecondValueChange($event)"/>
+                      <span>&#37;</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row-border-popup"></div>
+              <div class="clearfix slide-row">
+                <div [ngClass]="{'disabled' : notPresentData1}">
+                </div>
+                <span class="head-text slide-text">{{'DEVICES.EXTERNAL_SCREW_TIME' | translate}}</span>
+
+                <div class="slide-cont" *ngIf="range1 != null">
+                  <div class="input-window">
+                    <div class="slider-input-holder left">
+                      <input class="slide-input" type="number" max="100" min="0" [(ngModel)]="range1"/>
+                      <span>{{'DEVICES.SEC' | translate}}</span>
+                    </div>
+                    <span class="span-value left">0 {{'DEVICES.SEC' | translate}}</span>
+                    <nouislider [connect]="[true, false]" [min]="0" [max]="100" [step]="1" [tooltips]="[  true ]"
+                                [(ngModel)]="range1"></nouislider>
+                    <span class="span-value right">100 {{'DEVICES.SEC' | translate}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="row-border-popup"></div>
+              <div class="clearfix slide-row">
+                <div [ngClass]="{'disabled' : notPresentData2}">
+                </div>
+                <span class="head-text slide-text">{{'DEVICES.INTERNAL_SCREW_TIME' | translate}}</span>
+                <div class="slide-cont">
+                  <div class="input-window">
+                    <div class="slider-input-holder left">
+                      <input class="slide-input" type="number" max="100" min="0" [(ngModel)]="range2"/>
+                      <span>сек</span>
+                    </div>
+                    <span class="span-value left">0 {{'DEVICES.SEC' | translate}}</span>
+                    <nouislider [connect]="[true, false]" [min]="0" [max]="100" [step]="1" [tooltips]="[  true ]"
+                                [(ngModel)]="range2"></nouislider>
+                    <span class="span-value right">100 {{'DEVICES.SEC' | translate}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="row-border-popup"></div>
+              <div class="clearfix slide-row">
+                <div [ngClass]="{'disabled' : notPresentData3}">
+                </div>
+                <span class="head-text slide-text">{{'DEVICES.INCREASE_TEMPERATURE' | translate}}</span>
+                <div class="slide-cont">
+                  <div class="input-window">
+                    <div class="slider-input-holder left">
+                      <input class="slide-input" type="number" max="20" min="1" [(ngModel)]="range3"/>
+                      <span>&#8451;</span>
+                    </div>
+                    <span class="span-value left">1&#8451;</span>
+                    <nouislider class="temperature" [connect]="[true, false]" [min]="1" [max]="20" [step]="1"
+                                [tooltips]="[ true]"
+                                [(ngModel)]="range3"></nouislider>
+                    <span class="span-value right">20&#8451;</span>
+                  </div>
+                </div>
+              </div>
+              <div class="row-border-popup"></div>
+              <div class="clearfix slide-row">
+                <div [ngClass]="{'disabled' : notPresentData22}">
+                </div>
+                <span class="head-text slide-text">{{'DEVICES.IGNITION_TIME' | translate}}</span>
+                <div class="slide-cont">
+                  <div class="input-window">
+                    <div class="slider-input-holder left">
+                      <input class="slide-input" type="number" max="20" min="1" [(ngModel)]="range22"/>
+                      <span>{{'DEVICES.MIN' | translate}}</span>
+                    </div>
+                    <span class="span-value left">1 {{'DEVICES.MIN' | translate}}</span>
+                    <nouislider class="temperature" [connect]="[true, false]" [min]="1" [max]="20" [step]="1"
+                                [tooltips]="[ true]"
+                                [(ngModel)]="range22"></nouislider>
+                    <span class="span-value right">20 {{'DEVICES.MIN' | translate}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="menu-modal-02" class="tabs-content" *ngSwitchCase="2">
+            <div class="row-modal disabled-wrapper" *ngIf="device['data']">
+              <div [ngClass]="{'disabled' : notPresentData22}">
+              </div>
+              <ul class="priority_work">
+                <li>
+                  <div class="priority-work-icon icon-heating"></div>
+                  <div class="priority-work-button">
+                    <input type="radio" class="radio" name="priority_work" id="priority_work-01"
+                           [(ngModel)]="workPriority" [value]="0"/>
+                    <label for="priority_work-01"><span>{{'DEVICES.HOUSE_HEATING' | translate}}</span></label>
+                  </div>
+                </li>
+                <li>
+                  <div class="priority-work-icon icon-pumps"></div>
+                  <div class="priority-work-button">
+                    <input type="radio" class="radio" name="priority_work" id="priority_work-02"
+                           [(ngModel)]="workPriority" [value]="1"/>
+                    <label for="priority_work-02"><span>{{'DEVICES.PARALLEL_PUMPS' | translate}}</span></label>
+                  </div>
+                </li>
+                <li>
+                  <div class="priority-work-icon icon-summer-mode"></div>
+                  <div class="priority-work-button">
+                    <input type="radio" class="radio" name="priority_work" id="priority_work-03"
+                           [(ngModel)]="workPriority" [value]="2"/>
+                    <label for="priority_work-03"><span>{{'DEVICES.SUMMER_MODE' | translate}}</span></label>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div id="menu-modal-03" class="tabs-content" *ngSwitchCase="3">
+            <div class="row-modal visible" *ngIf="device['data']">
+              <div class="clearfix slide-row">
+                <div [ngClass]="{'disabled' : notPresentData4}">
+                </div>
+                <span class="head-text slide-text">{{'DEVICES.INTERNAL_AUGER_TIME' | translate}}</span>
+                <div class="slide-cont" *ngIf="range4">
+                  <div class="input-window">
+                    <div class="slider-input-holder left">
+                      <input class="slide-input" type="number" max="100" min="1" [(ngModel)]="range4"/>
+                      <span class="span-value-min">{{'DEVICES.SEC' | translate}}</span>
+                    </div>
+                    <span class="span-value left">1 {{'DEVICES.SEC' | translate}}</span>
+                    <nouislider [connect]="[true, false]" [min]="1" [max]="100" [step]="1" [tooltips]="[  true ]"
+                                [(ngModel)]="range4"></nouislider>
+                    <span class="span-value right">100 {{'DEVICES.SEC' | translate}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="row-border-popup"></div>
+              <div class="clearfix slide-row">
+                <div [ngClass]="{'disabled' : notPresentData5}">
+                </div>
+                <span class="head-text slide-text">{{'DEVICES.EXTERNAL_AUGER_PAUSE' | translate}}</span>
+                <div class="slide-cont">
+                  <div class="input-window">
+                    <div class="slider-input-holder left">
+                      <input class="slide-input" type="number" max="100" min="1" [(ngModel)]="range5"/>
+                      <span class="span-value-min">{{'DEVICES.SEC' | translate}}</span>
+                    </div>
+                    <span class="span-value left">1 {{'DEVICES.SEC' | translate}}</span>
+                    <nouislider [connect]="[true, false]" [min]="1" [max]="100" [step]="1" [tooltips]="[  true ]"
+                                [(ngModel)]="range5"></nouislider>
+                    <span class="span-value right">100 {{'DEVICES.SEC' | translate}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="row-border-popup"></div>
+              <div class="clearfix slide-row">
+                <div [ngClass]="{'disabled' : notPresentData7}">
+                </div>
+                <span class="head-text slide-text">{{'DEVICES.EXTERNAL_AUGER_TIME' | translate}}</span>
+                <div class="slide-cont">
+                  <div class="input-window">
+                    <div class="slider-input-holder left">
+                      <input class="slide-input" type="number" max="100" min="1" [(ngModel)]="range7"/>
+                      <span class="span-value-min">{{'DEVICES.SEC' | translate}}</span>
+                    </div>
+                    <span class="span-value left">1 {{'DEVICES.SEC' | translate}}</span>
+                    <nouislider [connect]="[true, false]" [min]="1" [max]="100" [step]="1" [tooltips]="[  true ]"
+                                [(ngModel)]="range7"></nouislider>
+                    <span class="span-value right">100 {{'DEVICES.SEC' | translate}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="row-border-popup"></div>
+              <div class="clearfix slide-row">
+                <div [ngClass]="{'disabled' : notPresentData8}">
+                </div>
+                <span class="head-text slide-text">{{'DEVICES.WORK_TIME_OF_CLEANING' | translate}}</span>
+                <div class="slide-cont">
+                  <div class="input-window">
+                    <div class="slider-input-holder left">
+                      <input class="slide-input" type="number" max="250" min="1" [(ngModel)]="range8"/>
+                      <span class="span-value-min">{{'DEVICES.SEC' | translate}}</span>
+                    </div>
+                    <span class="span-value left">1 {{'DEVICES.SEC' | translate}}</span>
+                    <nouislider [connect]="[true, false]" [min]="1" [max]="250" [step]="1" [tooltips]="[  true ]"
+                                [(ngModel)]="range8"></nouislider>
+                    <span class="span-value right">250 {{'DEVICES.SEC' | translate}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="row-border-popup"></div>
+              <div class="clearfix slide-row">
+                <div [ngClass]="{'disabled' : notPresentData6}">
+                </div>
+                <span class="head-text slide-text">{{'DEVICES.PAUSE_TIME_OF_CLEANING' | translate}}</span>
+                <div class="slide-cont">
+                  <div class="input-window">
+                    <div class="slider-input-holder left">
+                      <input class="slide-input" type="number" max="250" min="0" [(ngModel)]="range6"/>
+                      <span class="span-value-min">{{'DEVICES.SEC' | translate}}</span>
+                    </div>
+                    <span class="span-value left">1 {{'DEVICES.SEC' | translate}}</span>
+                    <nouislider [connect]="[true, false]" [min]="1" [max]="250" [step]="1" [tooltips]="[true]"
+                                [(ngModel)]="range6"></nouislider>
+                    <span class="span-value right">250 {{'DEVICES.SEC' | translate}}</span>
+                  </div>
+                </div>
+              </div>
+              <!--<div class="row-border-popup"></div>-->
+              <!--<div class="row-border-popup"></div>-->
+            </div>
+          </div>
+          <div id="menu-modal-04" class="tabs-content" *ngSwitchCase="4">
+            <div class="row-modal visible" *ngIf="device['data']">
+              <span class="head-text-h1">{{'DEVICES.BURNER_FAN' | translate}}</span>
+              <div class="clearfix slide-row">
+                <div [ngClass]="{'disabled' : notPresentData9}">
+                </div>
+                <span class="head-text slide-text">{{'DEVICES.OPERATING_POWER_RANGE' | translate}}</span>
+                <div class="slide-cont">
+                  <div class="input-window">
+                    <div class="slider-input-holder left">
+                      <input class="slide-input" type="number" max="100" min="0" [(ngModel)]="range9[0]"
+                             (ngModelChange)="onFirstValueChange($event)"/>
+                      <span>&#37;</span>
+                    </div>
+                    <span class="span-value left">0&#37;</span>
+                    <nouislider [connect]="true" [min]="0" [max]="100" [step]="1" [tooltips]="[ true, true ]"
+                                [(ngModel)]="range9"></nouislider>
+                    <span class="span-value right">100&#37;</span>
+                    <div class="slider-input-holder right">
+                      <input class="slide-input" type="number" max="100" min="0" [(ngModel)]="range9[1]"
+                             (ngModelChange)="onSecondValueChange($event)"/>
+                      <span>&#37;</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row-border-popup"></div>
+              <span class="head-text-h1 top-margin">{{'DEVICES.VACUUM_FAN' | translate}}</span>
+              <div class="clearfix slide-row">
+                <div [ngClass]="{'disabled' : notPresentData10}">
+                </div>
+                <span class="head-text slide-text">{{'DEVICES.SWITCH_ON_DELAY' | translate}}</span>
+                <div class="slide-cont">
+                  <div class="input-window">
+                    <div class="slider-input-holder left">
+                      <input class="slide-input" type="number" max="120" min="0" [(ngModel)]="range10"/>
+                      <span class="span-value-min">{{'DEVICES.SEC' | translate}}</span>
+                    </div>
+                    <span class="span-value left">0 {{'DEVICES.SEC' | translate}}</span>
+
+                    <nouislider [connect]="[true, false]" [min]="0" [max]="120" [step]="1" [tooltips]="[  true ]"
+                                [(ngModel)]="range10"></nouislider>
+                    <span class="span-value right">120 {{'DEVICES.SEC' | translate}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="row-border-popup"></div>
+              <div class="clearfix slide-row">
+                <div [ngClass]="{'disabled' : notPresentData11}">
+                </div>
+                <span class="head-text slide-text">{{'DEVICES.DELAY_OFF' | translate}}</span>
+                <div class="slide-cont">
+                  <div class="input-window">
+                    <div class="slider-input-holder left">
+                      <input class="slide-input" type="number" max="120" min="0" [(ngModel)]="range11"/>
+                      <span class="span-value-min">{{'DEVICES.SEC' | translate}}</span>
+                    </div>
+                    <span class="span-value left">0 {{'DEVICES.SEC' | translate}}</span>
+
+                    <nouislider [connect]="[true, false]" [min]="0" [max]="120" [step]="1" [tooltips]="[true]"
+                                [(ngModel)]="range11"></nouislider>
+                    <span class="span-value right">120 {{'DEVICES.SEC' | translate}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="row-border-popup"></div>
+              <div class="clearfix slide-row">
+                <div [ngClass]="{'disabled' : notPresentData12}">
+                </div>
+                <span class="head-text slide-text">{{'DEVICES.POWER_RANGE_MORE_FAN' | translate}}</span>
+                <div class="slide-cont">
+                  <div class="input-window">
+                    <div class="slider-input-holder left">
+                      <input class="slide-input" type="number" max="100" min="0" [(ngModel)]="range12[0]"
+                             (ngModelChange)="onFirstValueChange($event)"/>
+                      <span>&#37;</span>
+                    </div>
+                    <span class="span-value left">0&#37;</span>
+                    <nouislider [connect]="true" [min]="0" [max]="100" [step]="1" [tooltips]="[ true, true ]"
+                                [(ngModel)]="range12"></nouislider>
+                    <span class="span-value right">100&#37;</span>
+                    <div class="slider-input-holder right">
+                      <input class="slide-input" type="number" max="100" min="0" [(ngModel)]="range12[1]"
+                             (ngModelChange)="onSecondValueChange($event)"/>
+                      <span>&#37;</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="menu-modal-05" class="tabs-content" *ngSwitchCase="5">
+            <div class="row-modal" *ngIf="device['data']">
+
+              <div class="clearfix slide-row">
+                <div [ngClass]="{'disabled' : notPresentData14}">
+                </div>
+                <span class="head-text slide-text">{{'DEVICES.HYSTERESIS_CENTRAL' | translate}}</span>
+                <div class="slide-cont">
+                  <div class="input-window">
+                    <div class="slider-input-holder left">
+                      <input class="slide-input" type="number" max="10" min="0" [(ngModel)]="range14"/>
+                      <span>&#8451;</span>
+                    </div>
+                    <span class="span-value left">0&#8451;</span>
+                    <nouislider class="temperature" [connect]="[true, false]" [min]="0" [max]="10" [step]="1"
+                                [tooltips]="[true]"
+                                [(ngModel)]="range14"></nouislider>
+                    <span class="span-value right">10&#8451;</span>
+                  </div>
+                </div>
+              </div>
+              <div class="row-border-popup"></div>
+              <div class="clearfix slide-row">
+                <div [ngClass]="{'disabled' : notPresentData13}">
+                </div>
+                <span class="head-text slide-text">{{'DEVICES.CENTRAL_TEMP' | translate}}</span>
+
+                <div class="slide-cont">
+                  <div class="input-window">
+                    <div class="slider-input-holder left">
+                      <input class="slide-input" type="number" max="80" min="30" [(ngModel)]="range13"/>
+                      <span>&#8451;</span>
+                    </div>
+                    <span class="span-value left">30&#8451;</span>
+                    <nouislider class="temperature" [connect]="[true, false]" [min]="30" [max]="80" [step]="1"
+                                [tooltips]="[true]"
+                                [(ngModel)]="range13"></nouislider>
+                    <span class="span-value right">80&#8451;</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="menu-modal-06" class="tabs-content" *ngSwitchCase="6">
+            <div class="row-modal visible" *ngIf="device['data']">
+              <div class="clearfix slide-row mode-switcher">
+                <div [ngClass]="{'disabled' : notPresentData25}">
+                </div>
+                <span class="head-text slide-text">{{'DEVICES.SCREW_IN_SUPPORT' | translate}}</span>
+                <div class="hold-on_off on_off-modal">
+                  <button type="button" class="on active"><span>{{'DEVICES.SWITCH_ON' | translate}}</span></button>
+                  <input class="device-int" type="checkbox" id="shnek-1" name="shnek-1" [(ngModel)]="augerWorkMode"
+                         (change)="changeAugerWorkMode()" value="augerWorkMode">
+                  <label for="shnek-1"></label>
+                  <button type="button" class="off"><span>{{'DEVICES.SWITCH_OFF' | translate}}</span></button>
+                </div>
+              </div>
+
+              <div class="row-border-popup"></div>
+              <div class="device-mode-wrapper">
+                <div class="clearfix slide-row">
+                  <div [ngClass]="{'disabled' : notPresentData15}">
+                  </div>
+                  <span class="head-text slide-text">{{'DEVICES.HYSTERESIS' | translate}}</span>
+                  <div class="slide-cont">
+                    <div class="input-window">
+                      <div class="slider-input-holder left">
+                        <input class="slide-input" type="number" max="10" min="0" [(ngModel)]="range15"
+                               (ngModelChange)="onFirstValueChange($event)"/>
+                        <span>&#8451;</span>
+                      </div>
+                      <span class="span-value left">0&#8451;</span>
+                      <nouislider class="temperature" [connect]="[true, false]" [min]="0" [max]="10" [step]="1"
+                                  [tooltips]="[true]"
+                                  [(ngModel)]="range15"></nouislider>
+                      <span class="span-value right">10&#8451;</span>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="row-border-popup"></div>
+                <div class="clearfix slide-row">
+                  <div [ngClass]="{'disabled' : notPresentData16}">
+                  </div>
+                  <span class="head-text slide-text">{{'DEVICES.POWER_RANGE' | translate}}</span>
+                  <div class="slide-cont">
+                    <div class="input-window">
+                      <div class="slider-input-holder left">
+                        <input class="slide-input" type="number" max="100" min="5" [(ngModel)]="range16[0]"
+                               (ngModelChange)="onFirstValueChange($event)"/>
+                        <span>&#37;</span>
+                      </div>
+                      <span class="span-value left">5&#37;</span>
+                      <nouislider [connect]="true" [min]="5" [max]="100" [step]="1" [tooltips]="[ true, true ]"
+                                  [(ngModel)]="range16"></nouislider>
+                      <span class="span-value right">100&#37;</span>
+                      <div class="slider-input-holder right">
+                        <input class="slide-input" type="number" max="100" min="5" [(ngModel)]="range16[1]"
+                               (ngModelChange)="onSecondValueChange($event)"/>
+                        <span>&#37;</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row-border-popup"></div>
+                <div class="clearfix slide-row">
+                  <div [ngClass]="{'disabled' : notPresentData17}">
+                  </div>
+                  <span class="head-text slide-text">{{'DEVICES.POWER_IN_SUPPORT' | translate}}</span>
+                  <div class="slide-cont">
+                    <div class="input-window">
+                      <div class="slider-input-holder left">
+                        <input class="slide-input" type="number" max="100" min="5" [(ngModel)]="range17"
+                               (ngModelChange)="onFirstValueChange($event)"/>
+                        <span>&#37;</span>
+                      </div>
+                      <span class="span-value left">5&#37;</span>
+                      <nouislider [connect]="[true, false]" [min]="5" [max]="100" [step]="1" [tooltips]="[true]"
+                                  [(ngModel)]="range17"></nouislider>
+                      <span class="span-value right">100&#37;</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row-border-popup"></div>
+                <div class="clearfix slide-row mode-switcher">
+                  <div [ngClass]="{'disabled' : notPresentData23}">
+                  </div>
+                  <span class="head-text slide-text">{{'DEVICES.CLEANING_WORKING_BARS' | translate}}</span>
+                  <div class="hold-on_off on_off-modal">
+                    <button type="button" class="on active"><span>{{'DEVICES.SWITCH_ON' | translate}}</span></button>
+                    <input class="device-int" type="checkbox" id="shnek-2" name="shnek-1" [(ngModel)]="cleaningWork"
+                           (change)="changeCleaningWork()" value="cleaningWork">
+                    <label for="shnek-2"></label>
+                    <button type="button" class="off"><span>{{'DEVICES.SWITCH_OFF' | translate}}</span></button>
+                  </div>
+                </div>
+                <div class="row-border-popup"></div>
+                <div class="clearfix slide-row mode-switcher">
+                  <div [ngClass]="{'disabled' : notPresentData26}">
+                  </div>
+                  <span class="head-text slide-text">{{'DEVICES.CLEANING_WORKING_FAN' | translate}}</span>
+                  <div class="hold-on_off on_off-modal">
+                    <button type="button" class="on active"><span>{{'DEVICES.SWITCH_ON' | translate}}</span></button>
+                    <input class="device-int" type="checkbox" id="shnek-3" name="shnek-1"
+                           [(ngModel)]="cleaningSettingsFun"
+                           (change)="changeCleaningSettingsFun()" value="cleaningSettingsFun">
+                    <label for="shnek-3"></label>
+                    <button type="button" class="off"><span>{{'DEVICES.SWITCH_OFF' | translate}}</span></button>
+                  </div>
+                </div>
+                <div class="row-border-popup"></div>
+                <div class="clearfix slide-row">
+                  <div [ngClass]="{'disabled' : notPresentData19}">
+                  </div>
+                  <span class="head-text slide-text">{{'DEVICES.CLEANING_POWER_FAN' | translate}} 1</span>
+                  <div class="slide-cont">
+                    <div class="input-window">
+                      <div class="slider-input-holder left">
+                        <input class="slide-input" type="number" max="100" min="1" [(ngModel)]="range19"
+                               (ngModelChange)="onFirstValueChange($event)"/>
+                        <span>&#37;</span>
+                      </div>
+                      <span class="span-value left">1&#37;</span>
+                      <nouislider [connect]="[true, false]" [min]="1" [max]="100" [step]="1" [tooltips]="[true]"
+                                  [(ngModel)]="range19"></nouislider>
+                      <span class="span-value right">100&#37;</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row-border-popup"></div>
+                <div class="clearfix slide-row">
+                  <div [ngClass]="{'disabled' : notPresentData18}">
+                  </div>
+                  <span class="head-text slide-text">{{'DEVICES.CLEANING_POWER_FAN' | translate}} 2</span>
+                  <div class="slide-cont">
+                    <div class="input-window">
+                      <div class="slider-input-holder left">
+                        <input class="slide-input" type="number" max="100" min="1" [(ngModel)]="range18"
+                               (ngModelChange)="onFirstValueChange($event)"/>
+                        <span>&#37;</span>
+                      </div>
+                      <span class="span-value left">1&#37;</span>
+                      <nouislider [connect]="[true, false]" [min]="1" [max]="100" [step]="1" [tooltips]="[true]"
+                                  [(ngModel)]="range18"></nouislider>
+                      <span class="span-value right">100&#37;</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row-border-popup"></div>
+                <div class="clearfix slide-row">
+                  <div [ngClass]="{'disabled' : notPresentData20}">
+                  </div>
+                  <span class="head-text slide-text">{{'DEVICES.CLEANING_TIME' | translate}}</span>
+                  <div class="slide-cont">
+                    <div class="input-window">
+                      <div class="slider-input-holder left">
+                        <input class="slide-input" type="number" max="1200" min="50" [(ngModel)]="range20"
+                               (ngModelChange)="onFirstValueChange($event)"/>
+                        <span>{{'DEVICES.SEC' | translate}}</span>
+                      </div>
+                      <span class="span-value left">50 {{'DEVICES.SEC' | translate}}</span>
+                      <nouislider [connect]="[true, false]" [min]="50" [max]="1200" [step]="10" [tooltips]="[true]"
+                                  [(ngModel)]="range20"></nouislider>
+                      <span class="span-value right">1200 {{'DEVICES.SEC' | translate}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="menu-modal-07" class="tabs-content" *ngSwitchCase="7">
+            <div class="row-modal visible">
+              <div class="clearfix slide-row chart-switcher">
+                <span id="width-100" class="head-text slide-text">{{'DEVICES.WEEKLY_MANAGEMENT' | translate}}</span>
+                <div class="inline-block">
+                  <div class="hold-on_off on_off-modal">
+                    <button type="button" class="on active"><span>{{'DEVICES.SWITCH_ON' | translate}}</span></button>
+                    <input class="device-int" type="checkbox" id="chart-switch" [(ngModel)]="weekleySettingsCheckBox"
+                           (change)="changeWeekleySettingsCheckBox()" value="weekleySettingsCheckBox">
+                    <label for="chart-switch"></label>
+                    <button type="button" class="off"><span>{{'DEVICES.SWITCH_OFF' | translate}}</span></button>
+                  </div>
+                  <div class="timezone-show">
+                    <span>{{'DEVICES.TIMEZONE' | translate}} :</span>
+                    <span>{{(timezone | timezonePipe) | translate}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="week-settings-wrapper clearfix" id="weekly-charts-tabs">
+                <div class="week-settings-cover" *ngIf="!weekleySettingsCheckBox"></div>
+                <div class="days-checkbox clearfix">
+                  <ul class="days-checkbox-wrapper">
+                    <li *ngFor="let day of week; index as i">
+                      <a class="weekly-link" data-chart="drag-chart1"
+                         [ngClass]="{ 'active-day-link' : selectedDayIndex === i }"
+                         (click)="showChartOfDay(i)">{{day['name'] | translate}}</a>
+                      <input id="'checkbox'+{{i}}" class="checkbox-weekly" type="checkbox" name="weekly-mode-day"
+                             [checked]="day['enable']" (change)="setDay(i)">
+                      <label class="weekly-label" for="'checkbox'+{{i}}"></label>
+                    </li>
+                  </ul>
+                  <div class="weather-widget" *ngIf="weather" (click)="getWeatherWebSite()">
+                    <span class="weather-temp"
+                          *ngIf="weather.temperature">{{weather.temperature + '&#176;' + 'C'}}</span>
+                    <img src="{{weather.img}}" class="img" *ngIf="weather.img">
+                    <div class="weather_inner_wrapper">
+                      <span class="weather-day">{{weather.day}}</span>
+                      <span class="weather-city" *ngIf="weather.city">{{weather.city}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="temperature-graph">
+                  <app-chart *ngIf="weekleySettingsCheckBox !== undefined"
+                             [weeklySettings]="week[selectedDayIndex]"></app-chart>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="menu-modal-08" class="tabs-content" *ngSwitchCase="8">
+          <div class="row-modal" *ngIf="device['data']">
+            <div class="col-left">
+              <span class="head-text">{{'HISTORY.DEVICE_IP' | translate}}</span>
+              <input class="devices ip-devices" type="text" name="ip-devices" [(ngModel)]="deviceIp" disabled/>
+              <span class="head-text">{{'DEVICES.CHANGE_NAME' | translate}}</span>
+              <input class="devices name-devices" type="text" name="name-devices" [(ngModel)]="deviceName"/>
+              <span class="head-text">{{'DEVICES.CHANGE_TIMEZONE' | translate}}</span>
+              <select name="" id="" class="timezone" [(ngModel)]="timezone" title="">
+                <option *ngFor="let timezone of arrayOfTimeZone" [ngValue]="timezone.value">{{timezone.name |
+                  translate}}
+                </option>
+              </select>
+              <div class="hold-btn-remove">
+                <button type="button" class="btn-devices remove-devices active" (click)="deleteDevice()"
+                        *ngIf="!isRemoved">{{'DEVICES.DELETE_DEVICE' | translate}}
+                </button>
+                <button type="button" class="btn-devices btn-devices-none add-devices" *ngIf="isRemoved"
+                        (click)="restoreDevice()">{{'DEVICES.RESTORE_DEVICE' | translate}}
+                </button>
+              </div>
+            </div>
+            <div class="col-right">
+              <span class="head-text">{{'HISTORY.DEVICE_ID' | translate}}</span>
+              <input class="devices id-devices" type="text" name="id-devices" [(ngModel)]="deviceId" disabled/>
+              <div *ngIf="isRemoved">
+                <span class="head-text">{{'DEVICES.COUNTER' | translate}}</span>
+                <!-- Countdown dashboard start -->
+                <div id="countdown_dashboard">
+                  <div class="dash days_dash">
+                    <div class="hold-time">
+                      <div class="digit">{{day}}</div>
+                    </div>
+                    <span class="dash_title">{{'DEVICES.DAYS' | translate}}</span>
+                  </div>
+                  <div class="dash hours_dash">
+                    <div class="hold-time">
+                      <div class="digit">{{hours}}</div>
+                    </div>
+                    <span class="dash_title">{{'DEVICES.HOURS' | translate}}</span>
+                  </div>
+                  <div class="dash minutes_dash">
+                    <div class="hold-time">
+                      <div class="digit">{{minutes}}</div>
+                    </div>
+                    <span class="dash_title">{{'DEVICES.MINUTES' | translate}}</span>
+                  </div>
+                  <div class="dash seconds_dash">
+                    <div class="hold-time">
+                      <div class="digit">{{seconds}}</div>
+                    </div>
+                    <span class="dash_title">{{'DEVICES.SECONDS' | translate}}</span>
+                  </div>
+                </div>
+              </div>
+              <!--<div class="hold-btn">-->
+              <!--<button type="button" class="btn-devices">Сброс счетчика расхода топлива</button>-->
+              <!--</div>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div mat-dialog-actions class="row-btn-modal clearfix" *ngIf="(( isMobileSize ) || ( !isMobileSize && !mobMenu))">
+      <button type="button" class="btn btn-cancel" (click)="closeDialog()"><span>{{'OTHER.CLOSE' | translate}}</span>
+      </button>
+      <button type="button" class="btn btn-save" (click)="changeState()" *ngIf="device.permission === 'WRITE'"><span>{{'OTHER.SAVE' | translate}}</span>
+      </button>
+    </div>
+  </div>
+</div>
+

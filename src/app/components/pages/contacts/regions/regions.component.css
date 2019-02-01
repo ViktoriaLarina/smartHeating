@@ -1,0 +1,4 @@
+::ng-deep md2-accordion-tab.md2-accordion-tab-active > .md2-accordion-header {
+  border-color: #508db6;
+  box-shadow: 0 1px 0 #508db6;
+}

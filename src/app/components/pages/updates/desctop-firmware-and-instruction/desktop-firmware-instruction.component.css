@@ -1,0 +1,57 @@
+.add-after {
+  padding: 5px 22px 5px 13px;
+}
+
+td {
+  cursor: pointer;
+}
+
+.desc {
+  position: relative;
+}
+
+.desktop-container {
+  margin-top: 20px;
+}
+
+.isUp .desc:after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  right: -15px;
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  -webkit-transform: rotate(-135deg);
+  -moz-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+  margin: 4px 0 0 -2px;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.isDown .desc:after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  right: -15px;
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  margin: 4px 0 0 -2px;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}

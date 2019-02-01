@@ -1,0 +1,155 @@
+.active {
+  color: #43c992;
+}
+
+.active:after {
+  background: #43c992;
+}
+
+select {
+  width: 150px;
+}
+
+.bl-top-menu {
+  margin: 0 auto;
+  vertical-align: top;
+  overflow: hidden;
+  border-bottom: solid 1px #ced9d9;
+}
+
+.contacts-wrapper {
+  width: 100%;
+}
+
+.top-menu {
+  text-align: center;
+  width: 100%;
+}
+
+.top-menu li {
+  margin: 0 5px;
+  float: none;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.btn-save-contacts {
+  padding: 6px 26px 8px;
+  margin: 3px;
+  font-size: 15px;
+  line-height: 24px;
+  text-align: center;
+  background-color: darkgreen;
+  color: #fff;
+  float: right;
+}
+
+#main {
+  display: inline-block;
+  height: 20px;
+  width: auto;
+  margin: 0;
+  vertical-align: middle;
+}
+
+.select {
+  border: solid 1px #212121;
+  color: black;
+  position: relative;
+  background-color: #fff;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 14px;
+  border-radius: 2px;
+  width: 100%;
+  height: 40px;
+}
+
+.search-wrapper {
+  margin: 30px auto;
+  background: #fff;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.search-wrapper input {
+  height: 40px;
+  margin: 5px 0;
+  color: #000;
+}
+
+.search-wrapper textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 40px;
+}
+
+.label-for-block {
+  color: #000;
+  font-weight: 600;
+  font-size: 16px;
+  width: 100%;
+}
+
+.form-control {
+  border: solid 1px #212121;
+  border-radius: 2px;
+}
+
+.search-wrapper label {
+  width: 100%;
+  display: block;
+}
+
+hr {
+  color: black;
+}
+
+.error-text {
+  padding: 8px 35px 8px 14px;
+  margin-bottom: 18px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  color: #b94a48;
+  background-color: #f2dede;
+  border-color: #eed3d7;
+}
+
+.btn-add {
+  margin: 3px;
+  font-size: 15px;
+  line-height: 24px;
+  display: inline-block;
+  color: black;
+  border: solid 1px darkgreen;
+  border-radius: 2px;
+  position: absolute;
+  right: 0;
+  bottom: -19px;
+}
+
+label {
+  margin: 5px 0 2px 0;
+}
+
+.add-btn-wrapper {
+  overflow: visible;
+  position: relative;
+  height: 34px;
+}
+
+.add-btn-wrapper label {
+  display: inline;
+  position: absolute;
+  bottom: 0;
+}
+
+.contact-select {
+  width: 300px;
+  display: block;
+}

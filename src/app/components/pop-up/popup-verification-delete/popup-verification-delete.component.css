@@ -1,0 +1,30 @@
+::ng-deep .cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
+  opacity: 0;
+}
+
+.button-popup {
+  border: 2px solid #6aa3ca;
+  color: #fff;
+  background: #6aa3ca;
+  padding: 5px 10px;
+  border-radius: 2px;
+  margin: 5px;
+}
+
+.button-popup:hover {
+  border: 2px solid #6aa3ca;
+  background-color: #fff;
+  color: #6aa3ca !important;
+}
+
+.button-block {
+  text-align: center;
+}
+
+p {
+  text-align: center;
+}
+
+.wrapper {
+  padding: 20px;
+}

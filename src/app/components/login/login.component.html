@@ -1,0 +1,154 @@
+<app-spinner *ngIf="isLoaderShown"></app-spinner>
+<div class="d-table-100">
+  <div class="lang-select">
+    <select class="side-lang-select" [(ngModel)]="locale" title="" (change)="changeLangPage($event.target.selectedIndex)">
+      <option *ngFor="let lang of arrayOfLanguages" [ngValue]="lang.value" [selected]="lang[0]">{{lang.name}}</option>
+    </select>
+  </div>
+  <div class="d-table-row">
+    <div class="hold-login">
+      <div class="tab-menu">
+        <ul class="menu-login">
+          <li class="ui-corner-top"><a (click)="changeTabIndex(1)"
+                                       [ngClass]="{'menu-login_active' : currentPage === 1}"><span>{{'LOGIN.ENTRANCE' | translate}}</span></a>
+          </li>
+          <li class="ui-corner-top"><a (click)="changeTabIndex(2)"
+                                       [ngClass]="{'menu-login_active' : currentPage === 2}"><span>{{'LOGIN.REGISTRATION' | translate}}</span></a>
+          </li>
+        </ul>
+      </div>
+      <div [ngSwitch]="currentPage">
+        <form id="tab-login" class="info-log" *ngSwitchCase="1" [formGroup]="loginUser">
+          <div class="row-log-input">
+            <label class="login-user-in" for="login-user-in"></label>
+            <input class="devices int-left" type="text" name="login-user-in" id="login-user-in"
+                   placeholder="{{'LOGIN.ENTER_EMAIL' | translate}}" formControlName="enteredEmail"/>
+          </div>
+          <div class="row-log-input">
+            <label class="password-user-in" for="password-user-in"></label>
+            <input class="devices int-left" type="password" name="password-user-in" id="password-user-in"
+                   placeholder="{{'REGISTRATION.ENTER_PASSWORD' | translate}}" formControlName="enteredPassword"/>
+          </div>
+          <div *ngIf="hasError" class="error">{{'LOGIN.ERROR_PASS_OR_EMAIL' | translate}}</div>
+
+          <div class="row-checkbox">
+            <input type="checkbox" class="checkbox-dark save" name="type-1" id="type-1" checked disabled>
+            <label for="type-1" style="display: inline">{{'LOGIN.REMEMBER' | translate}}</label>
+            <a (click)="changeTabIndex(3)" class="password-out restore_password-link">{{'LOGIN.FORGOT_PASS' |
+              translate}}?</a>
+          </div>
+          <div class="row-submit">
+            <div class="hold-btn">
+              <span class="google-plus-logo"></span>
+              <input type="button" class="btn submit-support google" value="{{'LOGIN.ENTER_WITH_GOOGLE' | translate}}+"
+                     (click)="googleAuthenticate()">
+            </div>
+            <div class="hold-btn">
+              <input #box type="submit" class="btn submit-support" value="{{'LOGIN.ENTER' | translate}}"
+                     [disabled]="loginUser.invalid"
+                     (click)="logIn()">
+            </div>
+          </div>
+        </form>
+        <div id="register" class="registration-log" *ngSwitchCase="2">
+          <form class="row-modal" [formGroup]="newUser">
+            <div class="form_rows">
+              <div class="col-left">
+                <div>
+                  <label class="head-text" for="add-name-user">{{'REGISTRATION.FIRST_NAME' | translate}}*</label>
+                  <input class="devices" type="text" name="add-name-user" id="add-name-user" value=""
+                         placeholder="{{'REGISTRATION.ENTER_FIRST_NAME' | translate}}" formControlName="name"/>
+                  <span class="error-text"
+                        *ngIf="newUser.value.name">{{'REGISTRATION.INVALID_FORMAT' | translate}}</span>
+                </div>
+                <div>
+                  <label class="head-text" for="add-lastname-user">{{'REGISTRATION.LAST_NAME' | translate}}*</label>
+                  <input class="devices id-devices" type="text" name="add-lastname-user" id="add-lastname-user" value=""
+                         placeholder="{{'REGISTRATION.ENTER_LAST_NAME' | translate}}" formControlName="surname"/>
+                  <span class="error-text"
+                        *ngIf="newUser.value.surname">{{'REGISTRATION.INVALID_FORMAT' | translate}}</span>
+                </div>
+                <div>
+                  <label class="head-text" for="add-email-user">{{'REGISTRATION.EMAIL' | translate}}*</label>
+                  <input class="devices" type="email" name="add-email-user" id="add-email-user" value=""
+                         placeholder="{{'REGISTRATION.ENTER_EMAIL' | translate}}" formControlName="email"
+                         (blur)="checkEmail()"
+                         (keyup)="refreshEmailValidity()"/>
+                  <span class="error-text" *ngIf="newUser.value.email">{{(emailAlreadyTaken ? 'REGISTRATION.ALREADY_TAKEN' : 'REGISTRATION.INVALID_FORMAT') | translate }}</span>
+                </div>
+                <div>
+                  <label class="head-text" for="add-phone-user">{{'REGISTRATION.PHONE' | translate}}*</label>
+                  <input class="devices id-devices" type="text" name="add-phone-user" id="add-phone-user" value=""
+                         placeholder="{{'REGISTRATION.ENTER_PHONE' | translate}}" formControlName="phone"/>
+                  <span class="error-text"
+                        *ngIf="newUser.value.phone">{{'REGISTRATION.INVALID_FORMAT' | translate}}</span>
+                </div>
+              </div>
+              <div class="col-right">
+                <div>
+                  <mat-form-field>
+                    <label class="head-text" for="add-date-birth">{{'REGISTRATION.BIRTHDAY' | translate}}*</label>
+                    <input matInput #dateInput [matDatepicker]="picker" class="devices date-birth" id="add-date-birth"
+                           [min]="minDate" [max]="maxDate" formControlName="birthday" (click)="picker.open()" disabled>
+                    <mat-datepicker #picker startView="year" disabled="false"></mat-datepicker>
+                    <span class="error-text" *ngIf="newUser.value.birthday">{{'REGISTRATION.INVALID_FORMAT' | translate}}</span>
+                  </mat-form-field>
+                </div>
+                <div>
+                  <label class="head-text" for="add-password-user">{{'REGISTRATION.PASSWORD' | translate}}*</label>
+                  <input class="devices" type="password" name="add-password-user" id="add-password-user" value=""
+                         placeholder="{{'REGISTRATION.ENTER_PASSWORD' | translate}}" formControlName="password"/>
+                  <span class="error-text" *ngIf="passwordControl.hasError('minlength')">{{'REGISTRATION.SHORT_PASS' | translate}}</span>
+                  <span class="error-text"
+                        *ngIf="passwordControl.hasError('pattern') && !passwordControl.hasError('minlength') && newUser.value.password">{{'REGISTRATION.INVALID_FORMAT' | translate}}</span>
+
+                </div>
+                <div>
+                  <label class="head-text" for="add-iner-password-user">{{'REGISTRATION.CONFIRM_PASSWORD' |
+                    translate}}*</label>
+                  <input class="devices id-devices" type="password" name="add-iner-password-user"
+                         id="add-iner-password-user"
+                         value="" placeholder="{{'REGISTRATION.REPEAT_PASSWORD' | translate}}"
+                         formControlName="confirmPassword"/>
+                  <span class="error-text" *ngIf="newUser.value.confirmPassword">{{'REGISTRATION.ERROR_PASS' | translate}}</span>
+                </div>
+              </div>
+            </div>
+            <div class="bottom_text"
+                 [ngClass]="{'checkbox-valid': newUser.controls.agree.status === 'INVALID' && hasEmptyFields}">
+              <input type="checkbox" class="checkbox-dark" name="type-2" id="type-2" formControlName="agree">
+              <span>{{'REGISTRATION.AGREEMENT_1' | translate}} </span>
+              <a class="confidentiality_link" (click)="openDialogConditions()">{{'REGISTRATION.AGREEMENT_2' |
+                translate}}</a>
+            </div>
+            <div *ngIf="hasEmptyFields" class="error">{{'REGISTRATION.EMPTY_FIELDS' | translate}}</div>
+            <input type="submit" class="btn submit-support" value="{{'REGISTRATION.SIGN_UP' | translate}}"
+                   (click)="registrationUser()">
+          </form>
+        </div>
+
+        <div id="restore_password" class="info-log form-group" *ngSwitchCase="3">
+          <span class="head">{{'REGISTRATION.RECOVERY_PASS' | translate}}</span>
+          <div class="row-log-input">
+            <label class="password-user-in" for="user-restore_password"></label>
+            <div [formGroup]="restorePassForm">
+              <input class="devices int-left form-control" name="user-restore_password" id="user-restore_password"
+                     value="" #refrence
+                     formControlName="emailForRestorePass"
+                     placeholder="{{'LOGIN.ENTER_EMAIL' | translate}}" (focus)="emailNotFound = false"/>
+              <span *ngIf="emailNotFound" class="error">{{'REGISTRATION.NOT_REGISTERED' | translate}}</span>
+              <span *ngIf="isRestoredEmailInvalid" class="error">{{'REGISTRATION.INVALID_FORMAT' | translate}}</span>
+
+            </div>
+          </div>
+          <input type="button" class="btn submit-support" value="{{'REGISTRATION.RESTORE' | translate}}" (click)="restorePass()">
+        </div>
+      </div>
+    </div>
+    <div class="hold- copy-inner">
+      <span class="copy-inner">&copy; 2018 <a href="{{biopromUrl}}" class="">Bioprom</a></span>
+      <br>
+      <br>
+    </div>
+  </div>
+</div>

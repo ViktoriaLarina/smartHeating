@@ -1,0 +1,12 @@
+<div id="support" *ngIf="!showMobileMyProfile && allDataOfMessages !== undefined">
+  <app-message #messages
+  *ngFor="let item of allDataOfMessages"
+  [item]="item"
+  ></app-message>
+  <div id="awesomePart"></div>
+  <app-message-input></app-message-input>
+  <div id="scroll-down-target"></div>
+</div>
+<!--<go-top-button-->
+               <!--[scrollDistance]="300">-->
+<!--</go-top-button>-->

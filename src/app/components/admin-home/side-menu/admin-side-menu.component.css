@@ -1,0 +1,209 @@
+.menu-sidebare {
+  margin: 30px 0;
+}
+
+.admin-logo-p {
+  margin-top: 0;
+  color: #fff;
+  font-style: italic;
+  text-align: center;
+}
+
+.logo {
+  background: url(../../../../img/bg/logo.png) no-repeat 0 0;
+}
+
+.new-message-output {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+  margin-left: 140px;
+  background-color: rgba(199, 65, 38, 0.9);
+  border-radius: 5px;
+  width: 22px;
+  height: 22px;
+  text-align: center;
+}
+
+.menu-sidebare li:focus,
+.menu-sidebare li.ui-state-focus,
+.menu-sidebare li:focus a,
+.menu-sidebare li.ui-state-focus a,
+.menu-sidebare li a:focus,
+.menu-sidebare li.ui-state-focus a:focus,
+.menu-sidebare li.ui-state-focus span,
+.menu-sidebare li.ui-state-focus div {
+  outline: none !important;
+}
+
+.menu-sidebare li a {
+  padding: 9px 0 10px;
+  display: block;
+}
+
+.menu-sidebare li.ui-tabs-active > a {
+  background: #42789c;
+}
+
+.menu-sidebare li a span {
+  padding-left: 40px;
+  position: relative;
+  color: #fff;
+  font-size: 15px;
+}
+
+.menu-sidebare li.ui-tabs-active a span {
+  font-weight: 600;
+}
+
+.menu-sidebare li > a span:before {
+  content: "";
+  display: block;
+  width: 16px;
+  height: 16px;
+  background: url(../../../../img/bg/spr-menu.png) no-repeat 0 0;
+  position: absolute;
+  top: 4px;
+  left: 13px;
+  opacity: .6;
+}
+
+.menu-sidebare li.ui-tabs-active a span:before {
+  opacity: 1;
+}
+
+.menu-sidebare li:nth-child(2) a span:before {
+  background-position: -16px 0;
+}
+
+.menu-sidebare li:nth-child(3) a span:before {
+  background-position: -32px 0;
+}
+
+.menu-sidebare li:nth-child(4) a span:before {
+  background-position: -48px 0;
+}
+
+.menu-sidebare li:nth-child(5) a span:before {
+  background-position: -80px 0;
+  width: 18px;
+}
+
+.menu-sidebare li:nth-child(6) a span:before {
+  background-position: -98px 0;
+}
+
+.menu-sidebare li:nth-child(7) a span:before {
+  background-position: -80px 0;
+}
+
+.side-lang {
+  width: 100px;
+  height: 30px;
+  padding-top: 2px;
+  margin: 0 auto;
+  font-size: 18px;
+}
+
+.side-lang-select {
+  padding: 0;
+  border: 1px solid white;
+  border-radius: 3px;
+  color: #000000;
+  background: #bfd4de;
+  width: 100%;
+}
+
+.side-head {
+  display: none;
+  padding-top: 10px;
+}
+
+.side-head-hr {
+  margin: 10px 0;
+}
+
+.side-log-area {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.side-log {
+  width: 50%;
+  float: left;
+}
+
+.side-exit {
+  width: 50%;
+  float: left;
+}
+
+.side-log-but {
+  display: block;
+  background-image: url(../../../../img/user.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  width: 46px;
+  height: 46px;
+  margin: auto;
+}
+
+.to-left {
+  float: left;
+}
+
+.side-exit-but {
+  background-image: url(../../../../img/exit.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  width: 46px;
+  height: 46px;
+  margin: auto;
+}
+
+::ng-deep .menu-sidebare li a span {
+  font-size: 14px;
+  border-bottom-width: 0;
+}
+
+.active {
+  background: #42789c;
+}
+
+.mobileMenuShow {
+  left: 0;
+}
+
+.link-exit {
+  display: block;
+  width: 46px;
+  height: 46px;
+}
+
+/*------------------------media--------------------------------*/
+/*---------------media 996-------------------------------------*/
+@media screen and (max-width: 996px), screen and (max-device-width: 996px), screen and (max-width: 996px) and (-webkit-min-device-pixel-ratio: 2), screen and (max-device-width: 996px) and (-webkit-min-device-pixel-ratio: 2), screen and (max-width: 996px) and (-webkit-min-device-pixel-ratio: 1), screen and (max-device-width: 996px) and (-webkit-min-device-pixel-ratio: 1) {
+
+  aside {
+    left: -225px;
+    overflow-y: scroll;
+  }
+
+  aside.open {
+    left: 0;
+  }
+}
+
+/*---------------media 996--end--------------------------------*/
+/*-----------------media 790-----------------------------------*/
+@media screen and (max-width: 790px), screen and (max-device-width: 790px) {
+  .side-head {
+    display: block;
+  }
+}
+
+/*-----------------media 790--end---------------------------------*/

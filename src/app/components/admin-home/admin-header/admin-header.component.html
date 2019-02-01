@@ -1,0 +1,22 @@
+<header [ngClass]="{'chat-header' : rout.url === '/admin/messages' }">
+  <div class="row mobile-row">
+    <div class="pull-left">
+      <div class="logo"></div>
+      <p class="admin-logo-p">Администрирование</p>
+    </div>
+
+    <button type="button" class="btn-mobile-menu" (click)="showMobileMenu()" [ngClass]="{open : mobileMenu===true}">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+  <div class="row">
+    <div class="pull-right bg-body bl-btn clearfix mobile-off">
+      <div class="header-profile-buttons mobile-off">
+        <button class="name" (click)="openDialogProfile()"><span>Мой профиль</span></button>
+        <a class="btn exit" (click)="logout()"><span>Выход</span></a>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,5 @@
+<div *ngIf="device">
+  <app-device-item-type1 [device]="device" *ngIf="deviceTypeToShow === 0"></app-device-item-type1>
+  <app-device-item-type2 [device]="device" *ngIf="deviceTypeToShow === 1"></app-device-item-type2>
+  <!--<app-device-item-type3></app-device-item-type3>-->
+</div>

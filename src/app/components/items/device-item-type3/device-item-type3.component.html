@@ -1,0 +1,98 @@
+<div class="row-device">
+  <!--<div class="row-device" [ngClass]="{'offline-error': !device['isOnline']}" *ngIf="deviceTypeToShow !== 0">-->
+  <!--<div class="img-error offline-warning">-->
+  <!--<div class="row info-device" *ngIf="!device['isOnline'] && !isRemoved">-->
+  <!--<img src="../../../../img/no_wifi.png">-->
+  <!--<span>{{'DEVICES.OFFLINE' | translate}}</span>-->
+  <!--</div>-->
+  <!--<div class="row info-device" *ngIf="isRemoved">-->
+  <!--<span class="head-text">{{'DEVICES.COUNTER' | translate}}</span>-->
+  <!--<div id="countdown_dashboard">-->
+  <!--<div class="dash days_dash">-->
+  <!--<div class="hold-time">-->
+  <!--<div class="digit">{{day}}</div>-->
+  <!--</div>-->
+  <!--<span class="dash_title">{{'DEVICES.DAYS' | translate}}</span>-->
+  <!--</div>-->
+  <!--<div class="dash hours_dash">-->
+  <!--<div class="hold-time">-->
+  <!--<div class="digit">{{hours}}</div>-->
+  <!--</div>-->
+  <!--<span class="dash_title">{{'DEVICES.HOURS' | translate}}</span>-->
+  <!--</div>-->
+  <!--<div class="dash minutes_dash">-->
+  <!--<div class="hold-time">-->
+  <!--<div class="digit">{{minutes}}</div>-->
+  <!--</div>-->
+  <!--<span class="dash_title">{{'DEVICES.MINUTES' | translate}}</span>-->
+  <!--</div>-->
+  <!--<div class="dash seconds_dash">-->
+  <!--<div class="hold-time">-->
+  <!--<div class="digit">{{seconds}}</div>-->
+  <!--</div>-->
+  <!--<span class="dash_title">{{'DEVICES.SECONDS' | translate}}</span>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--<button type="button" class="btn-devices btn-devices-none add-devices" *ngIf="isRemoved"-->
+  <!--(click)="restoreDevice()">{{'DEVICES.RESTORE_DEVICE' | translate}}-->
+  <!--</button>-->
+  <!--</div>-->
+  <div class="row-device device-type-2">
+    <div class="row row-info-head">
+      <div class="object-info device-type-2">
+
+
+        <!--<span class="object-name active" *ngIf="houseType">{{name + ' ' + '[' + (houseType | translate) + ']'}}</span>-->
+        <!--<span class="object-name active" *ngIf="!houseType">{{name}}</span>-->
+        <span class="object-name active">Name of device [house]</span>
+
+        <div class="pull-right hold-on_off">
+          <button type="button" class="on active" id="button-state" *ngIf="!isWaitingBtn"
+                  (click)="changeDeviceSetate()">
+            {{state? ('DEVICES.SWITCH_OFF' | translate) : ('DEVICES.SWITCH_ON' | translate) }}
+          </button>
+          <mat-spinner *ngIf="isWaitingBtn" [diameter]="20"></mat-spinner>
+        </div>
+
+      </div>
+      <a class="settings_link pull-right" (click)="openDialogSettings()">{{'DEVICES.SETTINGS' | translate}}</a>
+    </div>
+    <div class="row-mobile">
+      <div class="row-mobile">
+        <div class="w50">
+          <div class="bl-power">
+            <span class="head-device">Smart Socket</span>
+            <div *ngIf="!error">
+              <span class="txt1">0.01<span class="txt1-1">kW</span></span>
+              <span class="txt2">{{'DEVICES.POWER' | translate}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="w50 ">
+          <div class="condition">
+            <div class="row border-bottom">
+              <div class="bl-left">
+                <span class="txt1">State</span>
+                <span class="txt2">On</span>
+              </div>
+              <div class="bl-right">
+                <span class="txt1">Total power</span>
+                <span class="txt2">25.5 kW/h</span>
+              </div>
+            </div>
+
+
+            <div class="row row-info">
+              <span class="txt1">{{'DEVICES.ACCESS' | translate}}</span>
+              <!--<span class="txt2" *ngIf="device.permission === 'WRITE'">{{'DEVICES.WRITE' | translate}}</span>-->
+              <!--<span class="txt2" *ngIf="device.permission === 'READ'">{{'DEVICES.READ' | translate}}</span>-->
+              <span class="txt2 permission-style">{{'DEVICES.READ' | translate}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row-border-popup"></div>
+  </div>
+</div>

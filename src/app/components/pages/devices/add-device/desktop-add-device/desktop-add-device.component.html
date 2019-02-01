@@ -1,0 +1,146 @@
+<div class="modal modal-settings add-device none" id="add-device-desktop">
+  <span class="header-modal">{{'ADD_DEVICE.ADD_DEVICE_HEAD' | translate}}</span>
+  <div>
+    <div mat-dialog-content>
+      <div class="slide" *ngIf="slidePage===1">
+        <fieldset class="sf-step" [hidden]="isHideForm">
+          <form class="row-modal" [formGroup]="newDevice" style="padding: 140px 0;">
+            <div class="sf-step-column">
+              <div class="hold-input">
+                <label class="head-text" id="head-text-key" for="add-key-devices">{{'HISTORY.DEVICE_ID' | translate}}</label>
+                <input class="devices clearvalue" type="text" id="add-key-devices" style="margin-bottom: 0; float: none"
+                       formControlName="deviceId" placeholder="{{'ADD_DEVICE.ENTER_DATA' | translate}}"/>
+              </div>
+            </div>
+            <div *ngIf="newDevice.invalid && hasEmptyFields" class="error">{{'REGISTRATION.INVALID_FORMAT' |
+              translate}}
+            </div>
+          </form>
+        </fieldset>
+        <div class="loading fix-padding" [ngClass]="{'loading-class': isLoading }">
+          <div class="hold-loader">
+            <div class="spinner-wrapper">
+              <mat-spinner class="animation"></mat-spinner>
+            </div>
+          </div>
+        </div>
+        <div class="success fix-padding" [ngClass]="{'success-class': isGoodRequestResult }">
+          <div class="hold-loader">
+            <span class="info-loader" style="margin-top: 150px">{{'ADD_DEVICE.WAITING' | translate}}</span>
+            <div class="info-loader"></div>
+          </div>
+        </div>
+        <!--<div class="success fix-padding" [ngClass]="{'error-class':  isBadRequestResult }">-->
+          <!--<div class="hold-loader">-->
+            <!--<div class="info-loader-error"></div>-->
+            <!--<span class="info-loader">{{'ADD_DEVICE.ERROR' | translate}}</span>-->
+          <!--</div>-->
+        <!--</div>-->
+      </div>
+      <div class="slide" *ngIf="slidePage===2">
+        <fieldset class="sf-step">
+          <div class="row-modal fix-padding" id="form2">
+            <div class="sf-step-column">
+              <div class="sf-step-column">
+              </div>
+              <div class="hold-input">
+                <label class="head-text" for="add-type-room">{{'NAVIGATION.HOUSE_TYPE' | translate}}</label>
+                <select [(ngModel)]="selectType" class="devices" id="add-type-room" (change)="isTypeSelect = false"
+                        [ngClass]="{'error-block' : isTypeSelect}">
+                  <option *ngFor="let item of arrayOfPlaces" [ngValue]="item.value">{{item.name | translate}}
+                  </option>
+                </select>
+              </div>
+              <div [formGroup]="newDeviceInfo">
+                <div class="hold-input clearfix">
+                  <label class="head-text" for="add-name-devices">{{'NAVIGATION.DEVICE_NAME' | translate}}</label>
+                  <input class="devices clearvalue" id="add-name-devices"
+                         placeholder="{{'ADD_DEVICE.ENTER_DATA' | translate}}" data-validate="1"
+                         formControlName="name"/>
+                </div>
+                <div class="hold-input">
+                  <label class="head-text">{{'ADD_DEVICE.BURNER_PARAM_1' | translate}}<br>{{'ADD_DEVICE.BURNER_PARAM_2'
+                    | translate}}</label>
+                  <input class="devices id-devices clearvalue" name="add-info2"
+                         placeholder="{{'ADD_DEVICE.ENTER_DATA' | translate}}" formControlName="burnerAndPower"/>
+                </div>
+                <div class="hold-input">
+                  <label class="head-text">{{'ADD_DEVICE.BOILER_PARAM_1' | translate}}<br>{{'ADD_DEVICE.BOILER_PARAM_2'
+                    | translate}}</label>
+                  <input class="devices id-devices clearvalue" name="add-info2"
+                         placeholder="{{'ADD_DEVICE.ENTER_DATA' | translate}}" formControlName="boilerAndPower"/>
+                </div>
+                <div class="hold-input">
+                  <label class="head-text" for="add-info3">{{'ADD_DEVICE.SQUARE_1' | translate}}<br>{{'ADD_DEVICE.SQUARE_2'
+                    | translate}}</label>
+                  <input class="devices clearvalue" name="add-info3" id="add-info3"
+                         placeholder="{{'ADD_DEVICE.ENTER_DATA' | translate}}" formControlName="square"/>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="hasEmptyFields && (newDeviceMoreInfo.invalid || !selectType)" class="error">
+              {{'REGISTRATION.EMPTY_FIELDS' | translate}}
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <div class="slide" *ngIf="slidePage===3">
+        <fieldset class="sf-step sf-last-step">
+          <div class="row-modal  p40 fix-padding">
+            <table class="info-add-devase">
+              <tbody>
+              <tr>
+                <td>{{'NAVIGATION.HOUSE_TYPE' | translate}}</td>
+                <td>{{placeType | translate}}</td>
+              </tr>
+              <tr>
+                <td>{{'NAVIGATION.DEVICE_NAME' | translate}}</td>
+                <td>{{deviceRegistrationDto.name}}</td>
+              </tr>
+              <tr>
+                <td>{{'HISTORY.DEVICE_ID' | translate}}</td>
+                <td>{{deviceRegistrationDto.deviceId}}</td>
+              </tr>
+              <tr>
+              <tr>
+                <td>{{'ADD_DEVICE.BURNER_PARAM' | translate}}</td>
+                <td>{{deviceRegistrationDto.burnerAndPower}}</td>
+              </tr>
+              <tr>
+                <td>{{'ADD_DEVICE.BOILER_PARAM' | translate}}</td>
+                <td>{{deviceRegistrationDto.boilerAndPower}}</td>
+              </tr>
+              <tr>
+                <td>{{'ADD_DEVICE.SQUARE' | translate}}</td>
+                <td>{{deviceRegistrationDto.square}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <div class="btn-wrapper">
+      <div>
+        <button type="button" class="btn btn-left" (click)="prevPage()" *ngIf="slidePage === 3">
+          <span>{{'ADD_DEVICE.BACK' | translate}}</span>
+        </button>
+        <button type="button" class="btn" (click)="createDto()" *ngIf="slidePage === 2">
+          <span>{{'ADD_DEVICE.NEXT' | translate}}</span>
+        </button>
+        <button type="button" class="btn btn-left" (click)="checkIsDeviceWait()"
+                *ngIf="slidePage ===1 && !isLoading && ! isGoodRequestResult">
+          <span>{{'ADD_DEVICE.NEXT' | translate}}</span>
+        </button>
+        <button type="button" class="btn" (click)="registrationNewDevice()" *ngIf="slidePage === 3">
+          <span>{{'ADD_DEVICE.CONNECT' | translate}}</span>
+        </button>
+        <button type="button" class="btn" (click)="closeDialogProfile()" *ngIf="isBadRequestResult">
+          <span>{{'OTHER.CLOSE' | translate}}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

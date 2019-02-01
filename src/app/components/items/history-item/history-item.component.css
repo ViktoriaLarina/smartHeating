@@ -1,0 +1,11 @@
+.bth-init-history {
+  height: auto;
+  width: 100% !important;
+  cursor: pointer;
+}
+
+.chart-wrapper {
+  height: 300px;
+  width: 258px;
+}
+

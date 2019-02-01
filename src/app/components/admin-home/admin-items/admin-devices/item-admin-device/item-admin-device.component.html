@@ -1,0 +1,101 @@
+<md2-accordion-tab (click)="getInfo()">
+  <md2-accordion-header>
+    <div id="circle" [ngClass]="{'green' : device.isOnline, 'red' : !device.isOnline }"></div>
+    <span class="item-title">{{device.name + " " + "(" + device.ip + ")"}}</span><span class="remove-msg"
+                                                                                       *ngIf="device.removeDate">удален пользователем</span>
+  </md2-accordion-header>
+  <div class="bl-top-menu">
+    <ul class="top-menu">
+      <li (click)="index = 1">
+        <p [ngClass]="{active: index === 1}">Общая информация</p>
+      </li>
+      <li (click)="getDataDevice()">
+        <p [ngClass]="{active: index === 2}">Данные от устройства</p>
+      </li>
+      <li>
+        <p (click)="showUsers()" [ngClass]="{active: index === 3}">Пользователи</p>
+      </li>
+      <li (click)="index = 4">
+        <p [ngClass]="{active: index === 4}">Карта</p>
+      </li>
+    </ul>
+  </div>
+  <div class="item-info-content">
+    <div *ngIf="index === 1">
+      <table class="info-table-desktop">
+        <tr>
+          <td>Name:</td>
+          <td class="bordered bw">{{device.name}}</td>
+          <td>Id:</td>
+          <td class="bordered bw">{{device.devId}}</td>
+          <td>Burner:</td>
+          <td *ngIf="device.deviceInfoDto"><span>{{device.deviceInfoDto.burnerAndPower}}</span></td>
+        </tr>
+        <tr>
+          <td>Type:</td>
+          <td class="bordered bgr">{{deviceType}}</td>
+          <td>Country:</td>
+          <td class="bordered bgr">{{device.country}}</td>
+          <td>Boiler:</td>
+          <td *ngIf="device.deviceInfoDto"><span>{{device.deviceInfoDto.boilerAndPower}}</span></td>
+        </tr>
+        <tr>
+          <td>iP:</td>
+          <td class="bordered bw">{{device.ip}}</td>
+          <td>House Type:</td>
+          <td class="bordered bw">{{houseType | translate}}</td>
+          <td>Square:</td>
+          <td *ngIf="device.deviceInfoDto"><span>{{device.deviceInfoDto.square}}</span></td>
+        </tr>
+      </table>
+      <p>{{'Версия прошивки устройства ' + device.firmware}}</p>
+      <p *ngIf="device.removeDate">{{'устройство удалится полностью: ' + removeDate}}</p>
+      <button type="button" (click)="showHistory()" class="action-btn show">Посмотреть историю</button>
+      <button type="button" *ngIf="device.removeDate" (click)="restoreDevice()" class="action-btn show">Восстановить
+        устройства
+      </button>
+      <button type="button" *ngIf="!device.removeDate" (click)="disabledDevice()" class="action-btn remove">Удалить
+        устройство с возможностью восстановить
+      </button>
+      <button type="button" (click)="deleteDevice()" class="action-btn remove">Удалить устройство полностью</button>
+      <app-chart-history *ngIf="ChartPoints && selected" [ChartPoints]="ChartPoints"
+                         [DeviceType]="this.device.deviceType"></app-chart-history>
+    </div>
+    <div *ngIf="index === 2">
+      <table class="data-table">
+        <tr *ngFor="let row of dataInfo;">
+          <td *ngFor="let col of row;">
+            {{(col.name | translate) + ':'}} <span>{{col.value}}</span>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div *ngIf="index === 3">
+      <table class="user-info" *ngIf="arrayOfUsers && arrayOfUsers.length > 0">
+        <thead>
+        <tr>
+          <th>Name:</th>
+          <th>Permission:</th>
+          <th>Emai:</th>
+          <th>Phone:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let user of arrayOfUsers">
+          <td>{{user.firstName + ' ' + user.lastName}}</td>
+          <td *ngIf="!user.isOwner">{{user.permissions[device.id]}}</td>
+          <td *ngIf="user.isOwner" class="permission">OWNER</td>
+          <td class="click-link" (click)="showInfoUser(user.id)">{{user.email}}</td>
+          <td>{{user.phone}}</td>
+        </tr>
+        </tbody>
+      </table>
+      <app-item-admin-user *ngIf="arrayOfUsers && arrayOfUsers.length > 0 && user" [user]="user"></app-item-admin-user>
+      <p *ngIf="!arrayOfUsers || arrayOfUsers.length === 0">Список пуст</p>
+    </div>
+    <div *ngIf="index === 4" class="map-wrapper">
+      <app-main-office-map *ngIf="device.longitude && device.latitude" [lat]="deviceFullInfo.latitude"
+                           [lng]="deviceFullInfo.longitude"></app-main-office-map>
+    </div>
+  </div>
+</md2-accordion-tab>

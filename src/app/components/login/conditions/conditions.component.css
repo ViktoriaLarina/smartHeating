@@ -1,0 +1,32 @@
+.main-wrapper {
+  max-width: 700px;
+}
+
+.title-block {
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.wrapper {
+  margin-left: 20px;
+}
+
+.button {
+  cursor: pointer;
+  width: auto !important;
+  height: 36px;
+  display: block;
+  margin: 10px 0 5px 0;
+  float: right;
+  padding: 5px 10px;
+  font-size: 15px;
+  line-height: 24px;
+  text-align: center;
+  border: 1px solid #6aa3ca;
+  color: #6aa3ca;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}

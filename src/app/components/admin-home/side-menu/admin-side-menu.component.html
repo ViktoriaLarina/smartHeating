@@ -1,0 +1,55 @@
+<div>
+  <aside id="sidebar" class="sadebar" [ngClass]="{mobileMenuShow : isMobileMenu}">
+    <a href="#" class="logo"></a>
+    <p class="admin-logo-p">Администрирование</p>
+    <hr class="side-head-hr"/>
+    <div class="side-head">
+      <div class="side-lang">
+        <select class="side-lang-select">
+          <option value="RU">RU</option>
+          <option value="EN">EN</option>
+        </select>
+      </div>
+      <div class="side-log-area clearfix">
+        <div class="side-log">
+          <button class="side-log-but"></button>
+        </div>
+        <div class="side-exit">
+          <div class="side-exit-but">
+            <a class="link-exit" [routerLink]="['../login']" routerLinkActive="active"></a>
+          </div>
+        </div>
+      </div>
+      <hr class="side-head-hr"/>
+    </div>
+    <ul class="menu-sidebare">
+      <li class="reload-height-sidebar contacts" [ngClass]="{active : currentPage===1}">
+        <a [routerLink]="['devices']" routerLinkActive="active" (click)="currentPage=1"><span>Устройства</span></a>
+      </li>
+      <li class="reload-height-sidebar contacts" [ngClass]="{active : currentPage===2}">
+        <a [routerLink]="['users']" routerLinkActive="active" (click)="currentPage=2"><span>Пользователи</span></a>
+      </li>
+      <li class="reload-height-sidebar contacts" [ngClass]="{active : currentPage===3}">
+        <a [routerLink]="['firmware']" routerLinkActive="active" (click)="currentPage=3"><span>Обновления</span></a>
+      </li>
+      <li class="reload-height-sidebar contacts" [ngClass]="{active : currentPage===4}">
+        <a [routerLink]="['instructions']" routerLinkActive="active" (click)="currentPage=4"><span>Файлы</span></a>
+      </li>
+      <li class="reload-height-sidebar contacts" [ngClass]="{active : currentPage===5}" style="overflow:hidden;">
+        <a [routerLink]="['messages']" routerLinkActive="active" (click)="currentPage=5" style="overflow:hidden;">
+          <span class="to-left">Диалоги</span>
+          <div class="new-message-output" *ngIf="countUnreadMsg">{{countUnreadMsg}}</div>
+        </a>
+      </li>
+      <li class="reload-height-sidebar contacts" [ngClass]="{active : currentPage===6}">
+        <a [routerLink]="['loginHistory']" routerLinkActive="active" (click)="currentPage=6"><span>История логинов</span></a>
+      </li>
+      <li class="reload-height-sidebar contacts" [ngClass]="{active : currentPage===7}">
+        <a [routerLink]="['contacts']" routerLinkActive="active" (click)="currentPage=7"><span>Контакты</span></a>
+      </li>
+      <li class="reload-height-sidebar contacts" [ngClass]="{active : currentPage===8}">
+        <a [routerLink]="['waiting']" routerLinkActive="active" (click)="currentPage=8"><span>Ожидают</span></a>
+      </li>
+    </ul>
+  </aside>
+</div>

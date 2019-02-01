@@ -1,0 +1,61 @@
+b, span {
+  color: #272b2b;
+}
+
+.cards {
+  background-color: rgb(250, 250, 250);
+  border: 1px solid #508db6;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px #5d5d5d;
+  margin: 0;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+}
+
+.delete-btn {
+  color: darkred;
+  font-weight: 600;
+  border: solid 1px darkred;
+  float: right;
+  cursor: pointer;
+  margin: 0 2px;
+}
+
+.cards:hover {
+  box-shadow: 1px 1px 8px #5d5d5d;
+}
+
+.cards-title {
+  padding: 10px;
+}
+
+.cardsinfo {
+  font-size: 15px;
+  padding: 10px;
+  text-align: left;
+  background: none;
+}
+
+.cardshr {
+  text-align: left;
+  margin: 0;
+  height: 1px;
+}
+
+.cardslink {
+  color: #1a17da;
+}
+
+.cardslink:hover {
+  color: #7978ff;
+  text-decoration: underline;
+}
+
+.center {
+  text-align: center;
+  margin-top: 20px;
+}
+
+
+

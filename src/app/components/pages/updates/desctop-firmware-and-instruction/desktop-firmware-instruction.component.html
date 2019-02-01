@@ -1,0 +1,27 @@
+<div class="desktop-container">
+  <table class="table-device">
+    <thead>
+    <tr>
+      <td class="add-after" (click)="sortByName('name')"
+          [ngClass]="{isUp : iconState==='name' && isUp, isDown : iconState==='name' && !isUp}"><span
+        class="desc">{{'UPDATES.FILE' | translate}}</span></td>
+      <td class="add-after" (click)="sortByName('deviceType')"
+          [ngClass]="{isUp : iconState==='deviceType' && isUp, isDown : iconState==='deviceType' && !isUp}"><span class="desc">{{'UPDATES.MODEL' | translate}}</span>
+      </td>
+      <td class="add-after description">
+        <span class="desc">{{'UPDATES.DESCRIPTION' | translate}}</span>
+      </td>
+      <td class="add-after" (click)="sortByName('version')" *ngIf="items[0].version"
+          [ngClass]="{isUp : iconState==='version' && isUp, isDown : iconState==='version' && !isUp}"><span
+        class="desc">{{'UPDATES.VERSION' | translate}}</span></td>
+      <td class="add-after" (click)="sortByName('size')"
+          [ngClass]="{isUp : iconState==='size' && isUp, isDown : iconState==='size' && !isUp}"><span class="desc">{{'UPDATES.SIZE' | translate}}</span>
+      </td>
+      <td class="add-after download"><a>{{'UPDATES.DOWNLOAD' | translate}}</a></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr app-desktop-firmware-and-instructions-item *ngFor="let item of items" [item]="item"></tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,152 @@
+<header [ngClass]="{'chat-header' : rout.url === '/home/support'}">
+  <div class="row mobile-row">
+    <div class="logo pull-left"></div>
+    <button type="button" class="btn-mobile-menu" (click)="showMobileMenu()" [ngClass]="{open : isMobileMenuShown===true}">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+  <div class="row">
+    <div class="pull-right bg-body bl-btn clearfix mobile-off">
+      <div class="header-profile-buttons mobile-off">
+        <button class="name" (click)="openDialogProfile()"><span>{{'HEADER.MY_PROFILE' | translate}}</span></button>
+        <div class="side-lang lang-select">
+          <select name="" id="" class="side-lang-select" [(ngModel)]="locale" title=""
+                  (change)="onChange($event.target.selectedIndex)">
+            <option *ngFor="let lang of arrayOfLanguages" [ngValue]="lang.value" [selected]="lang[0]">{{lang.name}}
+            </option>
+          </select>
+        </div>
+        <a class="btn exit" (click)="logout()"><span>{{'HEADER.EXIT' | translate}}</span></a>
+      </div>
+      <button type="button" class="btn btn-head btn-add-user" (click)="openDialogAddUserForOwner()" *ngIf="currentPage==='userPage'">
+        <span>{{'HEADER.ADD' | translate}}</span>
+      </button>
+      <button type="button" class="btn device btn-head" (click)="openDialogAddDevice()" *ngIf="currentPage==='devicesPage'"><span>{{'HEADER.DEVICE' | translate}}</span>
+      </button>
+    </div>
+    <div class="pull-left bl-top-menu device-nav" *ngIf="currentPage==='devicesPage'">
+      <ul class="top-menu">
+        <li><a (click)="showDevicesByFilter(); index=1" [ngClass]="{active : index===1}">
+          <span>{{'HEADER.ALL_DEVICES' | translate}}</span></a></li>
+        <li><a (click)="showDevicesByFilter('ONLINE'); index=2" [ngClass]="{active: index===2}">
+          <span>{{'HEADER.ONLINE' | translate}}</span></a></li>
+        <li><a (click)="showDevicesByFilter('OFFLINE'); index=3" [ngClass]="{active: index===3}">
+          <span>{{'HEADER.OFFLINE' | translate}}</span></a></li>
+        <li><a (click)="showDevicesByFilter('ERROR'); index=4" [ngClass]="{active: index===4}">
+          <span>{{'HEADER.ERROR' | translate}}</span></a></li>
+      </ul>
+    </div>
+    <div class="air" *ngIf="isMobileSize && rout.url !== supportRout"></div>
+    <div class="pull-left bl-top-menu" *ngIf="currentPage==='contactsPage'">
+      <ul class="top-menu">
+        <li class="contacts" (click)="showContactsContent(true); contactMenuIndex=1">
+          <a [ngClass]="{active: contactMenuIndex===1}">
+            <span>{{'HEADER.MAIN_OFFICE' | translate}}</span>
+          </a>
+        </li>
+        <li class="reload-masonry" (click)="showContactsContent(false); contactMenuIndex=2">
+          <a [ngClass]="{active: contactMenuIndex===2}">
+            <span>{{'HEADER.REGIONS' | translate}}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
+<!--------------------------------------------------------my-profile-------------------->
+<div id="info-user" *ngIf="showMobileMyProfile">
+  <div class="register-user-mobile" [ngClass]="{ 'margin--page-support': support===true}">
+    <span class="header-modal">{{'HEADER.EDIT_PROFILE' | translate}}</span>
+    <div class="content">
+      <form [formGroup]="myProfile" *ngIf="indexShowMyprofile">
+        <div class="input-wrapper">
+          <label class="head-text" for="add-name-user">{{'REGISTRATION.FIRST_NAME' | translate}}*</label>
+          <input class="devices" type="text" id="add-name-user"
+                 placeholder="{{'REGISTRATION.ENTER_FIRST_NAME' | translate}}" formControlName="firstName"/>
+          <span class="error-text"
+                *ngIf="myProfile.value.firstName">{{'REGISTRATION.INVALID_FORMAT' | translate}}</span>
+        </div>
+        <div class="input-wrapper">
+          <label class="head-text" for="add-lastname-user">{{'REGISTRATION.LAST_NAME' | translate}}*</label>
+          <input class="devices id-devices" type="text" id="add-lastname-user"
+                 placeholder="{{'REGISTRATION.ENTER_LAST_NAME' | translate}}"
+                 formControlName="lastName"/>
+          <span class="error-text" *ngIf="myProfile.value.lastName">{{'REGISTRATION.INVALID_FORMAT' | translate}}</span>
+        </div>
+        <div class="input-wrapper">
+          <label class="head-text" for="add-email-user">{{'REGISTRATION.EMAIL' | translate}}*</label>
+          <input class="devices" type="email" id="add-email-user" formControlName="email"
+                 disabled/>
+        </div>
+        <div class="input-wrapper">
+          <label class="head-text" for="add-phone-user">{{'REGISTRATION.PHONE' | translate}}*</label>
+          <input class="devices id-devices" type="text" id="add-phone-user"
+                 placeholder="{{'REGISTRATION.ENTER_PHONE' | translate}}"
+                 formControlName="phone"/>
+          <span class="error-text" *ngIf="myProfile.value.phone">{{'REGISTRATION.INVALID_FORMAT' | translate}}</span>
+        </div>
+        <div class="input-wrapper">
+          <mat-form-field>
+            <label class="head-text" for="edit-date-birth">{{'REGISTRATION.BIRTHDAY' | translate}}*</label>
+            <input #dateInput matInput [matDatepicker]="picker" class="devices date-birth" id="edit-date-birth"
+                   [min]="minDate" [max]="maxDate" formControlName="birthday" (click)="picker.open()" disabled>
+            <mat-datepicker #picker startView="year"></mat-datepicker>
+            <span class="error-text"
+                  *ngIf="myProfile.value.birthday">{{'REGISTRATION.INVALID_FORMAT' | translate}}</span>
+          </mat-form-field>
+        </div>
+        <button class="head-text btn-bottom" (click)="changePage()" type="button">{{'HEADER.CHANGE_PASSWORD' |
+          translate}}
+        </button>
+      </form>
+      <form [formGroup]="changePasswordForm" *ngIf="!indexShowMyprofile">
+        <div class="input-wrapper">
+          <label class="head-text" for="add-password-user-old">{{'HEADER.OLD_PASSWORD' | translate}}*</label>
+          <input class="devices" type="password" id="add-password-user-old"
+                 placeholder="{{'REGISTRATION.ENTER_PASSWORD' | translate}}"
+                 formControlName="oldPassword"/>
+          <span class="error-text" *ngIf="passwordControl.hasError('minlength')">{{'REGISTRATION.SHORT_PASS' | translate}}</span>
+        </div>
+        <div class="input-wrapper">
+          <label class="head-text" for="add-password-user">{{'REGISTRATION.PASSWORD' | translate}}*</label>
+          <input class="devices" type="password" id="add-password-user"
+                 placeholder="{{'REGISTRATION.ENTER_PASSWORD' | translate}}"
+                 formControlName="password"/>
+          <span class="error-text" *ngIf="passwordControl.hasError('minlength')">{{'REGISTRATION.SHORT_PASS' | translate}}</span>
+          <span class="error-text"
+                *ngIf="passwordControl.hasError('pattern') && !passwordControl.hasError('minlength') && changePasswordForm.value.password">{{'REGISTRATION.INVALID_FORMAT' | translate}}</span>
+        </div>
+        <div class="input-wrapper">
+          <label class="head-text" for="add-iner-password-user">{{'REGISTRATION.CONFIRM_PASSWORD' | translate}}*</label>
+          <input class="devices id-devices" type="password" id="add-iner-password-user"
+                 placeholder="{{'REGISTRATION.REPEAT_PASSWORD' | translate}}"
+                 formControlName="confirmPassword"/>
+          <span class="error-text" *ngIf="changePasswordForm.value.confirmPassword">{{'REGISTRATION.ERROR_PASS' | translate}}</span>
+        </div>
+      </form>
+      <div *ngIf="hasEmptyFields" class="error">{{'REGISTRATION.EMPTY_FIELDS' | translate}}</div>
+      <div class="row-btn-modal mobile">
+        <div class="btn-wrapper">
+          <button type="button" class="btn btn-cancel mobile close-user-mobile registr-mob-btn"
+                  (click)="closeMyProfile()" *ngIf="indexShowMyprofile"><span>{{'OTHER.CLOSE' | translate}}</span>
+          </button>
+          <button type="button" class="btn btn-cancel mobile close-user-mobile registr-mob-btn"
+                  (click)="backTofirstPage()" *ngIf="!indexShowMyprofile"><span>{{'ADD_DEVICE.BACK' | translate}}</span>
+          </button>
+        </div>
+        <div class="btn-wrapper">
+          <button type="button" class="btn btn-save mobile registr-mob-btn" (click)="updateMyProfile()"
+                  *ngIf="indexShowMyprofile">
+            <span>{{'OTHER.SAVE' | translate}}</span>
+          </button>
+          <button type="button" class="btn btn-save mobile registr-mob-btn" (click)="sendNewPassword()"
+                  *ngIf="!indexShowMyprofile">
+            <span>{{'OTHER.SAVE' | translate}}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

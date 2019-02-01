@@ -1,0 +1,68 @@
+<div class="modal modal-settings settings-win" id="settings">
+  <div class="tabs-hold">
+    <div mat-dialog-content class="mat-dialog-content-fixed">
+      <div class="switch" [ngSwitch]="count" *ngIf="(( isMobileSize ) || ( !isMobileSize && !mobMenu))">
+
+        <div id="menu-modal-08" class="tabs-content">
+          <div class="row-modal" *ngIf="device['data']">
+            <div class="col-left">
+              <span class="head-text">{{'HISTORY.DEVICE_IP' | translate}}</span>
+              <input class="devices ip-devices" type="text" name="ip-devices" [(ngModel)]="deviceIp" disabled/>
+              <span class="head-text">{{'DEVICES.CHANGE_NAME' | translate}}</span>
+              <input class="devices name-devices" type="text" name="name-devices" [(ngModel)]="deviceName"/>
+              <div class="hold-btn-remove">
+                <button type="button" class="btn-devices remove-devices active" (click)="deleteDevice()"
+                        *ngIf="!isRemoved">{{'DEVICES.DELETE_DEVICE' | translate}}
+                </button>
+                <button type="button" class="btn-devices btn-devices-none add-devices" *ngIf="isRemoved"
+                        (click)="restoreDevice()">{{'DEVICES.RESTORE_DEVICE' | translate}}
+                </button>
+              </div>
+            </div>
+            <div class="col-right">
+              <span class="head-text">{{'HISTORY.DEVICE_ID' | translate}}</span>
+              <input class="devices id-devices" type="text" name="id-devices" [(ngModel)]="deviceId" disabled/>
+              <div *ngIf="isRemoved">
+                <span class="head-text">{{'DEVICES.COUNTER' | translate}}</span>
+                <!-- Countdown dashboard start -->
+                <div id="countdown_dashboard">
+                  <div class="dash days_dash">
+                    <div class="hold-time">
+                      <div class="digit">{{day}}</div>
+                    </div>
+                    <span class="dash_title">{{'DEVICES.DAYS' | translate}}</span>
+                  </div>
+                  <div class="dash hours_dash">
+                    <div class="hold-time">
+                      <div class="digit">{{hours}}</div>
+                    </div>
+                    <span class="dash_title">{{'DEVICES.HOURS' | translate}}</span>
+                  </div>
+                  <div class="dash minutes_dash">
+                    <div class="hold-time">
+                      <div class="digit">{{minutes}}</div>
+                    </div>
+                    <span class="dash_title">{{'DEVICES.MINUTES' | translate}}</span>
+                  </div>
+                  <div class="dash seconds_dash">
+                    <div class="hold-time">
+                      <div class="digit">{{seconds}}</div>
+                    </div>
+                    <span class="dash_title">{{'DEVICES.SECONDS' | translate}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div mat-dialog-actions class="row-btn-modal clearfix" *ngIf="(( isMobileSize ) || ( !isMobileSize && !mobMenu))">
+      <button type="button" class="btn btn-cancel" (click)="closeDialog()"><span>{{'OTHER.CLOSE' | translate}}</span>
+      </button>
+      <button type="button" class="btn btn-save" (click)="changeState()"><span>{{'OTHER.SAVE' | translate}}</span>
+      </button>
+    </div>
+  </div>
+</div>
+

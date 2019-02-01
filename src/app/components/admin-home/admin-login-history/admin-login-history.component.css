@@ -1,0 +1,55 @@
+.table-device {
+  margin-top: 30px;
+  margin-bottom: 0;
+}
+
+.empty-block {
+  color: black;
+  text-align: center;
+  font-size: 24px;
+}
+
+th {
+  font-weight: 600;
+  background: #6aa3ca;
+  color: #fff;
+  border-color: #6aa3ca;
+  text-align: center;
+}
+
+.bg {
+  background-color: #fff;
+}
+
+/*------top-nav-----------*/
+.active {
+  color: #43c992;
+}
+
+.active:after {
+  background: #43c992;
+}
+
+.bl-top-menu {
+  margin: 0 auto;
+  vertical-align: top;
+  overflow: hidden;
+  border-bottom: solid 1px #ced9d9;
+}
+
+@media screen and (max-width: 1260px) {
+
+  .top-menu {
+    text-align: center;
+    width: 100%;
+  }
+
+  .top-menu li {
+    margin: 0 5px;
+    float: none;
+    display: inline-block;
+    vertical-align: top;
+  }
+}
+
+/*------top-nav-end-----------*/

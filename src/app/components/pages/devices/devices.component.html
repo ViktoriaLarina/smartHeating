@@ -1,0 +1,6 @@
+<div *ngIf="arrayShow && arrayShow.length > 0">
+  <app-device-item *ngFor="let device of arrayShow" [device]="device"></app-device-item>
+</div>
+<div class="historyDataBorder empty" *ngIf="!arrayShow || arrayShow.length == 0">
+  <p class="empty-container-message">{{'DEVICES.EMPTY_LIST' | translate}}</p>
+</div>

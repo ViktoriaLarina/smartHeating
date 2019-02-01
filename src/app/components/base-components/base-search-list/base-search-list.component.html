@@ -1,0 +1,28 @@
+<div class="main-wrapper">
+  <p *ngIf="error" class="error">Не менее 2 символов!</p>
+  <div class="search-row">
+    <span>Поиск по</span>
+    <select class="search-param style-by-select" [(ngModel)]="criteria">
+      <option *ngFor="let criteria of arrayOfCriteria; let i = index" [ngValue]="criteria.value">{{criteria.name}}
+      </option>
+    </select>
+    <input type="text" class="search-input" placeholder="введите данные" [(ngModel)]="searchInput">
+    <button class="search-param btn-search-start" (click)="startSearch()">{{searchQuery? 'Поиск' : 'Показать все'}}
+    </button>
+  </div>
+  <div class="accordion-item-wrapper" *ngIf="items">
+    <md2-accordion>
+      <ng-template ngFor let-item [ngForOf]="items" [ngForTemplate]="template"></ng-template>
+    </md2-accordion>
+
+    <mat-paginator #paginator
+                   *ngIf="itemsCount > pageSizeOptions[0]"
+                   [length]="itemsCount"
+                   (page)="setPage($event)"
+                   [pageSize]="service.searchParams.pageSize"
+                   [pageIndex]="service.searchParams.pageNumber"
+                   [pageSizeOptions]="pageSizeOptions">
+    </mat-paginator>
+  </div>
+  <p *ngIf="!items || items.length === 0" class="empty-block">Список пуст</p>
+</div>

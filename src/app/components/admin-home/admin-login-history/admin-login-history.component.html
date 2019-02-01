@@ -1,0 +1,74 @@
+<div class="bl-top-menu">
+  <ul class="top-menu">
+    <li (click)="devicesHistory(false)">
+      <a [ngClass]="{active: !target}">
+        <span class="first-tab">Устройства</span>
+      </a>
+    </li>
+    <li (click)="devicesHistory(true)">
+      <a [ngClass]="{active: target}">
+        <span>Пользователи</span>
+      </a>
+    </li>
+  </ul>
+</div>
+<div *ngIf="items && items.length !== 0" class="bg">
+  <table class="table-device">
+    <thead>
+    <tr *ngIf="!target">
+      <th>Date&Time:</th>
+      <th>ipAdress:</th>
+      <th>Device id:</th>
+      <th>Agent:</th>
+      <th>Changes:</th>
+    </tr>
+    <tr *ngIf="target">
+      <th>Date&Time:</th>
+      <th>ipAdress:</th>
+      <th>Email:</th>
+      <th>Full name:</th>
+      <th>Location:</th>
+      <th>Agent:</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!--<tr app-item-login-history-->
+    <!--*ngFor="let item of items"-->
+    <!--[item]="item"-->
+    <!--[isLogin]="target"-->
+    <!--&gt;</tr>-->
+    <ng-template ngFor let-item [ngForOf]="items">
+      <tr app-item-login-history
+          [item]="item"
+          [isLogin]="target"
+      ></tr>
+      <tr
+        *ngIf="item.dataToLoginHistoryTable && item.dataToLoginHistoryTable.latitude && item.dataToLoginHistoryTable.longitude">
+        <td colspan="6">
+          <app-main-office-map
+            [lat]="item.dataToLoginHistoryTable.latitude"
+            [lng]="item.dataToLoginHistoryTable.longitude"></app-main-office-map>
+        </td>
+      </tr>
+      <tr *ngIf="item.dataToLoginHistoryTable && item.dataToLoginHistoryTable.email">
+        <td colspan="6" class="border-add">
+          <app-item-admin-user [user]="item.dataToLoginHistoryTable"></app-item-admin-user>
+        </td>
+      </tr>
+      <tr *ngIf="item.dataToLoginHistoryTable && item.dataToLoginHistoryTable.path">
+        <td colspan="6" class="border-add">
+          <!--<app-item-admin-device [device]="item.dataToLoginHistoryTable"></app-item-admin-device>-->
+        </td>
+      </tr>
+    </ng-template>
+    </tbody>
+  </table>
+  <mat-paginator #paginator
+                 [length]="totalElements"
+                 (page)="setPage($event)"
+                 [pageSize]="pageSize"
+                 [pageIndex]="pageNumber"
+                 [pageSizeOptions]="pageSizeOptions">
+  </mat-paginator>
+</div>
+<p *ngIf="!items || items.length === 0" class="empty-block">Список пуст</p>

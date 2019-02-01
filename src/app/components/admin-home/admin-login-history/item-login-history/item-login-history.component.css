@@ -1,0 +1,14 @@
+td {
+  padding: 10px;
+}
+
+.click-link {
+  cursor: pointer;
+  text-decoration: underline;
+  color: blue;
+}
+
+.border-add {
+  border: solid 2px darkblue;
+}
+

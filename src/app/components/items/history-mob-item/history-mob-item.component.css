@@ -1,0 +1,21 @@
+.cards-load-history {
+  padding: 3px;
+  border-radius: 5px;
+  text-align: center;
+  color: #ffffff;
+  background-color: #508db6;
+  cursor: pointer;
+}
+
+.cards {
+  margin: 10px 0;
+  width:100%;
+}
+
+.cardsadress span {
+  color: black;
+}
+
+.cardsinfo span {
+  color: black;
+}

@@ -1,0 +1,12 @@
+.cardssize {
+  text-align: center;
+}
+
+.instruction-size {
+  width: 50%;
+}
+
+.description-style {
+  white-space: pre-line;
+  text-align: left;
+}

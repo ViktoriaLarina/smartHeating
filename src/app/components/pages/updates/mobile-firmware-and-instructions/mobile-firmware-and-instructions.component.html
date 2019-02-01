@@ -1,0 +1,8 @@
+<div class="card-container">
+  <app-grid [gutter]="10" [width]="260">
+    <app-mob-firmware-and-instructions-item
+      *ngFor="let item of items"
+      [item]="item">
+    </app-mob-firmware-and-instructions-item>
+  </app-grid>
+</div>

@@ -1,0 +1,93 @@
+input.ng-touched.ng-dirty.ng-invalid {
+  border: solid #b94a48 1px;
+  background-color: #f2dede;
+  border-radius: 2px;
+}
+
+input.ng-touched.ng-dirty.ng-invalid ~ .error-text {
+  visibility: visible;
+}
+
+#restore_password .error {
+  float: right;
+  width: 400px;
+}
+
+.row-sabmit {
+  margin: 0 -5px;
+  overflow: hidden;
+  margin-top: 30px;
+}
+
+.row-sabmit .hold-btn {
+  padding: 0 5px;
+  width: 100%;
+  float: left;
+  position: relative;
+}
+
+.registration-log .devices {
+  margin-bottom: 0;
+}
+
+.head-text {
+  margin-bottom: 5px;
+  margin-top: 15px;
+}
+
+.d-table-100 {
+  width: 100vw;
+  height: 100vh;
+  display: table;
+}
+
+.d-table-100 .d-table-row {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.d-table-100 .d-table-row .hold-login {
+  margin: 0 auto;
+  width: 500px;
+  background: #fff;
+}
+
+.info-log {
+  padding: 30px;
+  display: block;
+
+}
+
+.row-log-input {
+  padding: 30px 10px;
+  overflow: hidden;
+}
+
+.top-label {
+  margin-top: 0;
+}
+
+/*-----------------media 600----------------------------------------*/
+@media screen and (max-width: 600px), screen and (max-device-width: 600px) {
+
+  .d-table-100 .d-table-row .hold-login {
+    width: 460px;
+  }
+}
+
+/*-----------------media 600---end-------------------------------------*/
+/*-----------------media 480-------------------------------------------*/
+@media screen and (max-width: 480px), screen and (max-device-width: 480px) {
+
+  .d-table-100 .d-table-row .hold-login {
+    width: 100%;
+  }
+
+  .row-sabmit .hold-btn {
+    width: 250px;
+    float: none;
+    margin: 0 auto 10px;
+  }
+}
+
+/*-----------------media 480---end-------------------------------------*/

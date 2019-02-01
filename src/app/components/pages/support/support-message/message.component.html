@@ -1,0 +1,25 @@
+<div *ngIf="item">
+  <span class="title new-message" *ngIf="item.isFirstNew">New</span>
+  <span class="title title-center" *ngIf="item.flag">{{item.date | amLocale:('OTHER.AM_LOCALE' | translate) | amCalendar :{sameDay: '[' + ('OTHER.TODAY' | translate) + ']', lastDay: '[' + ('OTHER.YESTERDAY' | translate) + ']'} }}</span>
+  <!--('OTHER.UP' | translate )-->
+  <div class="hold-support" [ngClass]="{left: !item.admin, right: item.admin}">
+    <div class="time"><i class="fa-clock"></i>{{item.date | date: 'dd.MM.yyyy HH:mm'}}</div>
+    <div class="row-support">
+      <div class="img-support">
+        <img [src]="'img/support-img.png'" alt="" *ngIf="item.admin">
+        <img [src]="'img/no-noavatar.png'" alt="" *ngIf="!item.admin">
+      </div>
+      <div class="txt-support" *ngIf="item.msg">
+        <span>{{item.msg}}</span>
+      </div>
+      <div class="file-uploaded" *ngIf="item.fileName"
+           [ngClass]="{ 'file-uploaded-left': !item.admin, 'file-uploaded-right': item.admin }">
+        <div class="file-uploaded-title">{{item.fileName}}</div>
+        <div class="file-uploaded-img">
+          <button (click)="downloadData()"><img src="../../../../../img/uploaded.png" alt=""></button>
+        </div>
+        <div class="file-uploaded-info">File size: <span>{{item.fileSize | changeByte}}</span></div>
+      </div>
+    </div>
+  </div>
+</div>

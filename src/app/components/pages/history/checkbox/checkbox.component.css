@@ -1,0 +1,165 @@
+
+::ng-deep .cdk-overlay-pane {
+  top: 50px !important;
+}
+
+#checkbox-wrapper {
+  padding: 24px 24px 14px 24px;
+}
+
+::ng-deep .mat-dialog-container {
+  background: #fff;
+  padding: 0;
+}
+
+input {
+  border: solid 1px #6aa3ca;
+}
+
+.date-sort {
+  width: 100%;
+}
+
+.bth-init-history {
+  height: auto;
+}
+
+.btn-wrapper {
+  display: block;
+  text-align: right;
+}
+
+.btn {
+  height: 36px;
+  display: inline-block;
+  background: #fff;
+  margin: 0;
+  padding: 5px 10px;
+  font-size: 15px;
+  line-height: 24px;
+  text-align: center;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-cancel {
+  margin-left: 10px;
+  color: #fff;
+  background: #6aa3ca;
+  border: 1px solid #6aa3ca;
+
+}
+
+.btn-cancel:hover, .btn-cancel:active {
+  color: #6aa3ca;
+  background: #fff;
+}
+
+.btn-save {
+  border-color: #3fbf8a;
+  background: #3fbf8a;
+  color: #fff;
+}
+
+.btn-save:hover, .btn-save:active {
+  color: #3fbf8a;
+  background: #fff;
+  border: 1px solid #3fbf8a;
+}
+
+.date-from {
+  text-align: center;
+  padding: 0 5px 20px 5px;
+  width: 100%;
+  /*float: left;*/
+}
+
+.date-to {
+  text-align: center;
+  padding: 0 5px 20px 5px;
+  width: 100%;
+  /*float: left;*/
+}
+
+.filter-date {
+  padding: 3px;
+  background: #fff;
+  width: 110px;
+  color: #000;
+  font-size: 12px;
+  border-radius: 2px;
+  text-align: center;
+}
+
+.hold-checkbox-dark {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  overflow: hidden;
+  color: #000;
+  border-bottom: 1px solid #ced9d9;
+}
+
+.hold-checkbox-dark .w75 {
+  width: 75%;
+  float: left;
+}
+
+.hold-checkbox-dark .w100 {
+  margin: 0 auto;
+}
+
+.hold-checkbox-dark .w25 {
+  width: 25%;
+  float: left;
+  text-align: right;
+}
+
+.hold-checkbox-dark .row-checkbox {
+  margin-right: 30px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.hold-checkbox-dark .row-filter-date {
+  margin-right: 0;
+  color: #000;
+}
+
+.checkbox-dark:not(checked) + label {
+  margin-bottom: 10px;
+}
+
+/*-----------------media 790-----------------------------------*/
+@media screen and (max-width: 790px), screen and (max-device-width: 790px) {
+
+  ::ng-deep .cdk-overlay-pane {
+    left: 10px !important;
+  }
+
+  .date-from, .date-to {
+    text-align: center;
+  }
+}
+
+/*-----------------media 790--end------------------------------*/
+
+@media screen and (max-width: 480px), screen and (max-device-width: 480px) {
+
+  ::ng-deep .mat-datepicker-content .mat-calendar {
+    width: 250px !important;
+    height: 250px !important;
+  }
+
+  .header-modal {
+    padding: 14px;
+  }
+
+  #checkbox-wrapper {
+    padding: 14px;
+  }
+
+  .date-from {
+    padding: 0 5px 5px 5px;
+  }
+}

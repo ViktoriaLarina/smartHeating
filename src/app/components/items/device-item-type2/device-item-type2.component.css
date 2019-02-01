@@ -1,0 +1,501 @@
+/*---------------------countdown---------------*/
+#countdown_dashboard {
+  margin: 0 -7px 18px;
+  overflow: hidden;
+}
+
+.bl-power .txt-level-fuel {
+  font-size: 18px;
+  line-height: normal;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: block;
+}
+
+.fix-height {
+  height: 170px;
+}
+
+.dash {
+  padding: 0 7px;
+  width: 25%;
+  float: left;
+  position: relative;
+}
+
+.dash .digit {
+  font-size: 18px;
+  font-weight: 600;
+  display: inline-block;
+  text-align: center;
+  color: #858585;
+  position: relative;
+}
+
+.dash_title {
+  display: block;
+  text-align: center;
+  color: #858585;
+}
+
+.hold-time {
+  padding-top: 7px;
+  overflow: hidden;
+  border: 1px solid #858585;
+  text-align: center;
+  height: 40px;
+}
+
+.btn-devices {
+  margin: 32px 0 40px;
+  padding: 10px 7px 9px;
+  color: #fff;
+  font-size: 15px;
+  text-transform: uppercase;
+  background: #6aa3ca;
+  border: 2px solid #6aa3ca;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.btn-devices:hover {
+  background: transparent;
+  color: #6aa3ca;
+  cursor: pointer;
+}
+
+.btn-devices.add-devices {
+  background: #3fbf8a;
+  border-color: #3fbf8a;
+}
+
+.btn-devices.add-devices:hover {
+  background: transparent;
+  color: #3fbf8a;
+}
+
+.btn-devices.active {
+  display: block;
+}
+
+/*---------------------countdown---------------*/
+
+.bl-power {
+  margin-right: 15px;
+  padding: 0 13px;
+  width: 250px;
+  background: #43c992;
+  float: left;
+  color: #fff;
+  text-align: center;
+}
+
+.bl-power .head-device {
+  margin: 10px 0 11px;
+  padding-bottom: 11px;
+  font-size: 15px;
+  font-weight: 600;
+  display: block;
+  position: relative;
+}
+
+.img-error {
+  margin: 0 auto;
+  display: block;
+}
+
+.offline-error .offline-warning {
+  display: none;
+}
+
+.bl-power .head-device:after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, .5);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.bl-power .txt1 {
+  font-size: 64px;
+  line-height: 72px;
+  font-weight: 600;
+  display: block;
+}
+
+.bl-power .txt1 .txt1-1 {
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 50px;
+}
+
+.bl-power .txt2 {
+  margin-bottom: 23px;
+  font-size: 13px;
+  display: block;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #d1d8d8;
+}
+
+.condition {
+  margin-right: 15px;
+  padding: 0 13px;
+  float: left;
+  width: 250px;
+  background: #fff;
+  text-align: center;
+}
+
+.condition .row.border-bottom {
+  padding: 13px 0;
+}
+
+.condition .txt1 {
+  margin-bottom: 5px;
+  display: block;
+  font-size: 13px;
+}
+
+.condition .txt2 {
+  margin-bottom: 8px;
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  color: #44c18e;
+  text-transform: uppercase;
+}
+
+.condition .row-info {
+  margin: 0 -13px;
+  padding: 18px 5px 20px;
+  overflow: hidden;
+}
+
+.condition .bl-left {
+  width: 50%;
+  float: left;
+  border-right: 1px solid #d1d8d8;
+}
+
+.condition .bl-right {
+  width: 50%;
+  float: right;
+}
+
+.condition .row-info .txt1,
+.condition .row-info .txt2 {
+  margin-bottom: 0;
+  text-transform: none;
+}
+
+.row-device.offline {
+  opacity: .3;
+  position: relative;
+}
+
+.row-device.offline-error {
+  opacity: 1;
+  position: relative;
+}
+
+.info-device {
+  position: relative;
+}
+
+.row-device {
+  margin-top: 60px;
+}
+
+.row-device:first-child {
+  margin-top: 0;
+}
+
+.row-device.offline-error .img-error:before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(229, 238, 238, 0.8);
+  z-index: -1;
+}
+
+.row-device.offline-error .img-error {
+  padding-top: 50px;
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  text-align: center;
+  color: #000;
+}
+
+.row-device.offline-error .img-error img {
+  display: block;
+  margin: 0 auto 20px;
+}
+
+.row-device.offline-error .img-error span {
+  display: block;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  color: #4a555d;
+}
+
+.row-info-head {
+  margin-bottom: 17px;
+  color: #fff;
+  background-color: #3fbf8a;
+}
+
+.object-info {
+  padding: 11px 15px;
+  float: left;
+  width: 530px;
+  background-color: #43c992;
+}
+
+.object-info .object-name {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.row-device.offline-error .img-error2 {
+  position: relative;
+  padding-top: 0;
+  width: auto;
+  height: auto;
+  z-index: 4;
+}
+
+.heightSize {
+  margin-bottom: 10px;
+  line-height: normal;
+}
+
+.settings_link {
+  margin: 13px 15px 0 0;
+  position: relative;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 18px;
+  color: #fff;
+  -webkit-transition: opacity 0.2s ease;
+  -moz-transition: opacity 0.2s ease;
+  -o-transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease;
+}
+
+.settings_link:before {
+  content: '';
+  display: block;
+  width: 22px;
+  height: 24px;
+  background: url(../../../../img/bg/settings_link_white.png) no-repeat 0 0;
+  position: absolute;
+  opacity: 1;
+  top: -3px;
+  left: -29px;
+}
+
+.settings_link:hover {
+  opacity: 1;
+}
+
+/*----------------------device-style-2-----------------*/
+.device-type-2 .bl-power, .device-type-2 .row-info-head, .device-type-2 .object-info {
+  background: #389c82;
+}
+
+.device-type-2 .device-style2 {
+  padding-bottom: 24px;
+}
+
+.device-style2 .txt2 {
+  text-transform: uppercase !important;
+}
+
+.device-type-2 .condition, .device-type-2 .bl-power {
+  width: 100%;
+  margin: 0;
+}
+
+.device-type-2 .w50 {
+  width: 50%;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.device-type-2 .condition .txt2 {
+  color: #389c82;
+}
+
+.device-type-2 .row-mobile {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.device-type-2 {
+  margin: 0;
+}
+
+.border {
+  border-bottom: 1px solid #d1d8d8
+}
+
+.device-type-2 .condition .permission-style {
+  color: darkred;
+}
+
+/*----------------------device-style-2-----------end-----------------*/
+
+/*---------------media 1260------------------------*/
+@media screen and (max-width: 1260px) {
+
+  .bl-power {
+    margin-bottom: 15px;
+  }
+
+  .row-mobile {
+    overflow: hidden;
+  }
+
+  .row-mobile .w50 {
+    /*padding: 0 0 15px;*/
+    width: 50%;
+    float: left;
+  }
+
+  .row-mobile .bl-power,
+  .row-mobile .condition {
+    margin: 0;
+    width: 100%;
+  }
+
+}
+
+/*---------------media 1260--end------------------------*/
+
+/*---------------media 996-------------------------------*/
+@media screen and (max-width: 996px), screen and (max-device-width: 996px), screen and (max-width: 996px) and (-webkit-min-device-pixel-ratio: 2), screen and (max-device-width: 996px) and (-webkit-min-device-pixel-ratio: 2), screen and (max-width: 996px) and (-webkit-min-device-pixel-ratio: 1), screen and (max-device-width: 996px) and (-webkit-min-device-pixel-ratio: 1) {
+
+  .object-info {
+    width: 428px;
+  }
+
+}
+
+/*---------------media 996--end-------------------------------*/
+
+/*-----------------media 790-----------------------------------*/
+@media screen and (max-width: 790px), screen and (max-device-width: 790px) {
+
+  .object-info {
+    width: calc(100% - 150px);
+  }
+
+  .condition .row-info {
+    padding: 10px 0 30px 10px;
+  }
+
+  .bl-power .row-info-device {
+    padding: 10px 0;
+  }
+
+  .bl-power .txt2 {
+    margin-bottom: 19px;
+  }
+
+  .device-type-2 .row-mobile {
+    white-space: normal;
+  }
+}
+
+/*-----------------media 790--end-----------------------------------*/
+/*-----------------media 600----------------------------------------*/
+@media screen and (max-width: 600px), screen and (max-device-width: 600px) {
+
+  .object-info {
+    width: 100%;
+  }
+
+  .settings_link {
+    float: left;
+    margin: 0;
+    padding: 13px 15px;
+    margin-left: 22px;
+  }
+
+  .settings_link:before {
+    left: -10px;
+    top: 10px;
+  }
+
+  .row-border-popup {
+    margin: 24px -16px;
+    z-index: 1000;
+  }
+
+  .device-type-2 .w50 {
+    width: 100%;
+  }
+
+}
+
+/*-----------------media 600--end-----------------------------------*/
+/*-----------------media 480----------------------------------------*/
+@media screen and (max-width: 480px), screen and (max-device-width: 480px) {
+
+  .object-info {
+    width: 100%
+  }
+
+  .object-info .object-name {
+    width: 100%;
+    display: block;
+  }
+
+  .row-mobile .w50 {
+    float: none;
+    width: 100%;
+    padding: 0;
+  }
+
+  .bl-power .txt2 {
+    margin-bottom: 1em;
+  }
+
+  .bl-power .row-info-device {
+    padding: 5px;
+  }
+
+  .row-mobile .condition {
+    margin: 1em 0;
+  }
+
+  .condition > .row.border-bottom, .condition > .row.row-info {
+    padding: 5px 0;
+  }
+
+  .object-info .hold-on_off {
+    float: left;
+  }
+
+}
+
+/*-----------------media 480---end---------------------------------*/
+

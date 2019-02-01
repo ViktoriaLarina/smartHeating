@@ -1,0 +1,92 @@
+<div class="modal modal-settings modal-user-info" id="myProfileDesktop">
+  <span class="header-modal">
+    <button class="btn-top" [ngClass]="{active : index===1}" (click)="showEditProfile(1)">{{'HEADER.EDIT_PROFILE' | translate}}</button>
+    <button class="btn-top" [ngClass]="{active : index===2}" (click)="showEditProfile(2)">{{'HEADER.CHANGE_PASSWORD_2' | translate}}</button>
+  </span>
+  <div mat-dialog-content class="row-modal visible clearfix">
+    <div class="form-wrapper">
+      <div *ngIf="index===1">
+      <div class="col-left" [formGroup]="myProfile">
+        <div class="input-wrapper">
+          <label class="head-text" for="edit-name-user">{{'REGISTRATION.FIRST_NAME' | translate}}*</label>
+          <input class="devices" type="text" name="edit-name-user" id="edit-name-user"
+                 placeholder="{{'REGISTRATION.ENTER_FIRST_NAME' | translate}}" formControlName="firstName"/>
+          <span class="error-text"
+                *ngIf="myProfile.value.firstName">{{'REGISTRATION.INVALID_FORMAT' | translate}}</span>
+        </div>
+        <div class="input-wrapper">
+          <label class="head-text" for="edit-lastname-user">{{'REGISTRATION.LAST_NAME' | translate}}*</label>
+          <input class="devices id-devices" type="text" name="edit-lastname-user" id="edit-lastname-user"
+                 placeholder="{{'REGISTRATION.ENTER_LAST_NAME' | translate}}" formControlName="lastName"/>
+          <span class="error-text" *ngIf="myProfile.value.lastName">{{'REGISTRATION.INVALID_FORMAT' | translate}}</span>
+        </div>
+        <div class="input-wrapper bottom-input">
+          <label class="head-text" for="edit-email-user">{{'REGISTRATION.EMAIL' | translate}}*</label>
+          <input class="devices" type="email" name="edit-email-user" id="edit-email-user" formControlName="email"
+                 disabled/>
+        </div>
+      </div>
+      <div class="col-right">
+        <div class="input-wrapper">
+          <div class="input-wrapper phone">
+            <label class="head-text" for="edit-phone-user">{{'REGISTRATION.PHONE' | translate}}*</label>
+            <div class="phone-inpup-wrapper">
+              <div [formGroup]="myProfile" class="phone-body">
+                <input class="devices id-devices phone-input" type="text" name="edit-phone-user" id="edit-phone-user"
+                       placeholder="{{'REGISTRATION.ENTER_PHONE' | translate}}" formControlName="phone"/>
+                <span class="error-text"
+                      *ngIf="myProfile.value.phone">{{'REGISTRATION.INVALID_FORMAT' | translate}}</span>
+
+              </div>
+
+            </div>
+          </div>
+          <mat-form-field  [formGroup]="myProfile">
+            <label class="head-text" for="edit-date-birth">{{'REGISTRATION.BIRTHDAY' | translate}}*</label>
+            <input #dateInput matInput [matDatepicker]="picker" class="devices date-birth" id="edit-date-birth"
+                   lang="ru"
+                   [min]="minDate" [max]="maxDate" formControlName="birthday" (click)="picker.open()">
+            <mat-datepicker #picker startView="year" disabled="false"></mat-datepicker>
+            <span class="error-text"
+                  *ngIf="myProfile.value.birthday">{{'REGISTRATION.INVALID_FORMAT' | translate}}</span>
+          </mat-form-field>
+        </div>
+        <div *ngIf="hasEmptyFields" class="error">{{'REGISTRATION.EMPTY_FIELDS' | translate}}</div>
+      </div>
+      </div>
+      <div *ngIf="index===2" class="col-right" id="password-wrapper">
+        <form [formGroup]="changePasswordForm">
+          <div class="input-wrapper">
+            <label class="head-text" for="edit-password-user-oldpass">{{'HEADER.OLD_PASSWORD' | translate}}</label>
+            <input class="devices" type="password" name="edit-password-user" id="edit-password-user-oldpass"
+                   placeholder="{{'REGISTRATION.ENTER_PASSWORD' | translate}}" formControlName="oldPassword"/>
+            <span class="error-text" *ngIf="oldPassword && oldPassword.hasError('minlength')">{{'REGISTRATION.SHORT_PASS' | translate}}</span>
+          </div>
+          <div class="input-wrapper">
+            <label class="head-text" for="edit-password-user">{{'REGISTRATION.PASSWORD' | translate}}</label>
+            <input class="devices" type="password" name="edit-password-user" id="edit-password-user"
+                   placeholder="{{'REGISTRATION.ENTER_PASSWORD' | translate}}" formControlName="password"/>
+            <span class="error-text" *ngIf="passwordControl.hasError('minlength')">{{'REGISTRATION.SHORT_PASS' | translate}}</span>
+            <span class="error-text"
+                  *ngIf="passwordControl.hasError('pattern') && !passwordControl.hasError('minlength') && changePasswordForm.value.password">{{'REGISTRATION.INVALID_FORMAT' | translate}}</span>
+          </div>
+          <div class="input-wrapper bottom-input">
+            <label class="head-text" for="edit-iner-password-user">{{'REGISTRATION.CONFIRM_PASSWORD' |
+              translate}}</label>
+            <input class="devices id-devices" type="password" name="edit-iner-password-user"
+                   id="edit-iner-password-user"
+                   placeholder="{{'REGISTRATION.REPEAT_PASSWORD' | translate}}" formControlName="confirmPassword"/>
+            <span class="error-text" *ngIf="changePasswordForm.value.confirmPassword">{{'REGISTRATION.ERROR_PASS' | translate}}</span>
+          </div>
+        </form>
+        <div *ngIf="hasEmptyFieldsPassword" class="error">{{'REGISTRATION.EMPTY_FIELDS' | translate}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="row-btn-modal" id="my-profile-btn">
+    <button type="button" class="btn btn-cancel" (click)="closeDialogProfile()">
+      <span>{{'OTHER.CLOSE' | translate}}</span></button>
+    <button type="button" class="btn btn-save" (click)="updateMyProfile(); sendNewPassword()"><span>{{'OTHER.SAVE' | translate}}</span>
+    </button>
+  </div>
+</div>

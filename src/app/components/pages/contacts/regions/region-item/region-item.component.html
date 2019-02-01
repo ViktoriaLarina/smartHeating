@@ -1,0 +1,67 @@
+<md2-accordion-tab id="accordion1">
+  <md2-accordion-header>
+    <span class="head" (click)="scrollToTop()">
+      <span class="flags {{countryValue}}"></span>{{countryName | translate}}
+      <button *ngIf="role === 'admin' " class="delete-btn"
+              (click)="deleteContact('region', country.country)">Delete</button></span>
+  </md2-accordion-header>
+  <div>
+    <div class="kontakt-hold kontakt-hold-sng">
+      <div class="row-hold">
+        <div class="card-container" *ngIf="isMobileSize">
+          <app-grid [gutter]="20" [width]="260">
+            <div class="cards" *ngFor="let office of country.offices">
+              <div class="cards-title">
+                <b>{{office.title}}</b>
+              </div>
+              <hr class="cardshr">
+              <div class="cardsinfo">
+                <div *ngFor="let contact of office.departments[0].contacts">
+									<span><b *ngIf="contact.type">{{contact.type + ' ' + ' '}}</b>
+                    <a *ngIf="contact.link !== ''" class="cardslink nowrap" href="{{contact.link + contact.value}}">{{contact.value}}</a>
+                     <span *ngIf="contact.link === ''">{{contact.value}}</span>
+									</span>
+                </div>
+              </div>
+              <div *ngIf="office.workingHours">
+                <span><b>{{office.workingHours}}</b></span>
+                <br>
+              </div>
+              <hr class="cardshr">
+              <div class="map-wrapper" *ngIf="office.longitude && office.latitude">
+                <app-main-office-map [lat]="office.latitude"
+                                     [lng]="office.longitude" [card]="true"></app-main-office-map>
+              </div>
+            </div>
+          </app-grid>
+        </div>
+
+        <div class="desktop-container" *ngIf="!isMobileSize">
+          <div class="row-hold" *ngFor="let office of country.offices">
+            <div class="bl-left">
+              <div class="bl-txt-kont">
+                <button *ngIf="role === 'admin' " class="delete-btn" (click)="deleteContact('office', office.id)">
+                  Delete
+                </button>
+                <h4>{{office.title}}</h4>
+              </div>
+              <div class="bl-txt-kont" *ngFor="let contact of office.departments[0].contacts">
+                <span><b *ngIf="contact.type">{{contact.type + ' ' + ' '}}</b>{{contact.value}}</span>
+              </div>
+              <div class="bl-txt-kont">
+                <span><b>{{office.workingHours}}</b></span>
+              </div>
+            </div>
+            <div class="bl-right">
+              <app-main-office-map *ngIf="office.longitude && office.latitude" [lat]="office.latitude"
+                                   [lng]="office.longitude"></app-main-office-map>
+            </div>
+            <div class="hold-bg-row">
+              <div class="bg-row"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</md2-accordion-tab>

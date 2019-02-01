@@ -1,0 +1,21 @@
+.table-device.table-users {
+  width: auto;
+  display: inline-block;
+  text-align: left;
+  position: static;
+  left: 0;
+}
+
+.table-users-wrapper {
+  display: inline-block;
+  text-align: center;
+  margin: 20px auto 0 auto;
+  position: static;
+  left: 0;
+  width: 100%;
+}
+
+.table-users td {
+  min-width: 125px;
+}
+

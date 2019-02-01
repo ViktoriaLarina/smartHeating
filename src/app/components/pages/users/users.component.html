@@ -1,0 +1,6 @@
+<app-mobile-user *ngIf="!isMobileSize && usersArray.length !== 0 && !isShowMyProfile"
+                   [users]="usersArray"></app-mobile-user>
+<app-desktop-user *ngIf="isMobileSize && usersArray.length !== 0" [users]="usersArray"></app-desktop-user>
+<div class="historyDataBorder empty" *ngIf="usersArray.length === 0">
+  <p class="empty-container-message">{{'USERS.EMPTY_LIST' | translate}}</p>
+</div>

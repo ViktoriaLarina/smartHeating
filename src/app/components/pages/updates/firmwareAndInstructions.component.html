@@ -1,0 +1,9 @@
+<div id="firmware-files" *ngIf="dataArray && dataArray.length > 0">
+  <app-mobile-firmware-instruction *ngIf="!isMobileSize && dataArray.length > 0"
+                                   [items]="dataArray"></app-mobile-firmware-instruction>
+  <app-desktop-firmware-instruction *ngIf="isMobileSize && dataArray.length > 0"
+                                    [items]="dataArray"></app-desktop-firmware-instruction>
+</div>
+<div class="historyDataBorder empty" *ngIf="dataArray && dataArray.length === 0">
+  <p class="empty-container-message">{{'UPDATES.EMPTY_LIST_UPDATES' | translate}}</p>
+</div>

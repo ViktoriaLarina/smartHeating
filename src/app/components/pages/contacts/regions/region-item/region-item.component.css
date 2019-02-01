@@ -1,0 +1,324 @@
+::ng-deep .md2-accordion-tab.md2-accordion-tab-active > .md2-accordion-header {
+  border: 0 !important;
+  box-shadow: none !important;
+  background: #fff;
+  border: none !important;
+}
+
+::ng-deep .md2-accordion-header {
+  box-shadow: none !important;
+}
+
+#accordion1 .head:focus,
+#accordion1 .head.ui-state-focus {
+  outline: none !important;
+}
+
+.card-container {
+  padding: 10px 0;
+}
+
+.delete-btn {
+  color: darkred;
+  font-weight: 600;
+  border: solid 1px darkred;
+  float: right;
+  cursor: pointer;
+  margin: 0 2px;
+}
+
+.delete-btn:hover {
+  color: white;
+  background: darkred;
+}
+
+.map-wrapper {
+  width: 260px;
+  height: 280px;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.kontakt-hold,
+.kontakt-hold a {
+  font-size: 16px;
+  line-height: 24px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.kontakt-hold-sng h4 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.hold-bg-row {
+  width: 100%;
+  padding: 15px 0;
+}
+
+.bg-row {
+  width: 100%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.kontakt-hold .bl-left {
+  padding-right: 30px;
+}
+
+.kontakt-form {
+  padding: 25px 20px;
+  background: none repeat scroll 0 0 #e4e7e9;
+}
+
+.bl-txt-kont {
+  margin: 0 0 5px;
+}
+
+.bl-txt-kont a {
+  display: block;
+}
+
+.bl-txt-kont span {
+  display: block;
+}
+
+.bl-txt-kont.email-hold span {
+  display: inline-block;
+}
+
+.bl-txt-kont span span {
+  display: inline;
+}
+
+.bl-txt-kont span span a {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  line-height: 17px;
+  display: inline-block;
+}
+
+.bl-txt-kont span span a:hover {
+  border-color: #000;
+}
+
+.row-hold {
+  overflow: hidden;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+::ng-deep md2-accordion-tab.md2-accordion-tab-active > .md2-accordion-header {
+  border-color: #508db6;
+  box-shadow: 0 1px 0 #508db6;
+}
+
+::ng-deep .md2-accordion-tab-content {
+  padding: 0 !important;
+}
+
+::ng-deep md2-accordion-tab.md2-accordion-tab-active .md2-accordion-tab-body {
+  overflow: hidden !important;
+}
+
+.map-hold {
+  padding: 0 0 20px;
+  height: 1192px;
+}
+
+#accordion1 {
+  margin: 0 0 20px;
+}
+
+#accordion1 .head {
+  padding: 15px 20px 15px 20px;
+  display: block;
+  color: #000;
+  position: relative;
+  text-transform: uppercase;
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#accordion1 .head h2 {
+  margin: 0;
+  font-size: 16px;
+  line-height: 20px;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: inline-block;
+}
+
+#accordion1 .head {
+  background: transparent;
+}
+
+#accordion1 .head:hover {
+  color: #508db6;
+}
+
+#accordion1 .head:before {
+  content: '';
+  display: block;
+  height: 1px;
+  width: 80px;
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  background: rgba(3, 65, 83, .3);
+}
+
+#accordion1 .head:before {
+  display: none;
+}
+
+#accordion1 .kontakt-hold {
+  padding: 20px;
+  background: #fff;
+}
+
+#accordion1 .head .fa-angle-down {
+  transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+
+}
+
+#accordion1 .head .fa-angle-down {
+  float: right;
+  font-size: 26px;
+  line-height: 21px;
+  width: 10px;
+  height: 10px;
+  border-right: 3px solid #000;
+  border-bottom: 3px solid #000;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  margin-top: 5px;
+}
+
+#accordion1 .head.ui-accordion-header-active .fa-angle-down {
+  transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+}
+
+.flags {
+  margin-right: 10px;
+  position: relative;
+  top: 2px;
+  display: inline-block;
+  width: 27px;
+  height: 18px;
+
+}
+
+.flags.az {
+  background: url(../../../../../../img/bg/flags/Azerbaijan.png) no-repeat;
+  background-size: contain;
+}
+
+.flags.am {
+  background: url(../../../../../../img/bg/flags/Armenia.png) no-repeat;
+  background-size: contain;
+}
+
+.flags.bl {
+  background: url(../../../../../../img/bg/flags/Belarus.png) no-repeat;
+  background-size: contain;
+}
+
+.flags.kz {
+  background: url(../../../../../../img/bg/flags/Kazakhstan.png) no-repeat;
+  background-size: contain;
+}
+
+.flags.kg {
+  background: url(../../../../../../img/bg/flags/Kyrgyzstan.png) no-repeat;
+  background-size: contain;
+}
+
+.flags.md {
+  background: url(../../../../../../img/bg/flags/Moldova.png) no-repeat;
+  background-size: contain;
+}
+
+.flags.ru {
+  background: url(../../../../../../img/bg/flags/Russia.png) no-repeat;
+  background-size: contain;
+}
+
+.flags.tj {
+  background: url(../../../../../../img/bg/flags/Tajikistan.png) no-repeat;
+  background-size: contain;
+}
+
+.flags.uz {
+  background: url(../../../../../../img/bg/flags/Uzbekistan.png) no-repeat;
+  background-size: contain;
+}
+
+.flags.ua {
+  background: url(../../../../../../img/bg/flags/Ukraine.png) no-repeat;
+  background-size: contain;
+}
+
+.flags.tr {
+  background: url(../../../../../../img/bg/flags/Turkmenistan.png) no-repeat;
+  background-size: contain;
+}
+
+.flags.ge {
+  background: url(../../../../../../img/bg/flags/Georgia.png) no-repeat;
+  background-size: contain;
+}
+
+.cards {
+  background-color: rgb(250, 250, 250);
+  margin: 0;
+}
+
+/*-----------------media 790-----------------------------------*/
+@media screen and (max-width: 790px), screen and (max-device-width: 790px) {
+
+  #accordion1 .kontakt-hold {
+    background: none;
+  }
+
+  #accordion1 .kontakt-hold {
+    padding: 0;
+  }
+
+  #accordion1 .cards {
+    margin: 5px 0;
+  }
+}
+
+/*--------------media 790--end---------------------------------*/
+/*-----------------media 480-----------------------------------*/
+@media screen and (max-width: 480px), screen and (max-device-width: 480px) {
+  #accordion1 .head {
+    padding: 15px;
+    font-size: 13px;
+  }
+
+  ::ng-deep .md2-accordion-header {
+    white-space: normal !important;
+  }
+}
+
+/*-----------------media 480--end------------------------------*/

@@ -1,0 +1,231 @@
+.active {
+  color: #43c992;
+}
+
+.active:after {
+  background: #43c992;
+}
+
+.bl-top-menu {
+  margin: 0 auto;
+  vertical-align: top;
+  overflow: hidden;
+  border-bottom: solid 1px #ced9d9;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.table-device {
+  margin-top: 30px;
+  margin-bottom: 0;
+}
+
+th {
+  font-weight: 600;
+  background: #6aa3ca;
+  color: #fff;
+  border-color: #6aa3ca;
+  text-align: center;
+}
+
+.button {
+  width: 100%;
+  margin: 10px 0;
+  font-size: 15px;
+  line-height: 24px;
+  text-align: center;
+  height: 36px;
+  display: block;
+  padding: 5px 10px;
+  color: #fff;
+}
+
+#checkBox {
+  width: auto;
+}
+
+.input-wrapper {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.tab-pane {
+  background: #fff;
+  padding: 30px;
+  max-width: 70%;
+  display: block;
+  margin: 30px auto 0 auto;
+  overflow: hidden;
+}
+
+.form-control {
+  border-radius: 2px;
+}
+
+#addInstructionDescRu, #addInstructionDescEn {
+  width: 100%;
+  border-radius: 2px;
+  min-height: 100px;
+}
+
+input, textarea, select {
+  border: solid 1px #212121;
+  color: black;
+}
+
+.error {
+  padding: 8px 35px 8px 14px;
+  margin-bottom: 18px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  color: #b94a48;
+  background-color: #f2dede;
+  border-color: #eed3d7;
+}
+
+.btn-send {
+  padding: 6px 26px 8px;
+  margin: 3px;
+  font-size: 15px;
+  line-height: 24px;
+  text-align: center;
+  background-color: darkgreen;
+  color: #fff;
+  float: right;
+}
+
+::ng-deep .bl-top-menu .mat-form-field {
+  font-family: inherit;
+  line-height: inherit;
+  width: 100% !important;
+}
+
+::ng-deep .bl-top-menu .mat-form-field-underline {
+  width: 0 !important;
+  height: 0 !important;
+}
+
+::ng-deep .bl-top-menu .mat-form-field-wrapper {
+  padding-bottom: 0 !important;
+}
+
+.empty-block {
+  text-align: center;
+  width: 100%;
+  font-size: 24px;
+  color: #000;
+  margin: 50px
+}
+
+#versionFile {
+  padding: 5px;
+  margin-top: 2px;
+}
+
+::ng-deep .mat-form-field-infix {
+  border-top: none;
+  padding: 0 !important;
+}
+
+.label-for-block {
+  color: #000;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+#add-type {
+  margin: 2px 0 20px 0;
+  border-radius: 2px;
+}
+
+ ::ng-deep .bl-top-menu .md2-accordion-header {
+  background: #fff !important;
+}
+
+.btn-filter {
+  cursor: pointer;
+}
+
+.isUp .desc:after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  right: -15px;
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  -webkit-transform: rotate(-135deg);
+  -moz-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+  margin: 4px 0 0 -2px;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.isDown .desc:after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  right: -15px;
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  margin: 4px 0 0 -2px;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.desc {
+  position: relative;
+}
+/*-------------------------media 1260----------------------------------*/
+@media screen and (max-width: 1260px) {
+
+   ::ng-deep .bl-top-menu md2-accordion {
+    margin-top: 10px;
+  }
+
+  .top-menu {
+    text-align: center;
+    width: 100%;
+  }
+
+  .top-menu li {
+    margin: 0 5px;
+    float: none;
+    display: inline-block;
+    vertical-align: top;
+  }
+}
+/*-----------------media 790-----------------------------------*/
+@media screen and (max-width: 790px), screen and (max-device-width: 790px) {
+
+  .tab-pane {
+    max-width: 100%;
+    display: block;
+    margin: 30px auto;
+  }
+
+  .button {
+    display: inline-block;
+    width: 100% !important;
+  }
+}
+/*-----------------media 790--end-----------------------------------*/

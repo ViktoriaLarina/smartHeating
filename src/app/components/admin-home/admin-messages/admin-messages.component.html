@@ -1,0 +1,87 @@
+<div class="wrapper">
+  <div class="contacts-wrapper">
+    <button class="more-users" (click)="showAllUsers(); isAllUsers = !isAllUsers ">{{isAllUsers ? '< назад к диалогам' :
+      '+ Добавить собеседника'}}
+    </button>
+    <div *ngIf="isAllUsers">
+
+
+      <p *ngIf="error" class="error">Не менее 2 символов!</p>
+      <div class="search-row">
+        <span>Поиск по</span>
+        <select class="search-param style-by-select" [(ngModel)]="criteria">
+          <option *ngFor="let criteria of arrayOfCriteria; let i = index" [ngValue]="criteria.value">{{criteria.name}}
+          </option>
+        </select>
+        <input type="text" class="search-input" placeholder="введите данные" [(ngModel)]="searchInput">
+        <button class="search-param btn-search-start" (click)="startSearch()">{{searchQuery? 'Поиск' : 'Показать все'}}
+        </button>
+      </div>
+      <div *ngIf="items" class="border">
+        <div *ngIf="items.length !== 0">
+          <div *ngFor="let item of items">
+            <div (click)="openDialog(item.id)" class="item-wrapper user-name">
+              <div class="circle" [ngClass]="{'green' : item.isOnline, 'red' : !item.isOnline}"></div>
+              <button class="user">
+                {{item.firstName + ' ' + item.lastName}}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p *ngIf="!items || items.length === 0" class="empty-block">Список пуст</p>
+      <div>
+
+        <mat-paginator #paginator
+                       *ngIf="itemsCount > pageSizeOptions[0]"
+                       [length]="itemsCount"
+                       (page)="setPage($event)"
+                       [pageSize]="service.searchParams.pageSize"
+                       [pageIndex]="service.searchParams.pageNumber"
+                       [pageSizeOptions]="pageSizeOptions">
+        </mat-paginator>
+      </div>
+
+    </div>
+    <div *ngIf="newUser && !isAllUsers" class="item-wrapper user-name"
+         (click)="openDialog(newUser.id)" [ngClass]="{'actve-dialog' : newUser.id == currentUserId}">
+      <div class="circle" [ngClass]="{'green' : newUser.isOnline, 'red' : !newUser.isOnline}"></div>
+      <button class="user">
+        {{newUser.firstName + ' ' + newUser.lastName}}
+      </button>
+    </div>
+    <div *ngIf="!isAllUsers">
+      <div *ngFor="let user of arrayOfUsers" class="item-wrapper user-name"
+           [ngClass]="{'actve-dialog' : user.interlocutor.id == currentUserId}">
+        <div (click)="openDialog(user.interlocutor.id)">
+          <div class="circle" [ngClass]="{'green' : user.online, 'red' : !user.online}"></div>
+          <button class="user">
+            {{user.interlocutor.firstName + ' ' + user.interlocutor.lastName}}
+          </button>
+          <span class="new-msg" *ngIf="user.newMessagesCount">{{user.newMessagesCount}}</span>
+          <div class="last-msg">
+            <span class="date">{{user.messages[0].date | date: 'dd.MM.yyyy HH:mm'}}</span>
+            <span *ngIf="user.messages[0].msg">{{user.messages[0].msg}}</span>
+            <span *ngIf="!user.messages[0].msg">{{user.messages[0].fileName}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="support">
+    <p class="empty-block" *ngIf="!selectConversation">Выберите собеседника</p>
+    <div *ngIf="selectConversation && mesaggesByUser">
+      <app-admin-item-message #messages
+                              *ngFor="let oneMessage of mesaggesByUser"
+                              [item]="oneMessage"
+      ></app-admin-item-message>
+      <div id="awesomePart"></div>
+      <app-admin-message-input [currentUserId]="currentUserId"></app-admin-message-input>
+      <div id="scroll-down-target"></div>
+    </div>
+  </div>
+</div>
+
+
+
+
